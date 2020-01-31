@@ -11,9 +11,19 @@ public class AstronautController : MonoBehaviour
     }
   }
 
+  [SerializeField]
+  private Rigidbody _rb = null;
+
   private Vector3 _moveVector;
 
   private void Update()
   {
+    // Orient to face movement direction
+  }
+
+  private void FixedUpdate()
+  {
+    // Apply movement to physics
+    _rb.AddForce(_moveVector * Time.fixedDeltaTime, ForceMode.Force);
   }
 }
