@@ -5,6 +5,10 @@ using UnityEngine;
 public class RoomInhabitantComponent : MonoBehaviour
 {
     InteratibleDeviceComponent CurrentDevice;
+    public bool IsUsingInteraction
+    {
+      get { return CurrentDevice != null && CurrentDevice.IsInteractionActive; }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +43,14 @@ public class RoomInhabitantComponent : MonoBehaviour
       if (CurrentDevice != null)
       {
         CurrentDevice.OnInteractionStarted();
+      }
+    }
+
+    public void StopInteraction()
+    {
+      if (CurrentDevice != null)
+      {
+        CurrentDevice.OnInteractionStopped();
       }
     }
 }

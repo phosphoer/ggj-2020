@@ -4,15 +4,38 @@ using UnityEngine;
 
 public class AIAstronautController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  private RoomInhabitantComponent _roomInhabitant;
+  private bool _isInteractionPressed;
 
-    // Update is called once per frame
-    void Update()
+  private void Start()
+  {
+    _roomInhabitant= GetComponent<RoomInhabitantComponent>();
+  }
+
+  // Update is called once per frame
+  void Update()
+  {
+    UpdateInput();
+    UpdateInteraction();
+  }
+  void UpdateInput()
+  {
+    // TODO: Decide when to press interaction
+    _isInteractionPressed= false;
+  }
+
+  void UpdateInteraction()
+  {
+    if (_roomInhabitant)
     {
-        
+      if (_isInteractionPressed && !_roomInhabitant.IsUsingInteraction)
+      { 
+        _roomInhabitant.StartInteraction();
+      }
+      else if (!_isInteractionPressed && _roomInhabitant.IsUsingInteraction)
+      { 
+        _roomInhabitant.StopInteraction();
+      }
     }
+  }
 }
