@@ -87,19 +87,24 @@ public class AudioManager : Singleton<AudioManager>
   public Coroutine FadeInSound(GameObject source, SoundBank soundBank, float duration, float toVolume = 1.0f)
   {
     AudioInstance audioInstance = PlaySound(source, soundBank, 0);
-    return StartCoroutine(FadeAudioRoutine(audioInstance, 0, toVolume, duration));
+    return StartCoroutine(FadeAudioRoutine(audioInstance, 0, toVolume * soundBank.VolumeScale, duration));
   }
 
   // Fade out a sound over a time period, if the source gets destroyed it will be cancelled
-  public Coroutine FadeOutSound(GameObject source, SoundBank soundBank, float duration)
+  public Coroutine FadeOutSound(GameObject source, SoundBank soundBank, float duration, bool playIfStopped = false)
   {
     AudioInstance audioInstance = GetOrAddAudioInstance(source, soundBank);
-    if (!audioInstance.AudioSource.isPlaying)
+    if (!audioInstance.AudioSource.isPlaying && playIfStopped)
     {
       audioInstance.AudioSource.Play();
     }
 
     return StartCoroutine(FadeAudioRoutine(audioInstance, audioInstance.AudioSource.volume, 0, duration));
+  }
+
+  public void CancelFade(Coroutine fadeRoutine)
+  {
+    StopCoroutine(fadeRoutine);
   }
 
   // Play a sound on the global source (multiple simulataneous sounds supported)
@@ -116,6 +121,7 @@ public class AudioManager : Singleton<AudioManager>
     AudioInstance audioInstance = GetOrAddAudioInstance(source, soundBank);
     if (audioInstance != null)
     {
+      audioInstance.AudioSource.pitch = 1.0f + audioInstance.SoundBank.PitchOffsetRange.RandomValue;
       audioInstance.AudioSource.volume = audioInstance.SoundBank.VolumeScale * volumeScale;
       audioInstance.AudioSource.clip = audioInstance.GetNextRandomClip();
       audioInstance.AudioSource.Play();
@@ -217,6 +223,7 @@ public class AudioManager : Singleton<AudioManager>
     {
       audioInstance = new AudioInstance();
       audioInstance.AudioSource = forSource.AddComponent<AudioSource>();
+      audioInstance.AudioSource.playOnAwake = false;
       audioInstance.AudioSource.spatialize = soundBank.IsSpatial;
       audioInstance.AudioSource.spatialBlend = soundBank.IsSpatial ? 1.0f : 0.0f;
       audioInstance.AudioSource.volume = soundBank.VolumeScale;

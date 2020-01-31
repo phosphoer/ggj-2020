@@ -15,6 +15,7 @@ public class SoundBank : ScriptableObject
   public float MaxDistance = 100.0f;
   public float MinDistance = 10.0f;
   public float VolumeScale = 1.0f;
+  public RangedFloat PitchOffsetRange = new RangedFloat(0, 0);
   public bool IsLooping;
   public AudioMixerGroup AudioMixerGroup;
 

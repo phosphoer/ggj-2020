@@ -13,14 +13,20 @@ public class GizmoDirectional : MonoBehaviour
 
   private void OnDrawGizmos()
   {
+    Vector3 bottomLeft = transform.position - transform.right * Scale * 0.5f * transform.localScale.x;
+    Vector3 bottomRight = transform.position + transform.right * Scale * 0.5f * transform.localScale.x;
+    Vector3 top = transform.position + transform.forward * Scale * 2.0f * transform.localScale.z;
     Handles.color = Color;
-    Handles.DrawLine(transform.position + transform.right * Scale * 0.5f, transform.position + transform.forward * Scale * 2.0f);
-    Handles.DrawLine(transform.position - transform.right * Scale * 0.5f, transform.position + transform.forward * Scale * 2.0f);
-    Handles.DrawLine(transform.position - transform.right * Scale * 0.5f, transform.position + transform.right * Scale * 0.5f);
+    Handles.DrawLine(bottomLeft, top);
+    Handles.DrawLine(bottomRight, top);
+    Handles.DrawLine(bottomRight, bottomLeft);
 
-    Handles.DrawLine(transform.position + transform.right * Scale * 0.51f, transform.position + transform.forward * Scale * 2.1f);
-    Handles.DrawLine(transform.position - transform.right * Scale * 0.51f, transform.position + transform.forward * Scale * 2.1f);
-    Handles.DrawLine(transform.position - transform.right * Scale * 0.51f, transform.position + transform.right * Scale * 0.51f);
+    bottomLeft += -transform.forward * 0.1f - transform.right * 0.1f;
+    bottomRight += -transform.forward * 0.1f + transform.right * 0.1f;
+    top += transform.forward * 0.1f;
+    Handles.DrawLine(bottomLeft, top);
+    Handles.DrawLine(bottomRight, top);
+    Handles.DrawLine(bottomRight, bottomLeft);
   }
 #endif
 }
