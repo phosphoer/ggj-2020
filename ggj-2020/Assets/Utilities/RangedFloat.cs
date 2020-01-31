@@ -6,6 +6,8 @@ public struct RangedFloat
   public float MinValue;
   public float MaxValue;
 
+  public float RangeSize => MaxValue - MinValue;
+
   public float RandomValue
   {
     get { return Random.Range(MinValue, MaxValue); }
@@ -27,17 +29,8 @@ public struct RangedFloat
     return value > MinValue && value < MaxValue;
   }
 
-  public float DistanceFromRange(float value)
+  public float SeededRandom(System.Random rand)
   {
-    if (value <= MinValue)
-    {
-      return value - MinValue;
-    }
-    else if (value >= MaxValue)
-    {
-      return value - MaxValue;
-    }
-
-    return 0;
+    return MinValue + (float)rand.NextDouble() * RangeSize;
   }
 }

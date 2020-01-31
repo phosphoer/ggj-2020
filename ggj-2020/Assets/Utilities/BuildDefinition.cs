@@ -18,13 +18,20 @@ public class BuildDefinition : ScriptableObject
   public string CompanyNameOverride;
   public BuildTarget BuildTarget;
   public BuildTargetGroup BuildTargetGroup;
+  public string[] Defines;
   public SceneField[] Scenes;
+  public bool WriteBuildInfo = true;
+  public string BuildInfoFile = "BuildInfo.cs";
+  public string BuildName = "Main";
+
+  private const string kBuildVersionText = "public static class BuildInfo {{ public static string Name = \"{0}\"; public static string Date = \"{1}\"; }}";
 
   [ContextMenu("Build")]
   public void Build()
   {
     BuildPipeline.BuildPlayer(ApplyBuildSettings());
   }
+
 
   [ContextMenu("Copy Scenes From Build Settings")]
   public void CopySceneListFromBuild()
@@ -42,6 +49,17 @@ public class BuildDefinition : ScriptableObject
   [ContextMenu("Apply Build Settings")]
   public BuildPlayerOptions ApplyBuildSettings()
   {
+    if (WriteBuildInfo)
+    {
+      string pathToBuildAsset = System.IO.Path.GetDirectoryName(AssetDatabase.GetAssetPath(this));
+      string versionFileText = string.Format(kBuildVersionText, BuildName, System.DateTime.Now.ToString());
+      System.IO.File.WriteAllText(System.IO.Path.Combine(pathToBuildAsset, BuildInfoFile), versionFileText);
+      AssetDatabase.Refresh();
+    }
+
+    string defineList = string.Join(";", Defines);
+    PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup, defineList);
+
     // Set basic options
     BuildPlayerOptions buildOptions = new BuildPlayerOptions();
     buildOptions.targetGroup = BuildTargetGroup;
@@ -53,10 +71,16 @@ public class BuildDefinition : ScriptableObject
 
     // Build scene list
     List<string> sceneList = new List<string>();
+    List<EditorBuildSettingsScene> editorScenes = new List<EditorBuildSettingsScene>();
     foreach (SceneField scene in Scenes)
-      sceneList.Add(AssetDatabase.GetAssetPath(scene.sceneAsset));
+    {
+      var sceneAsset = AssetDatabase.GetAssetPath(scene.sceneAsset);
+      sceneList.Add(sceneAsset);
+      editorScenes.Add(new EditorBuildSettingsScene(sceneAsset, true));
+    }
 
     buildOptions.scenes = sceneList.ToArray();
+    EditorBuildSettings.scenes = editorScenes.ToArray();
 
     return buildOptions;
   }

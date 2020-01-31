@@ -100,9 +100,13 @@ public static class Mathfx
   }
 
   // Dampening functions, stateless-ly and frame independently interpolate towards a value
-  public static float Damp(float source, float target, float smoothing, float dt)
+  public static float Damp(float source, float target, float smoothing, float dt, float snapEpsilon = 0.01f)
   {
-    return Mathf.Lerp(source, target, 1 - Mathf.Pow(smoothing, dt));
+    float val = Mathf.Lerp(source, target, 1 - Mathf.Pow(smoothing, dt));
+    if (Mathf.Abs(val - target) < snapEpsilon)
+      val = target;
+
+    return val;
   }
 
   public static Vector4 Damp(Vector4 source, Vector4 target, float smoothing, float dt)
@@ -159,12 +163,56 @@ public static class Mathfx
     return retval;
   }
 
-  public static Vector2 WorldToCanvasPosition(Canvas canvas, RectTransform canvasRect, Camera camera, Vector3 position)
+  public static Vector3 ViewportToCanvasPosition(RectTransform canvas, Vector3 viewportPos)
   {
-    Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(camera, position);
-    Vector2 result;
-    RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screenPoint, canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : camera, out result);
-    return result;
+    viewportPos.x *= canvas.rect.size.x;
+    viewportPos.y *= canvas.rect.size.y;
+    viewportPos.x -= canvas.rect.size.x * canvas.pivot.x;
+    viewportPos.y -= canvas.rect.size.y * canvas.pivot.y;
+    return viewportPos;
+  }
+
+  public static Vector3 WorldToCanvasPosition(RectTransform canvas, Camera camera, Vector3 worldPos)
+  {
+    Vector3 pos = camera.WorldToViewportPoint(worldPos);
+    pos = ViewportToCanvasPosition(canvas, pos);
+    return pos;
+  }
+
+  public static Vector3 CanvasToWorldPosition(RectTransform canvas, Camera camera, Vector2 canvasLocalPos)
+  {
+    Vector2 viewportPoint = canvasLocalPos + canvas.rect.size * canvas.pivot;
+    viewportPoint /= canvas.rect.size;
+    Vector3 worldPos = camera.ViewportToWorldPoint(viewportPoint, Camera.MonoOrStereoscopicEye.Mono);
+    return worldPos;
+  }
+
+  // https://answers.unity.com/questions/283192/how-to-convert-decibel-number-to-audio-source-volu.html
+  public static float LinearToDecibel(float linear)
+  {
+    float dB;
+
+    if (linear != 0)
+      dB = 20.0f * Mathf.Log10(linear);
+    else
+      dB = -144.0f;
+
+    return dB;
+  }
+
+  public static float DecibelToLinear(float dB)
+  {
+    float linear = Mathf.Pow(10.0f, dB / 20.0f);
+
+    return linear;
+  }
+
+  public static Bounds NegativeBounds()
+  {
+    Bounds negativeBounds = new Bounds();
+    negativeBounds.min = Vector3.positiveInfinity;
+    negativeBounds.max = Vector3.negativeInfinity;
+    return negativeBounds;
   }
 }
 
@@ -172,6 +220,18 @@ public static class VectorExtensions
 {
   // Get a copy of this vector with a given value for x/y/z
   // My primary use case is getting a forward vector whose y is 0 
+  public static Vector2 WithX(this Vector2 v, float x)
+  {
+    v.x = x;
+    return v;
+  }
+
+  public static Vector2 WithY(this Vector2 v, float y)
+  {
+    v.y = y;
+    return v;
+  }
+
   public static Vector3 WithX(this Vector3 v, float x)
   {
     v.x = x;
@@ -188,38 +248,5 @@ public static class VectorExtensions
   {
     v.z = z;
     return v;
-  }
-}
-
-public static class ArrayUtilities
-{
-  public static void KnuthShuffle<T>(T[] array)
-  {
-    for (int index = 0; index < array.Length; index++) {
-      T tmp = array[index];
-      int randomIndex = Random.Range(index, array.Length);
-      array[index] = array[randomIndex];
-      array[randomIndex] = tmp;
-    }
-  }
-
-  public static int[] MakeIntSequence(int StartValue, int EndValue)
-  {
-    int arrayLength = EndValue - StartValue + 1;
-    int[] intList = new int[arrayLength];
-
-    for (int arrayIndex = 0; arrayIndex < arrayLength; ++arrayIndex) {
-      intList[arrayIndex] = StartValue + arrayIndex;
-    }
-
-    return intList;
-  }
-
-  public static int[] MakeShuffledIntSequence(int StartValue, int EndValue)
-  {
-    int[] Sequence = MakeIntSequence(StartValue, EndValue);
-    KnuthShuffle<int>(Sequence);
-
-    return Sequence;
   }
 }

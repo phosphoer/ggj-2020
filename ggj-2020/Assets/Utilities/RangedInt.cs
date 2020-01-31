@@ -6,9 +6,16 @@ public struct RangedInt
   public int MinValue;
   public int MaxValue;
 
+  public int RangeSize => MaxValue - MinValue;
+
   public int RandomValue
   {
     get { return Random.Range(MinValue, MaxValue); }
+  }
+
+  public int RandomValueInclusive
+  {
+    get { return Random.Range(MinValue, MaxValue + 1); }
   }
 
   public RangedInt(int min = 0, int max = 0)
@@ -27,17 +34,13 @@ public struct RangedInt
     return value > MinValue && value < MaxValue;
   }
 
-  public float DistanceFromRange(float value)
+  public int SeededRandom(System.Random rand)
   {
-    if (value <= MinValue)
-    {
-      return value - MinValue;
-    }
-    else if (value >= MaxValue)
-    {
-      return value - MaxValue;
-    }
+    return rand.NextIntRanged(MinValue, MaxValue);
+  }
 
-    return 0;
+  public int SeededRandomInclusive(System.Random rand)
+  {
+    return rand.NextIntRanged(MinValue, MaxValue + 1);
   }
 }

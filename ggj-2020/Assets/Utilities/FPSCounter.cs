@@ -4,38 +4,41 @@ using System.Collections;
 
 public class FPSCounter : MonoBehaviour
 {
-  public float Fps { get { return _fps; } }
-
   [SerializeField]
   private Text _fpsTextUI = null;
 
-  private float _fps;
+  [SerializeField]
+  private GameObject _waterMark = null;
 
-  private void OnEnable()
+  private float _frameTimer;
+  private int _frameCounter;
+
+  private void Awake()
   {
-    StartCoroutine(UpdateFPS());
+    _fpsTextUI.enabled = false;
+    _waterMark.SetActive(false);
   }
 
   private void Update()
   {
-    _fps = Mathfx.Damp(_fps, 1.0f / Time.smoothDeltaTime, 0.25f, Time.deltaTime * 5.0f);
+    _frameTimer += Time.unscaledDeltaTime;
+    _frameCounter += 1;
 
-    if (Input.GetKeyDown(KeyCode.F1) && _fpsTextUI != null)
+    if (_frameTimer >= 1.0f)
+    {
+      _fpsTextUI.text = _frameCounter.ToString();
+      _frameTimer = 0;
+      _frameCounter = 0;
+    }
+
+    if (Input.GetKeyDown(KeyCode.F1))
     {
       _fpsTextUI.enabled = !_fpsTextUI.enabled;
     }
-  }
 
-  private IEnumerator UpdateFPS()
-  {
-    while (gameObject.activeInHierarchy)
+    if (Input.GetKeyDown(KeyCode.F2))
     {
-      if (_fpsTextUI != null)
-      {
-        _fpsTextUI.text = ((int)_fps).ToString();
-      }
-
-      yield return new WaitForSeconds(1.0f);
+      _waterMark.SetActive(!_waterMark.activeSelf);
     }
   }
 }

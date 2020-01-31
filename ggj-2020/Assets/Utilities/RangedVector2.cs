@@ -16,4 +16,11 @@ public struct RangedVector2
     MinValue = min;
     MaxValue = max;
   }
+
+  public Vector2 SeededRandom(System.Random rand)
+  {
+    float x = rand.NextFloatRanged(MinValue.x, MaxValue.x);
+    float y = rand.NextFloatRanged(MinValue.y, MaxValue.y);
+    return new Vector2(x, y);
+  }
 }
