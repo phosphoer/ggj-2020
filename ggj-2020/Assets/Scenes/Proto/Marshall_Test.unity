@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerAstronaut
       objectReference: {fileID: 0}
+    - target: {fileID: 7764290802281532633, guid: f184898deba7b4fabb10d595369679da,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7fd7fbaf10de29448b4d49d8c5ce0d3b, type: 2}
     - target: {fileID: 8582730457766153559, guid: f184898deba7b4fabb10d595369679da,
         type: 3}
       propertyPath: m_LocalPosition.x
