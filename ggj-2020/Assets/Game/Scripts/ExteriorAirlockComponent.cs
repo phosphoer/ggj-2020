@@ -13,6 +13,9 @@ public class ExteriorAirlockComponent : MonoBehaviour
   [SerializeField]
   private CameraFocusPoint _cameraFocusPoint = null;
 
+  [SerializeField]
+  private List<GameObject> _warningEffects = null;
+
   public float VentForceScale = 1000.0f;
 
   public enum EAirlockState
@@ -84,6 +87,11 @@ public class ExteriorAirlockComponent : MonoBehaviour
     if (_cameraFocusPoint != null)
     {
       _cameraFocusPoint.enabled= newState == EAirlockState.Open;
+    }
+
+    foreach (GameObject effect in _warningEffects)
+    {
+      effect.SetActive(newState == EAirlockState.Open);
     }
   }
 }
