@@ -100,7 +100,7 @@ MonoBehaviour:
     MinValue: 10
     MaxValue: 30
   ViewportBorder: 0.4
-  ZoomSensitivity: 5
+  ZoomSensitivity: 2
 --- !u!1 &1449285580147211709
 GameObject:
   m_ObjectHideFlags: 0
