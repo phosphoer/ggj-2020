@@ -36,7 +36,7 @@ public class PlayerAstronautController : MonoBehaviour
 
   private void Update()
   {
-    if (!Rewired.ReInput.isReady || _astronaut == null)
+    if (!Rewired.ReInput.isReady || _astronaut == null || _rewiredPlayer == null)
     {
       return;
     }
