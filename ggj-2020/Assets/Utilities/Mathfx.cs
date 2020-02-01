@@ -187,6 +187,13 @@ public static class Mathfx
     return worldPos;
   }
 
+  public static bool IsPointInViewport(Vector3 worldPosition, Camera camera)
+  {
+    Vector3 viewportPos = camera.WorldToViewportPoint(worldPosition);
+    return viewportPos.x > 0 && viewportPos.x < 1 &&
+           viewportPos.y > 0 && viewportPos.y < 1;
+  }
+
   // https://answers.unity.com/questions/283192/how-to-convert-decibel-number-to-audio-source-volu.html
   public static float LinearToDecibel(float linear)
   {

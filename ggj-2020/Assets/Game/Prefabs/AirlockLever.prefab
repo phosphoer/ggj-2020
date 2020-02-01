@@ -107,6 +107,9 @@ GameObject:
   - component: {fileID: 1987580695794695382}
   - component: {fileID: 6591231399696815971}
   - component: {fileID: 2733879652775824213}
+  - component: {fileID: 2014129853799830990}
+  - component: {fileID: 4272046393396054820}
+  - component: {fileID: 6504300868665067910}
   m_Layer: 0
   m_Name: AirlockLever
   m_TagString: Untagged
@@ -209,6 +212,49 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.586461, y: 3.8931472, z: 2.1929135}
   m_Center: {x: 0.053781033, y: 1.9408644, z: -0.015889406}
+--- !u!114 &2014129853799830990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263909247712364554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30770a9c7729fc14a8fa96d0aa6a0f59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitialLeverState: 0
+  _switchAnimator: {fileID: 6591231399696815971}
+  _exteriorAirlock: {fileID: 0}
+  _interiorAirlock: {fileID: 0}
+  _cameraFocusPoint: {fileID: 4272046393396054820}
+  ResetDuration: 5
+--- !u!114 &4272046393396054820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263909247712364554}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab387959da647438fab113985e9fb3ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &6504300868665067910
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263909247712364554}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.1998997, y: 3.8931472, z: 1.683038}
+  m_Center: {x: 0.00000023841858, y: 1.9408644, z: -1.2759622}
 --- !u!1 &3585657648376176503
 GameObject:
   m_ObjectHideFlags: 0
