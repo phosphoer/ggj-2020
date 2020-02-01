@@ -51,6 +51,7 @@ public class AstronautController : MonoBehaviour
   private float _attackCooldownTimer;
   private float _idleBlend;
   private AstronautIdle _currentIdleState;
+  private float _outsideRoomTimer;
 
   private static readonly int kAnimIdleState = Animator.StringToHash("IdleState");
   private static readonly int kAnimEmoteState = Animator.StringToHash("EmoteState");
@@ -77,11 +78,11 @@ public class AstronautController : MonoBehaviour
     _visualRoot.localEulerAngles = _visualRoot.localEulerAngles.WithZ(_zRot);
 
     // Update idle anim state 
-    // if (_roomInhabitant.IsInSpace)
-    // {
-    //   _currentIdleState = AstronautIdle.Panic;
-    // }
-    if (_moveVector.sqrMagnitude > 0.01f)
+    if (_roomInhabitant.IsBeingSuckedIntoSpace)
+    {
+      _currentIdleState = AstronautIdle.Panic;
+    }
+    else if (_moveVector.sqrMagnitude > 0.01f)
     {
       _currentIdleState = AstronautIdle.Move;
     }
@@ -93,6 +94,16 @@ public class AstronautController : MonoBehaviour
     // Blend idle state
     _idleBlend = Mathfx.Damp(_idleBlend, (float)_currentIdleState, 0.25f, Time.deltaTime * 5);
     _animator.SetFloat(kAnimIdleState, _idleBlend);
+
+    // Count down to death outside room
+    if (_roomInhabitant.Room == null)
+    {
+      _outsideRoomTimer += Time.deltaTime;
+      if (_outsideRoomTimer > 5)
+      {
+        // ...
+      }
+    }
 
     _attackCooldownTimer -= Time.deltaTime;
   }

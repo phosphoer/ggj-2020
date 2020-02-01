@@ -4,74 +4,76 @@ using UnityEngine;
 
 public class RoomInhabitantComponent : MonoBehaviour
 {
-    private RoomComponent _roomComponent;
-    private InteratibleDeviceComponent _currentDevice;
+  public RoomComponent Room => _roomComponent;
 
-    private bool _isBeingSuckedIntoSpace = false;
-    public bool IsBeingSuckedIntoSpace
-    {
-      get { return _isBeingSuckedIntoSpace; }
-    }
+  private RoomComponent _roomComponent;
+  private InteratibleDeviceComponent _currentDevice;
 
-    [SerializeField]
-    private Rigidbody _rigidBody= null;
-    public Rigidbody PhysicsRigidBody
-    {
-      get { return _rigidBody; }
-    }
+  private bool _isBeingSuckedIntoSpace = false;
+  public bool IsBeingSuckedIntoSpace
+  {
+    get { return _isBeingSuckedIntoSpace; }
+  }
 
-    public bool IsPressingInteraction
-    {
-      get { return _currentDevice != null && _currentDevice.IsInteractionPressed; }
-    }
-  
-    public virtual void OnRoomEntered(RoomComponent room)
-    {
-      _roomComponent= room;
-    }
-    public virtual void OnRoomExited(RoomComponent room)
-    {
-      if (room == _roomComponent)
-      {
-        _roomComponent= null;
-      }
-    }
+  [SerializeField]
+  private Rigidbody _rigidBody = null;
+  public Rigidbody PhysicsRigidBody
+  {
+    get { return _rigidBody; }
+  }
 
-    public virtual void OnInteractionEntered(InteratibleDeviceComponent Device)
-    {
-      _currentDevice = Device;
-    }
+  public bool IsPressingInteraction
+  {
+    get { return _currentDevice != null && _currentDevice.IsInteractionPressed; }
+  }
 
-    public virtual void OnInteractionExited(InteratibleDeviceComponent Device)
+  public virtual void OnRoomEntered(RoomComponent room)
+  {
+    _roomComponent = room;
+  }
+  public virtual void OnRoomExited(RoomComponent room)
+  {
+    if (room == _roomComponent)
     {
-      if (_currentDevice == Device)
-      {
-        if (_currentDevice.IsInteractionPressed)
-        {
-          _currentDevice.OnInteractionReleased();
-        }
-        _currentDevice = null;
-      }
+      _roomComponent = null;
     }
+  }
 
-    public void PressInteraction()
-    {
-      if (_currentDevice != null)
-      {
-        _currentDevice.OnInteractionPressed();
-      }
-    }
+  public virtual void OnInteractionEntered(InteratibleDeviceComponent Device)
+  {
+    _currentDevice = Device;
+  }
 
-    public void ReleaseInteraction()
+  public virtual void OnInteractionExited(InteratibleDeviceComponent Device)
+  {
+    if (_currentDevice == Device)
     {
-      if (_currentDevice != null)
+      if (_currentDevice.IsInteractionPressed)
       {
         _currentDevice.OnInteractionReleased();
       }
+      _currentDevice = null;
     }
+  }
 
-    public void NotifySuckedIntoSpace()
+  public void PressInteraction()
+  {
+    if (_currentDevice != null)
     {
-      _isBeingSuckedIntoSpace= true;
+      _currentDevice.OnInteractionPressed();
     }
+  }
+
+  public void ReleaseInteraction()
+  {
+    if (_currentDevice != null)
+    {
+      _currentDevice.OnInteractionReleased();
+    }
+  }
+
+  public void NotifySuckedIntoSpace()
+  {
+    _isBeingSuckedIntoSpace = true;
+  }
 }
