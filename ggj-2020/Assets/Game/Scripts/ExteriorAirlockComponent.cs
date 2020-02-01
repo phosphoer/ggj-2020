@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AirlockComponent : MonoBehaviour
+public class ExteriorAirlockComponent : MonoBehaviour
 {
   [SerializeField]
   private RoomComponent _room;

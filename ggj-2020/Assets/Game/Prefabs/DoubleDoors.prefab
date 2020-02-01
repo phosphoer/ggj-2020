@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3669742061956813436}
   - component: {fileID: 6658441447603863302}
+  - component: {fileID: 4907172620615723491}
   m_Layer: 0
   m_Name: DoubleDoors
   m_TagString: Untagged
@@ -52,6 +53,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4907172620615723491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339691019583365231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4d25be1b06edd43943db566319dc58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _room: {fileID: 0}
+  _hatchAnimator: {fileID: 6658441447603863302}
 --- !u!1 &2553709462907216495
 GameObject:
   m_ObjectHideFlags: 0

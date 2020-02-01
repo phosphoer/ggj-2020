@@ -7,7 +7,10 @@ public class VentSwitchComponent : LeverComponent
   public GameObject SwitchHandle;
 
   [SerializeField]
-  private AirlockComponent _airlock;
+  private ExteriorAirlockComponent _exteriorAirlock;
+
+  [SerializeField]
+  private InteriorAirlockComponent _interiorAirlock;
 
   // Start is called before the first frame update
   public override void Start()
@@ -43,15 +46,27 @@ public class VentSwitchComponent : LeverComponent
 
   private void UpdateAirlock(ELeverState state)
   {
-    if (_airlock != null)
+    if (_exteriorAirlock != null)
     {
       if (state == ELeverState.TurnedOff)
       {
-        _airlock.SetAirlockState(AirlockComponent.EAirlockState.Closed);
+        _exteriorAirlock.SetAirlockState(ExteriorAirlockComponent.EAirlockState.Closed);
       }
       else
       {
-        _airlock.SetAirlockState(AirlockComponent.EAirlockState.Open);
+        _exteriorAirlock.SetAirlockState(ExteriorAirlockComponent.EAirlockState.Open);
+      }
+    }
+
+    if (_interiorAirlock != null)
+    {
+      if (state == ELeverState.TurnedOff)
+      {
+        _interiorAirlock.SetAirlockState(InteriorAirlockComponent.EAirlockState.Open);
+      }
+      else
+      {
+        _interiorAirlock.SetAirlockState(InteriorAirlockComponent.EAirlockState.Closed);
       }
     }
   }
