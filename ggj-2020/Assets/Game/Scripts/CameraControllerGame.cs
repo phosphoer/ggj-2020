@@ -16,13 +16,13 @@ public class CameraControllerGame : CameraControllerBase
   private void Update()
   {
     Camera cam = CameraControllerStack.Instance.Camera;
-    Vector3 playerCenter = Vector3.zero;
+    Vector3 focusCenter = Vector3.zero;
     float zoomDelta = 0;
     bool anyOffscreen = false;
     for (int i = 0; i < CameraFocusPoint.Instances.Count; ++i)
     {
       CameraFocusPoint focusPoint = CameraFocusPoint.Instances[i];
-      playerCenter += focusPoint.transform.position;
+      focusCenter += focusPoint.transform.position;
 
       // Get centered viewport pos
       Vector3 viewportPos = cam.WorldToViewportPoint(focusPoint.transform.position);
@@ -44,17 +44,24 @@ public class CameraControllerGame : CameraControllerBase
       }
     }
 
-    if (PlayerManager.Instance.Players.Count > 0)
+    if (CameraFocusPoint.Instances.Count > 0)
     {
-      playerCenter /= PlayerManager.Instance.Players.Count;
+      focusCenter /= CameraFocusPoint.Instances.Count;
     }
 
-    float desiredZoom = ZoomRange.Clamp(MountPoint.position.y + zoomDelta);
-    _zoom = Mathfx.Damp(_zoom, desiredZoom, 0.25f, Time.deltaTime * 5);
-    Vector3 desiredPos = playerCenter.WithY(_zoom);
-    MountPoint.position = desiredPos;
+    Debug.DrawLine(MountPoint.position, focusCenter);
 
-    Quaternion desiredRot = Quaternion.LookRotation(playerCenter - MountPoint.position, Vector3.forward);
-    MountPoint.rotation = Mathfx.Damp(MountPoint.rotation, desiredRot, 0.5f, Time.deltaTime * 5);
+    float desiredZoom = ZoomRange.Clamp(MountPoint.position.y + zoomDelta);
+    _zoom = Mathfx.Damp(_zoom, desiredZoom, 0.25f, Time.deltaTime * 2);
+    Vector3 desiredPos = focusCenter.WithY(_zoom);
+    Vector3 toDesiredPos = MountPoint.position - desiredPos;
+    if (toDesiredPos.sqrMagnitude > 0.1f)
+    {
+      MountPoint.position = Mathfx.Damp(MountPoint.position, desiredPos, 0.5f, Time.deltaTime * 2);
+    }
+    else
+    {
+      MountPoint.position = desiredPos;
+    }
   }
 }
