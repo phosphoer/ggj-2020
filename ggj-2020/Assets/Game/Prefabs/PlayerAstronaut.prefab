@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _roomInhabitant: {fileID: 8990602445605495633}
   _rb: {fileID: 3361536974669979111}
+  _animator: {fileID: 3605509425636324324}
   _visualRoot: {fileID: 7181139985772786116}
   _acceleration: 500
   _maxSpeed: 7
@@ -317,6 +318,12 @@ GameObject:
 --- !u!4 &6666264756056530590 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: a1681a3d4b8761049ade15b83abf3be9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1871774198526719364}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3605509425636324324 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: a1681a3d4b8761049ade15b83abf3be9,
     type: 3}
   m_PrefabInstance: {fileID: 1871774198526719364}
   m_PrefabAsset: {fileID: 0}

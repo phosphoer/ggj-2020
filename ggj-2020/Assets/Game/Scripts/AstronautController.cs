@@ -1,5 +1,17 @@
 using UnityEngine;
 
+public enum AstronautEmote
+{
+  Attack = 0,
+  HitReact,
+}
+
+public enum AstronautIdle
+{
+  Idle = 0,
+  Move
+}
+
 public class AstronautController : MonoBehaviour
 {
   public Vector3 MoveVector
@@ -18,6 +30,9 @@ public class AstronautController : MonoBehaviour
   private Rigidbody _rb = null;
 
   [SerializeField]
+  private Animator _animator = null;
+
+  [SerializeField]
   private Transform _visualRoot = null;
 
   [SerializeField]
@@ -29,6 +44,21 @@ public class AstronautController : MonoBehaviour
   private Vector3 _moveVector;
   private float _zRot;
 
+  private static readonly int kAnimIdleState = Animator.StringToHash("IdleState");
+  private static readonly int kAnimEmoteState = Animator.StringToHash("EmoteState");
+  private static readonly int kAnimEmotePlay = Animator.StringToHash("PlayEmote");
+
+  public void SetIdle(AstronautIdle idleState)
+  {
+    _animator.SetFloat(kAnimIdleState, (float)idleState);
+  }
+
+  public void PlayEmote(AstronautEmote emote)
+  {
+    _animator.SetTrigger(kAnimEmotePlay);
+    _animator.SetFloat(kAnimEmoteState, (float)emote);
+  }
+
   private void Update()
   {
     // Orient to face movement direction
@@ -36,6 +66,15 @@ public class AstronautController : MonoBehaviour
     {
       Quaternion desiredRot = Quaternion.LookRotation(_rb.velocity, Vector3.up);
       transform.rotation = Mathfx.Damp(transform.rotation, desiredRot, 0.25f, Time.deltaTime * 5);
+    }
+
+    if (_moveVector.sqrMagnitude > 0.01f)
+    {
+      SetIdle(AstronautIdle.Move);
+    }
+    else
+    {
+      SetIdle(AstronautIdle.Idle);
     }
 
     float targetZRot = Mathf.Abs(_moveVector.x) > 0.1f ? Mathf.Sign(_moveVector.x) * -90 : 0;
@@ -60,6 +99,7 @@ public class AstronautController : MonoBehaviour
     if (_roomInhabitant != null)
     {
       _roomInhabitant.PressInteraction();
+      PlayEmote(AstronautEmote.Attack);
     }
   }
   public void ReleaseInteraction()
