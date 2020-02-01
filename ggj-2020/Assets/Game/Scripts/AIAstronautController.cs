@@ -4,35 +4,45 @@ using UnityEngine;
 
 public class AIAstronautController : MonoBehaviour
 {
-  private bool _isInteractionPressed;
-
   [SerializeField]
-  private RoomInhabitantComponent _roomInhabitant= null;
+  private AstronautController _astronaut = null;
 
-  // Update is called once per frame
-  void Update()
+  private bool _isInteractionPressed;
+  private Vector3 _moveDir;
+  private int _repairDeviceIndex;
+
+  private void Update()
   {
     UpdateInput();
     UpdateInteraction();
   }
-  void UpdateInput()
+
+  private void OnCollisionEnter(Collision col)
   {
-    // TODO: Decide when to press interaction
-    _isInteractionPressed= false;
+    _moveDir = Random.insideUnitSphere;
   }
 
-  void UpdateInteraction()
+  private void UpdateInput()
   {
-    if (_roomInhabitant)
+    _moveDir += Random.insideUnitSphere * Time.deltaTime;
+    _astronaut.MoveVector = _moveDir;
+
+    if (_repairDeviceIndex < RepairableDeviceComponent.Instances.Count)
     {
-      if (_isInteractionPressed && !_roomInhabitant.IsPressingInteraction)
-      { 
-        _roomInhabitant.PressInteraction();
+      RepairableDeviceComponent device = RepairableDeviceComponent.Instances[_repairDeviceIndex];
+      float distToRepair = Vector3.Distance(_astronaut.transform.position, device.transform.position);
+      if (distToRepair < 3)
+      {
+        _isInteractionPressed = true;
       }
-      else if (!_isInteractionPressed && _roomInhabitant.IsPressingInteraction)
-      { 
-        _roomInhabitant.ReleaseInteraction();
-      }
+    }
+  }
+
+  private void UpdateInteraction()
+  {
+    if (_isInteractionPressed && _astronaut.RoomInhabitant.CurrentDevice != null)
+    {
+      _astronaut.RoomInhabitant.CurrentDevice.OnInteractionPressed();
     }
   }
 }

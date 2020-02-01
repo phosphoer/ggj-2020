@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoomInhabitantComponent : MonoBehaviour
 {
   public RoomComponent Room => _roomComponent;
+  public InteratibleDeviceComponent CurrentDevice => _currentDevice;
 
   private RoomComponent _roomComponent;
   private InteratibleDeviceComponent _currentDevice;
@@ -17,20 +18,17 @@ public class RoomInhabitantComponent : MonoBehaviour
 
   [SerializeField]
   private Rigidbody _rigidBody = null;
+
   public Rigidbody PhysicsRigidBody
   {
     get { return _rigidBody; }
-  }
-
-  public bool IsPressingInteraction
-  {
-    get { return _currentDevice != null && _currentDevice.IsInteractionPressed; }
   }
 
   public virtual void OnRoomEntered(RoomComponent room)
   {
     _roomComponent = room;
   }
+
   public virtual void OnRoomExited(RoomComponent room)
   {
     if (room == _roomComponent)
@@ -48,27 +46,7 @@ public class RoomInhabitantComponent : MonoBehaviour
   {
     if (_currentDevice == Device)
     {
-      if (_currentDevice.IsInteractionPressed)
-      {
-        _currentDevice.OnInteractionReleased();
-      }
       _currentDevice = null;
-    }
-  }
-
-  public void PressInteraction()
-  {
-    if (_currentDevice != null)
-    {
-      _currentDevice.OnInteractionPressed();
-    }
-  }
-
-  public void ReleaseInteraction()
-  {
-    if (_currentDevice != null)
-    {
-      _currentDevice.OnInteractionReleased();
     }
   }
 

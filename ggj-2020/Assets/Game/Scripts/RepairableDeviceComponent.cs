@@ -10,6 +10,8 @@ public class RepairableDeviceComponent : InteratibleDeviceComponent
     Broken
   }
 
+  public static IReadOnlyList<RepairableDeviceComponent> Instances => _instances;
+
   private ERepairState _currentRepairState;
   public ERepairState CurrentRepairState
   {
@@ -22,12 +24,22 @@ public class RepairableDeviceComponent : InteratibleDeviceComponent
   [SerializeField]
   private GameObject _brokenGameObject = null;
 
-  // Start is called before the first frame update
-  public override void Start()
+  private static List<RepairableDeviceComponent> _instances = new List<RepairableDeviceComponent>();
+
+  private void Start()
   {
-    base.Start();
-     _currentRepairState= ERepairState.Fixed;
+    _currentRepairState = ERepairState.Fixed;
     OnRepairStateChanged(_currentRepairState);
+  }
+
+  private void OnEnable()
+  {
+    _instances.Add(this);
+  }
+
+  private void OnDisable()
+  {
+    _instances.Remove(this);
   }
 
   public override void OnInteractionPressed()
@@ -41,13 +53,13 @@ public class RepairableDeviceComponent : InteratibleDeviceComponent
   {
     if (newState != CurrentRepairState)
     {
-      _currentRepairState= newState;
+      _currentRepairState = newState;
       OnRepairStateChanged(newState);
     }
   }
 
   public virtual void OnRepairStateChanged(ERepairState newState)
-  {    
+  {
     if (_repairedGameObject != null)
     {
       _repairedGameObject.SetActive(newState == ERepairState.Fixed);
