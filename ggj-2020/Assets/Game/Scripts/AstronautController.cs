@@ -10,7 +10,8 @@ public enum AstronautIdle
 {
   Idle = 0,
   Move,
-  Stunned
+  Stunned,
+  Panic
 }
 
 public class AstronautController : MonoBehaviour
@@ -76,6 +77,10 @@ public class AstronautController : MonoBehaviour
     _visualRoot.localEulerAngles = _visualRoot.localEulerAngles.WithZ(_zRot);
 
     // Update idle anim state 
+    // if (_roomInhabitant.IsInSpace)
+    // {
+    //   _currentIdleState = AstronautIdle.Panic;
+    // }
     if (_moveVector.sqrMagnitude > 0.01f)
     {
       _currentIdleState = AstronautIdle.Move;
