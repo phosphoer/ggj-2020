@@ -8,12 +8,15 @@ public class GameStateManager : Singleton<GameStateManager>
   {
     Invalid,
     MainMenu,
-    PreGame,
+    Game,
     PostGame
   }
 
+  public GameStage DefaultStage;
   public GameObject MainMenuPrefab;
   public SoundBank MusicMenuLoop;
+  public CameraControllerBase MenuCamera;
+  public CameraControllerGame GameCamera;
 
   private GameStage _gameStage = GameStage.Invalid;
   private GameObject _mainMenu = null;
@@ -23,15 +26,15 @@ public class GameStateManager : Singleton<GameStateManager>
     GameStateManager.Instance = this;
   }
 
-  // Use this for initialization
-  void Start()
+  private void Start()
   {
-    //SetGameStage(GameStage.MainMenu);
-    SetGameStage(GameStage.PreGame);
+    // Base camera controller
+    CameraControllerStack.Instance.PushController(MenuCamera);
+
+    SetGameStage(DefaultStage);
   }
 
-  // Update is called once per frame
-  void Update()
+  private void Update()
   {
     GameStage nextGameStage = _gameStage;
 
@@ -39,7 +42,7 @@ public class GameStateManager : Singleton<GameStateManager>
     {
       case GameStage.MainMenu:
         break;
-      case GameStage.PreGame:
+      case GameStage.Game:
         break;
       case GameStage.PostGame:
         break;
@@ -73,8 +76,9 @@ public class GameStateManager : Singleton<GameStateManager>
           _mainMenu = null;
         }
         break;
-      case GameStage.PreGame:
+      case GameStage.Game:
         {
+          CameraControllerStack.Instance.PopController(GameCamera);
         }
         break;
       case GameStage.PostGame:
@@ -98,8 +102,9 @@ public class GameStateManager : Singleton<GameStateManager>
           }
         }
         break;
-      case GameStage.PreGame:
+      case GameStage.Game:
         {
+          CameraControllerStack.Instance.PushController(GameCamera);
         }
         break;
       case GameStage.PostGame:
