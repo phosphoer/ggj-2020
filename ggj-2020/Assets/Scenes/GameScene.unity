@@ -218,15 +218,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3582064775625228313, guid: 25992738164da0e448af32b1e9e1ba7e,
-        type: 3}
-      propertyPath: _room
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4210754047186308281, guid: 25992738164da0e448af32b1e9e1ba7e,
         type: 3}
       propertyPath: m_Name
       value: ShipStructure
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704930683031131930, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 5875921831286454218, guid: 25992738164da0e448af32b1e9e1ba7e,
         type: 3}

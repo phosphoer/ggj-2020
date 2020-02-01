@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5771558494986495771}
   - component: {fileID: 4225152191785959834}
   - component: {fileID: 7019835309797610919}
+  - component: {fileID: 488133372688343745}
   m_Layer: 0
   m_Name: ExtDoor_L
   m_TagString: Untagged
@@ -78,6 +79,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &488133372688343745
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270954441423125378}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25846115, y: 2.4369092, z: 2.8038733}
+  m_Center: {x: 0, y: 1.2184546, z: 1.440946}
 --- !u!1 &3122464378230065377
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,6 +103,7 @@ GameObject:
   - component: {fileID: 5645559868584116393}
   - component: {fileID: 6382602452492880844}
   - component: {fileID: 5362259583323410613}
+  - component: {fileID: 4083372814084660443}
   m_Layer: 0
   m_Name: ExtDoorSleeveR
   m_TagString: Untagged
@@ -157,6 +172,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4083372814084660443
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3122464378230065377}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.47899082, y: 2.6263375, z: 2.6661856}
+  m_Center: {x: -1.9694375e-32, y: 1.3131685, z: 3.6630054}
 --- !u!1 &3889162079694612588
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +287,7 @@ GameObject:
   - component: {fileID: 4393581602825156601}
   - component: {fileID: 4322180607523420600}
   - component: {fileID: 6163553680615212169}
+  - component: {fileID: 6763604278397650367}
   m_Layer: 0
   m_Name: ExtDoor_R
   m_TagString: Untagged
@@ -326,6 +355,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6763604278397650367
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323727441188155866}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25846115, y: 2.4369092, z: 2.8038733}
+  m_Center: {x: -1.8273893e-32, y: 1.2184546, z: 1.440946}
 --- !u!1 &8456645425592141899
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +379,7 @@ GameObject:
   - component: {fileID: 7082268709258462640}
   - component: {fileID: 5429787870767464782}
   - component: {fileID: 7145540970011706068}
+  - component: {fileID: 1750257062779667437}
   m_Layer: 0
   m_Name: ExtDoorSleeveL
   m_TagString: Untagged
@@ -405,6 +448,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1750257062779667437
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8456645425592141899}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.47899082, y: 2.6263375, z: 2.6661859}
+  m_Center: {x: 0, y: 1.3131685, z: 3.6708095}
 --- !u!1001 &4398413704059877754
 PrefabInstance:
   m_ObjectHideFlags: 0
