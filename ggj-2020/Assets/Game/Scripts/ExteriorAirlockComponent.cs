@@ -52,10 +52,18 @@ public class ExteriorAirlockComponent : MonoBehaviour
 
         if (rigidBody != null)
         {
-          Vector3 directionToAirlock = (suctionPoint - rigidBody.transform.position).normalized;
-          Vector3 ventForce = directionToAirlock * VentForceScale * Time.deltaTime;
+          Vector3 directionToAirlock = suctionPoint - rigidBody.transform.position;
+          directionToAirlock.y= 0;
+          directionToAirlock.Normalize();
 
-          rigidBody.AddForce(ventForce, ForceMode.Acceleration);
+          bool isPastAirlock= Vector3.Dot(GetAirlockForward(), directionToAirlock) > 0;
+
+          if (!isPastAirlock)
+          {
+            Vector3 ventForce = directionToAirlock * VentForceScale * Time.deltaTime;
+
+            rigidBody.AddForce(ventForce, ForceMode.Acceleration);
+          }
         }
 
         inhabitant.NotifySuckedIntoSpace();
@@ -65,7 +73,12 @@ public class ExteriorAirlockComponent : MonoBehaviour
 
   public Vector3 GetAirlockCenter()
   {
-    return gameObject.transform.position;
+    return transform.position;
+  }
+
+  public Vector3 GetAirlockForward()
+  {
+    return transform.forward;
   }
 
   public void SetAirlockState(EAirlockState newState)
