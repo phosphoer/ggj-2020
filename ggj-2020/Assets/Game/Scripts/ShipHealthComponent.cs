@@ -10,7 +10,7 @@ public class ShipHealthComponent : MonoBehaviour
   public float ShipRepairRate= 1;
 
   private float _currentShipHealth;
-  public float CurrentShipHealth
+  public float CurrentShipHealthGame
   {
     get { return _currentShipHealth; }
   }

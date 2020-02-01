@@ -42,9 +42,9 @@ public class RepairableDeviceComponent : InteratibleDeviceComponent
     _instances.Remove(this);
   }
 
-  public override void OnInteractionPressed()
+  public override void OnInteractionPressed(GameObject gameObject)
   {
-    base.OnInteractionPressed();
+    base.OnInteractionPressed(gameObject);
 
     SetRepairState(CurrentRepairState == ERepairState.Fixed ? ERepairState.Broken : ERepairState.Fixed);
   }

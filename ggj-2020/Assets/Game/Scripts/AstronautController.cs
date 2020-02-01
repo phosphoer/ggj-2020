@@ -151,7 +151,7 @@ public class AstronautController : MonoBehaviour
     if (_roomInhabitant != null && _roomInhabitant.CurrentDevice != null && _attackCooldownTimer <= 0)
     {
       _attackCooldownTimer = _attackCooldown;
-      _roomInhabitant.CurrentDevice.OnInteractionPressed();
+      _roomInhabitant.CurrentDevice.OnInteractionPressed(_roomInhabitant.gameObject);
       PlayEmote(AstronautEmote.Attack);
     }
   }

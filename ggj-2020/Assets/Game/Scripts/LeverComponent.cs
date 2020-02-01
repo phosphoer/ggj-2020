@@ -31,9 +31,9 @@ public class LeverComponent : InteratibleDeviceComponent
       OnLeverStateChanged(newState);
     }
   }
-  public override void OnInteractionPressed()
+  public override void OnInteractionPressed(GameObject gameObject)
   {
-    base.OnInteractionPressed();
+    base.OnInteractionPressed(gameObject);
 
     SetLeverState(CurrentLeverState == ELeverState.TurnedOff ? ELeverState.TurnedOn : ELeverState.TurnedOff);
   }

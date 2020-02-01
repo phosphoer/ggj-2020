@@ -35,6 +35,13 @@ public class GameStateManager : Singleton<GameStateManager>
     get { return _shipHealth; }
   }
 
+  [SerializeField]
+  private EnergySinkController _energySink = null;
+  public EnergySinkController EnergySink
+  {
+    get { return _energySink; }
+  }
+
   private void Awake()
   {
     GameStateManager.Instance = this;
@@ -61,7 +68,7 @@ public class GameStateManager : Singleton<GameStateManager>
         {
           nextGameStage= GameStage.LoseGame;
         }
-        else if (_shipHealth.IsShipVictory)
+        else if (_energySink.IsFull)
         {
           nextGameStage= GameStage.WinGame;
         }

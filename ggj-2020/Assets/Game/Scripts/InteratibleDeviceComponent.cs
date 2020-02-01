@@ -22,11 +22,7 @@ public class InteratibleDeviceComponent : MonoBehaviour
     }
   }
 
-  public virtual void OnInteractionPressed()
-  {
-  }
-
-  public virtual void OnInteractionReleased()
+  public virtual void OnInteractionPressed(GameObject gameObject)
   {
   }
 }

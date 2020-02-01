@@ -42,7 +42,7 @@ public class AIAstronautController : MonoBehaviour
   {
     if (_isInteractionPressed && _astronaut.RoomInhabitant.CurrentDevice != null)
     {
-      _astronaut.RoomInhabitant.CurrentDevice.OnInteractionPressed();
+      _astronaut.RoomInhabitant.CurrentDevice.OnInteractionPressed(_astronaut.gameObject);
     }
   }
 }
