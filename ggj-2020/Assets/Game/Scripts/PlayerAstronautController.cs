@@ -22,6 +22,12 @@ public class PlayerAstronautController : MonoBehaviour
 
   private AstronautController _astronaut;
   private Rewired.Player _rewiredPlayer;
+  private RoomInhabitantComponent _roomInhabitant;
+
+  private void Start()
+  {
+    _roomInhabitant = GetComponent<RoomInhabitantComponent>();
+  }
 
   private void Awake()
   {
@@ -39,5 +45,24 @@ public class PlayerAstronautController : MonoBehaviour
     float moveVertical = _rewiredPlayer.GetAxis(RewiredConsts.Action.MoveVertical);
     Vector3 moveVector = new Vector3(moveHorizontal, 0, moveVertical);
     _astronaut.MoveVector = moveVector;
+
+    UpdateInteraction();
+  }
+
+  private void UpdateInteraction()
+  {
+    bool isInteractionPressed = _rewiredPlayer.GetButton(RewiredConsts.Action.Interact);
+
+    if (_roomInhabitant != null)
+    {
+      if (isInteractionPressed && !_roomInhabitant.IsUsingInteraction)
+      {
+        _roomInhabitant.StartInteraction();
+      }
+      else if (!isInteractionPressed && _roomInhabitant.IsUsingInteraction)
+      {
+        _roomInhabitant.StopInteraction();
+      }
+    }
   }
 }
