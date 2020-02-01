@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 1, g: 0, b: 1, a: 1}
+  onColor: {r: 1, g: 0.9504018, b: 0, a: 1}
   offColor: {r: 0, g: 0, b: 0, a: 0}
   waitTime: 1
 --- !u!1 &263909247712364554
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 1, g: 0, b: 1, a: 1}
+  onColor: {r: 1, g: 0.9504018, b: 0, a: 1}
   offColor: {r: 0, g: 0, b: 0, a: 0}
   waitTime: 1
 --- !u!1 &5188498908075516999
