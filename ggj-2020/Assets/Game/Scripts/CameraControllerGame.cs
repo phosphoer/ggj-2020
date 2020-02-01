@@ -4,12 +4,13 @@ public class CameraControllerGame : CameraControllerBase
 {
   public RangedFloat ZoomRange = new RangedFloat(10, 30);
   public float ViewportBorder = 0.25f;
+  public float ZoomSensitivity = 2;
 
   private void Update()
   {
     Camera cam = CameraControllerStack.Instance.Camera;
     Vector3 playerCenter = Vector3.zero;
-    float maxZoomDelta = 0;
+    float zoomDelta = 0;
     for (int i = 0; i < PlayerManager.Instance.Players.Count; ++i)
     {
       PlayerAstronautController player = PlayerManager.Instance.Players[i];
@@ -17,10 +18,12 @@ public class CameraControllerGame : CameraControllerBase
 
       // Increase amount of desired zoom by how much player is off screen
       Vector3 viewportPos = cam.WorldToViewportPoint(player.Astronaut.transform.position);
-      float zoomDelta = 0;
-      zoomDelta += Mathf.Clamp01((Mathf.Abs(viewportPos.x) + ViewportBorder) - 1);
-      zoomDelta += Mathf.Clamp01((Mathf.Abs(viewportPos.y) + ViewportBorder) - 1);
-      maxZoomDelta = Mathf.Max(maxZoomDelta, zoomDelta);
+      float maxViewPos = Mathf.Max(Mathf.Abs(viewportPos.x), Mathf.Abs(viewportPos.y));
+      float delta = Mathf.Clamp((maxViewPos + ViewportBorder) - 1, -1, 1) * ZoomSensitivity;
+      if (delta > 0)
+        zoomDelta = Mathf.Max(zoomDelta + delta, 0);
+      else
+        zoomDelta += delta;
     }
 
     if (PlayerManager.Instance.Players.Count > 0)
@@ -29,7 +32,7 @@ public class CameraControllerGame : CameraControllerBase
     }
 
     // Snap to desired pos to avoid stuttering 
-    float desiredZoom = ZoomRange.Clamp(MountPoint.position.y + maxZoomDelta);
+    float desiredZoom = ZoomRange.Clamp(MountPoint.position.y + zoomDelta);
     float zoom = Mathfx.Damp(MountPoint.position.y, desiredZoom, 0.5f, Time.deltaTime * 5);
     Vector3 desiredPos = playerCenter.WithY(zoom);
     MountPoint.position = desiredPos;
