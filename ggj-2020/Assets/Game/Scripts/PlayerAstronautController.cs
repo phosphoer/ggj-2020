@@ -25,7 +25,7 @@ public class PlayerAstronautController : MonoBehaviour
 
   private void Awake()
   {
-    _astronaut = Instantiate(_astronautPrefab, transform);
+    Spawn();
   }
 
   private void Update()
@@ -58,5 +58,22 @@ public class PlayerAstronautController : MonoBehaviour
         _astronaut.ReleaseInteraction();
       }
     }
+  }
+
+  private void Spawn()
+  {
+    _astronaut = Instantiate(_astronautPrefab, transform);
+    _astronaut.Died += OnDied;
+    _astronaut.Despawned += OnDespawned;
+  }
+
+  private void OnDied()
+  {
+    Destroy(_astronaut.GetComponent<CameraFocusPoint>());
+  }
+
+  private void OnDespawned()
+  {
+    Spawn();
   }
 }
