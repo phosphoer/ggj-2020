@@ -309,7 +309,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0.15625, z: 0.02734375, w: -0.04296875}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -541,15 +541,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3582064775625228313, guid: 25992738164da0e448af32b1e9e1ba7e,
-        type: 3}
-      propertyPath: _room
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4210754047186308281, guid: 25992738164da0e448af32b1e9e1ba7e,
         type: 3}
       propertyPath: m_Name
       value: ShipStructure
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704930683031131930, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 5875921831286454218, guid: 25992738164da0e448af32b1e9e1ba7e,
         type: 3}
@@ -830,17 +830,17 @@ PrefabInstance:
     - target: {fileID: 7391074690813867640, guid: 9d681d125103cab4e85cd223496d6225,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3375478
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7391074690813867640, guid: 9d681d125103cab4e85cd223496d6225,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.2573547
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7391074690813867640, guid: 9d681d125103cab4e85cd223496d6225,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.1580276
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7391074690813867640, guid: 9d681d125103cab4e85cd223496d6225,
         type: 3}
