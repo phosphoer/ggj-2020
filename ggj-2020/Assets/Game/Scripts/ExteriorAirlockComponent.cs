@@ -21,7 +21,10 @@ public class ExteriorAirlockComponent : MonoBehaviour
   private EAirlockState _currentAirlockState;
   public EAirlockState CurrentAirlockState
   {
-    get { return _currentAirlockState; }
+    get
+    {
+      return _currentAirlockState;
+    }
   }
 
   private void Start()
@@ -71,7 +74,7 @@ public class ExteriorAirlockComponent : MonoBehaviour
   {
     if (_hatchAnimator != null)
     {
-      _hatchAnimator.SetBool("isOpen", newState == EAirlockState.Open);
+      _hatchAnimator.SetBool("IsOpen", newState == EAirlockState.Open);
     }
   }
 }
