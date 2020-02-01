@@ -10,6 +10,9 @@ public class ExteriorAirlockComponent : MonoBehaviour
   [SerializeField]
   private Animator _hatchAnimator = null;
 
+  [SerializeField]
+  private CameraFocusPoint _cameraFocusPoint = null;
+
   public float VentForceScale = 1000.0f;
 
   public enum EAirlockState
@@ -21,12 +24,16 @@ public class ExteriorAirlockComponent : MonoBehaviour
   private EAirlockState _currentAirlockState;
   public EAirlockState CurrentAirlockState
   {
-    get { return _currentAirlockState; }
+    get
+    {
+      return _currentAirlockState;
+    }
   }
 
   private void Start()
   {
     _currentAirlockState = EAirlockState.Closed;
+    OnAirlockStateChanged(EAirlockState.Closed);
   }
 
   private void FixedUpdate()
@@ -71,7 +78,12 @@ public class ExteriorAirlockComponent : MonoBehaviour
   {
     if (_hatchAnimator != null)
     {
-      _hatchAnimator.SetBool("isOpen", newState == EAirlockState.Open);
+      _hatchAnimator.SetBool("IsOpen", newState == EAirlockState.Open);
+    }
+
+    if (_cameraFocusPoint != null)
+    {
+      _cameraFocusPoint.enabled= newState == EAirlockState.Open;
     }
   }
 }

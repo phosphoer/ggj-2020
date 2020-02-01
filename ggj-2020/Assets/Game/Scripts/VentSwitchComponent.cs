@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class VentSwitchComponent : LeverComponent
 {
-  public GameObject SwitchHandle;
+  [SerializeField]
+  private Animator _switchAnimator = null;
 
   [SerializeField]
   private ExteriorAirlockComponent _exteriorAirlock = null;
@@ -12,35 +13,49 @@ public class VentSwitchComponent : LeverComponent
   [SerializeField]
   private InteriorAirlockComponent _interiorAirlock = null;
 
+  [SerializeField]
+  private CameraFocusPoint _cameraFocusPoint = null;
+
+  public float ResetDuration= 5.0f;
+
+  private float _resetTimer;
+
   // Start is called before the first frame update
   public override void Start()
   {
     base.Start();
-    UpdateLeverTransform(CurrentLeverState);
+    UpdateLeverAnimation(CurrentLeverState);
     UpdateAirlock(CurrentLeverState);
+    UpdateCameraFocus(CurrentLeverState);
+  }
+
+  public void Update()
+  {
+    if (CurrentLeverState == ELeverState.TurnedOn)
+    {
+      _resetTimer+= Time.deltaTime;
+
+      if (_resetTimer > ResetDuration)
+      {
+        SetLeverState(ELeverState.TurnedOff);
+      }
+    }
   }
 
   public override void OnLeverStateChanged(ELeverState newState)
   {
     base.OnLeverStateChanged(newState);
-    UpdateLeverTransform(newState);
-    UpdateAirlock(CurrentLeverState);
+    _resetTimer = 0;
+    UpdateLeverAnimation(newState);
+    UpdateAirlock(newState);
+    UpdateCameraFocus(newState);
   }
 
-  private void UpdateLeverTransform(ELeverState state)
+  private void UpdateLeverAnimation(ELeverState state)
   {
-    if (SwitchHandle == null)
-      return;
-
-    Transform pivot = SwitchHandle.transform.parent;
-    switch (state)
+    if (_switchAnimator != null)
     {
-      case ELeverState.TurnedOff:
-        pivot.localRotation = Quaternion.Euler(0, 45, 0);
-        break;
-      case ELeverState.TurnedOn:
-        pivot.localRotation = Quaternion.Euler(0, -45, 0);
-        break;
+      _switchAnimator.SetBool("IsOn", state == ELeverState.TurnedOn);
     }
   }
 
@@ -68,6 +83,14 @@ public class VentSwitchComponent : LeverComponent
       {
         _interiorAirlock.SetAirlockState(InteriorAirlockComponent.EAirlockState.Closed);
       }
+    }
+  }
+
+  private void UpdateCameraFocus(ELeverState state)
+  {
+    if (_cameraFocusPoint != null)
+    {
+      _cameraFocusPoint.enabled = state == ELeverState.TurnedOn;
     }
   }
 }

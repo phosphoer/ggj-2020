@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3477883029845795318}
   - component: {fileID: 5077583771157132371}
   - component: {fileID: 762989244488032473}
+  - component: {fileID: 4672424077682868348}
   m_Layer: 0
   m_Name: VentSwitch
   m_TagString: Untagged
@@ -61,6 +62,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitialLeverState: 0
   SwitchHandle: {fileID: 5980065349821531153}
+  _exteriorAirlock: {fileID: 0}
+  _interiorAirlock: {fileID: 0}
+  _cameraFocusPoint: {fileID: 4672424077682868348}
+  ResetDuration: 5
+--- !u!114 &4672424077682868348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122982005593206980}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab387959da647438fab113985e9fb3ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1144498293011828123
 GameObject:
   m_ObjectHideFlags: 0
