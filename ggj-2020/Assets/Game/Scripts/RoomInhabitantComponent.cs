@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class RoomInhabitantComponent : MonoBehaviour
 {
-    InteratibleDeviceComponent CurrentDevice;
+    private RoomComponent _roomComponent;
+    private InteratibleDeviceComponent _currentDevice;
     public bool IsUsingInteraction
     {
-      get { return CurrentDevice != null && CurrentDevice.IsInteractionActive; }
+      get { return _currentDevice != null && _currentDevice.IsInteractionActive; }
     }
 
     // Start is called before the first frame update
@@ -21,36 +22,49 @@ public class RoomInhabitantComponent : MonoBehaviour
     {
         
     }
+  
+    public virtual void OnRoomEntered(RoomComponent room)
+    {
+      _roomComponent= room;
+    }
+    public virtual void OnRoomExited(RoomComponent room)
+    {
+      if (room == _roomComponent)
+      {
+        _roomComponent= null;
+      }
+    }
+
     public virtual void OnInteractionEntered(InteratibleDeviceComponent Device)
     {
-      CurrentDevice = Device;
+      _currentDevice = Device;
     }
 
     public virtual void OnInteractionExited(InteratibleDeviceComponent Device)
     {
-      if (CurrentDevice == Device)
+      if (_currentDevice == Device)
       {
-        if (CurrentDevice.IsInteractionActive)
+        if (_currentDevice.IsInteractionActive)
         {
-          CurrentDevice.OnInteractionStopped();
+          _currentDevice.OnInteractionStopped();
         }
-        CurrentDevice = null;
+        _currentDevice = null;
       }
     }
 
     public void StartInteraction()
     {
-      if (CurrentDevice != null)
+      if (_currentDevice != null)
       {
-        CurrentDevice.OnInteractionStarted();
+        _currentDevice.OnInteractionStarted();
       }
     }
 
     public void StopInteraction()
     {
-      if (CurrentDevice != null)
+      if (_currentDevice != null)
       {
-        CurrentDevice.OnInteractionStopped();
+        _currentDevice.OnInteractionStopped();
       }
     }
 }
