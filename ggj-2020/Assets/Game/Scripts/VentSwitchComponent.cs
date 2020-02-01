@@ -12,6 +12,9 @@ public class VentSwitchComponent : LeverComponent
   [SerializeField]
   private InteriorAirlockComponent _interiorAirlock = null;
 
+  [SerializeField]
+  private CameraFocusPoint _cameraFocusPoint = null;
+
   public float ResetDuration= 5.0f;
 
   private float _resetTimer;
@@ -22,6 +25,7 @@ public class VentSwitchComponent : LeverComponent
     base.Start();
     UpdateLeverTransform(CurrentLeverState);
     UpdateAirlock(CurrentLeverState);
+    UpdateCameraFocus(CurrentLeverState);
   }
 
   public void Update()
@@ -42,7 +46,8 @@ public class VentSwitchComponent : LeverComponent
     base.OnLeverStateChanged(newState);
     _resetTimer = 0;
     UpdateLeverTransform(newState);
-    UpdateAirlock(CurrentLeverState);
+    UpdateAirlock(newState);
+    UpdateCameraFocus(newState);
   }
 
   private void UpdateLeverTransform(ELeverState state)
@@ -86,6 +91,14 @@ public class VentSwitchComponent : LeverComponent
       {
         _interiorAirlock.SetAirlockState(InteriorAirlockComponent.EAirlockState.Closed);
       }
+    }
+  }
+
+  private void UpdateCameraFocus(ELeverState state)
+  {
+    if (_cameraFocusPoint != null)
+    {
+      _cameraFocusPoint.enabled = state == ELeverState.TurnedOn;
     }
   }
 }

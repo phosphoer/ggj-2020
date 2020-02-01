@@ -120,33 +120,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &588985958 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8579388488682052923, guid: 25992738164da0e448af32b1e9e1ba7e,
-    type: 3}
-  m_PrefabInstance: {fileID: 2014064575}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &588985960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 588985958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c9ef4ce795be0d4c94fd2877f0a95f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _room: {fileID: 2061005317}
-  _hatchAnimator: {fileID: 588985961}
-  VentForceScale: 2000
---- !u!95 &588985961 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3441108859844444754, guid: 25992738164da0e448af32b1e9e1ba7e,
-    type: 3}
-  m_PrefabInstance: {fileID: 2014064575}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &914160953
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +227,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _exteriorAirlock
       value: 
-      objectReference: {fileID: 588985960}
+      objectReference: {fileID: 0}
     - target: {fileID: 762989244488032473, guid: a62d56a46c1a0264bbbf3aa74a697108,
         type: 3}
       propertyPath: _interiorAirlock
@@ -341,6 +314,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1457375722636486750, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: _room
+      value: 
+      objectReference: {fileID: 2061005317}
     - target: {fileID: 3582064775625228313, guid: 25992738164da0e448af32b1e9e1ba7e,
         type: 3}
       propertyPath: _room

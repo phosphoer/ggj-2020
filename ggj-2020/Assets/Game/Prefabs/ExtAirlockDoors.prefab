@@ -167,6 +167,8 @@ GameObject:
   m_Component:
   - component: {fileID: 261857037758700159}
   - component: {fileID: 7865622884966708997}
+  - component: {fileID: 3251663255101830209}
+  - component: {fileID: 6255688372424236297}
   m_Layer: 0
   m_Name: ExtAirlockDoors
   m_TagString: Untagged
@@ -209,6 +211,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3251663255101830209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3889162079694612588}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab387959da647438fab113985e9fb3ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6255688372424236297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3889162079694612588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9ef4ce795be0d4c94fd2877f0a95f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _room: {fileID: 0}
+  _hatchAnimator: {fileID: 7865622884966708997}
+  _cameraFocusPoint: {fileID: 3251663255101830209}
+  VentForceScale: 2000
 --- !u!1 &6323727441188155866
 GameObject:
   m_ObjectHideFlags: 0

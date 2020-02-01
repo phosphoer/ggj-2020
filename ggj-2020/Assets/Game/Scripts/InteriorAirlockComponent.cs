@@ -10,6 +10,9 @@ public class InteriorAirlockComponent : MonoBehaviour
   [SerializeField]
   private Animator _hatchAnimator = null;
 
+  [SerializeField]
+  private CameraFocusPoint _cameraFocusPoint = null;
+
   public enum EAirlockState
   {
     Closed,
@@ -42,6 +45,11 @@ public class InteriorAirlockComponent : MonoBehaviour
     if (_hatchAnimator != null)
     {
       _hatchAnimator.SetBool("IsOpen", newState == EAirlockState.Open);
+    }
+
+    if (_cameraFocusPoint != null)
+    {
+      _cameraFocusPoint.enabled= newState == EAirlockState.Closed;
     }
   }
 }
