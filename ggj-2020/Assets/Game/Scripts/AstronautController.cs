@@ -12,7 +12,7 @@ public class AstronautController : MonoBehaviour
   }
 
   [SerializeField]
-  private RoomInhabitantComponent _roomInhabitant= null;
+  private RoomInhabitantComponent _roomInhabitant = null;
 
   [SerializeField]
   private Rigidbody _rb = null;
@@ -24,22 +24,13 @@ public class AstronautController : MonoBehaviour
   private float _acceleration = 10;
 
   [SerializeField]
-  private float _decceleration = 5;
-
-  [SerializeField]
   private float _maxSpeed = 1;
 
   private Vector3 _moveVector;
-  private Vector3 _currentVelocity;
   private float _zRot;
 
   private void Update()
   {
-    if (MoveVector.sqrMagnitude > 0.1f)
-      _currentVelocity = Mathfx.Damp(_currentVelocity, MoveVector * _maxSpeed, 0.25f, Time.deltaTime * _acceleration);
-    else
-      _currentVelocity = Mathfx.Damp(_currentVelocity, MoveVector * _maxSpeed, 0.5f, Time.deltaTime * _decceleration);
-
     // Orient to face movement direction
     if (_rb.velocity.sqrMagnitude > 0.01f)
     {
@@ -55,7 +46,8 @@ public class AstronautController : MonoBehaviour
   private void FixedUpdate()
   {
     // Apply movement to physics
-    _rb.velocity = _currentVelocity;
+    _rb.AddForce(MoveVector * _acceleration * Time.deltaTime, ForceMode.Acceleration);
+    _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, _maxSpeed);
   }
 
   public bool IsPressingInteraction()
@@ -67,14 +59,14 @@ public class AstronautController : MonoBehaviour
   {
     if (_roomInhabitant != null)
     {
-        _roomInhabitant.PressInteraction();
+      _roomInhabitant.PressInteraction();
     }
   }
   public void ReleaseInteraction()
   {
     if (_roomInhabitant != null)
     {
-        _roomInhabitant.ReleaseInteraction();
+      _roomInhabitant.ReleaseInteraction();
     }
   }
 }

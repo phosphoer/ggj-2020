@@ -6,6 +6,13 @@ public class CameraControllerGame : CameraControllerBase
   public float ViewportBorder = 0.25f;
   public float ZoomSensitivity = 2;
 
+  private float _zoom;
+
+  private void Start()
+  {
+    _zoom = ZoomRange.MinValue;
+  }
+
   private void Update()
   {
     Camera cam = CameraControllerStack.Instance.Camera;
@@ -31,11 +38,19 @@ public class CameraControllerGame : CameraControllerBase
       playerCenter /= PlayerManager.Instance.Players.Count;
     }
 
-    // Snap to desired pos to avoid stuttering 
     float desiredZoom = ZoomRange.Clamp(MountPoint.position.y + zoomDelta);
-    float zoom = Mathfx.Damp(MountPoint.position.y, desiredZoom, 0.5f, Time.deltaTime * 5);
-    Vector3 desiredPos = playerCenter.WithY(zoom);
-    MountPoint.position = desiredPos;
+    _zoom = Mathfx.Damp(_zoom, desiredZoom, 0.25f, Time.deltaTime * 5);
+    Vector3 desiredPos = playerCenter.WithY(_zoom);
+
+    if (PlayerManager.Instance.Players.Count == 1)
+    {
+      // Snap to desired pos to avoid stuttering 
+      MountPoint.position = desiredPos;
+    }
+    else
+    {
+      MountPoint.position = Mathfx.Damp(MountPoint.position, desiredPos, 0.25f, Time.deltaTime * 5);
+    }
 
     Quaternion desiredRot = Quaternion.LookRotation(playerCenter - MountPoint.position, Vector3.forward);
     MountPoint.rotation = Mathfx.Damp(MountPoint.rotation, desiredRot, 0.5f, Time.deltaTime * 5);

@@ -49,9 +49,8 @@ MonoBehaviour:
   _roomInhabitant: {fileID: 8990602445605495633}
   _rb: {fileID: 3361536974669979111}
   _visualRoot: {fileID: 7181139985772786116}
-  _acceleration: 10
-  _decceleration: 0.5
-  _maxSpeed: 10
+  _acceleration: 500
+  _maxSpeed: 5
 --- !u!114 &8990602445605495633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,7 +73,7 @@ Rigidbody:
   m_GameObject: {fileID: 4313830610566555591}
   serializedVersion: 2
   m_Mass: 10
-  m_Drag: 0
+  m_Drag: 0.3
   m_AngularDrag: 0.1
   m_UseGravity: 0
   m_IsKinematic: 0
