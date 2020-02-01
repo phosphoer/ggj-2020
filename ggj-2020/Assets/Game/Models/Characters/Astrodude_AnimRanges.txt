@@ -3,5 +3,5 @@
 61-90 :: Strike
 91-106 :: Hit
 106-136 :: StunLoop
-137-258 :: Float_Idle
-259-290 :: Float_Airlock
+137-197 :: Float_Idle
+198-258 :: Float_Airlock
