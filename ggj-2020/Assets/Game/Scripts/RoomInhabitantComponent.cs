@@ -7,6 +7,12 @@ public class RoomInhabitantComponent : MonoBehaviour
     private RoomComponent _roomComponent;
     private InteratibleDeviceComponent _currentDevice;
 
+    private bool _isBeingSuckedIntoSpace = false;
+    public bool IsBeingSuckedIntoSpace
+    {
+      get { return _isBeingSuckedIntoSpace; }
+    }
+
     [SerializeField]
     private Rigidbody _rigidBody= null;
     public Rigidbody PhysicsRigidBody
@@ -62,5 +68,10 @@ public class RoomInhabitantComponent : MonoBehaviour
       {
         _currentDevice.OnInteractionReleased();
       }
+    }
+
+    public void NotifySuckedIntoSpace()
+    {
+      _isBeingSuckedIntoSpace= true;
     }
 }

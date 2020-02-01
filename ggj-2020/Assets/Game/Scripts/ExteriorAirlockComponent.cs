@@ -47,6 +47,8 @@ public class ExteriorAirlockComponent : MonoBehaviour
 
           rigidBody.AddForce(ventForce, ForceMode.Acceleration);
         }
+
+        inhabitant.NotifySuckedIntoSpace();
       }
     }
   }
