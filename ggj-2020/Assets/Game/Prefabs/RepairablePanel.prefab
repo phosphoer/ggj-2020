@@ -170,9 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0.06132078, g: 1, b: 0.21720342, a: 0}
-  offColor: {r: 0, g: 0, b: 0, a: 0}
-  waitTime: 0.3
+  onColor: {r: 1, g: 0, b: 0, a: 1}
+  offColor: {r: 0.49056602, g: 0, b: 0, a: 0}
+  waitTime: 0.7
 --- !u!1 &377094282471468087
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,9 +783,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0.06132078, g: 1, b: 0.21720342, a: 0}
-  offColor: {r: 0, g: 0, b: 0, a: 0}
-  waitTime: 0.1
+  onColor: {r: 1, g: 0, b: 0, a: 1}
+  offColor: {r: 0.49056602, g: 0, b: 0, a: 0}
+  waitTime: 0.7
 --- !u!1 &1348904729988292135
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,9 +877,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0.06132078, g: 1, b: 0.21720342, a: 0}
-  offColor: {r: 0, g: 0, b: 0, a: 0}
-  waitTime: 0.4
+  onColor: {r: 1, g: 0, b: 0, a: 1}
+  offColor: {r: 0.49056602, g: 0, b: 0, a: 0}
+  waitTime: 0.7
 --- !u!1 &1411214503508811843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,9 +1065,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0.06132078, g: 1, b: 0.21720342, a: 0}
-  offColor: {r: 0, g: 0, b: 0, a: 0}
-  waitTime: 0.2
+  onColor: {r: 1, g: 0, b: 0, a: 1}
+  offColor: {r: 0.49056602, g: 0, b: 0, a: 0}
+  waitTime: 0.7
 --- !u!1 &1525213562985055435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1317,9 +1317,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0.06132078, g: 1, b: 0.21720342, a: 0}
-  offColor: {r: 0, g: 0, b: 0, a: 0}
-  waitTime: 0.6
+  onColor: {r: 1, g: 0, b: 0, a: 1}
+  offColor: {r: 0.49056602, g: 0, b: 0, a: 0}
+  waitTime: 0.7
 --- !u!1 &1789955985047538081
 GameObject:
   m_ObjectHideFlags: 0
@@ -2310,6 +2310,7 @@ Transform:
   - {fileID: 4498583720367883803}
   - {fileID: 1809458681332930432}
   - {fileID: 2132372447787720557}
+  - {fileID: 669347571189628055}
   m_Father: {fileID: 923146637475944791}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2623,9 +2624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0.06132078, g: 1, b: 0.21720342, a: 0}
-  offColor: {r: 0, g: 0, b: 0, a: 0}
-  waitTime: 0.1
+  onColor: {r: 1, g: 0, b: 0, a: 1}
+  offColor: {r: 0.49056602, g: 0, b: 0, a: 0}
+  waitTime: 0.7
 --- !u!1 &4344093264635079875
 GameObject:
   m_ObjectHideFlags: 0
@@ -2952,6 +2953,8 @@ GameObject:
   m_Component:
   - component: {fileID: 923146637475944791}
   - component: {fileID: 3769513424104252167}
+  - component: {fileID: 6183478626757582996}
+  - component: {fileID: 993600666753537847}
   m_Layer: 0
   m_Name: RepairablePanel
   m_TagString: Untagged
@@ -2988,6 +2991,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.4372883, y: 4.666437, z: 2.0475554}
   m_Center: {x: 0.01636982, y: 4.026534, z: 0.098208666}
+--- !u!65 &6183478626757582996
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5235084629077224917}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.5258255, y: 4.666437, z: 3.5383754}
+  m_Center: {x: 0.087361455, y: 4.026534, z: -0.6472013}
+--- !u!114 &993600666753537847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5235084629077224917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b13b0f0e0b054f498045d720a7e53d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _repairedGameObject: {fileID: 7966386312752267938}
+  _brokenGameObject: {fileID: 3750428385527848495}
 --- !u!1 &5286200989539466973
 GameObject:
   m_ObjectHideFlags: 0
@@ -3079,9 +3109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0, g: 1, b: 0.39492488, a: 0}
-  offColor: {r: 0, g: 0, b: 0, a: 0}
-  waitTime: 2
+  onColor: {r: 1, g: 0, b: 0, a: 1}
+  offColor: {r: 0.49056602, g: 0, b: 0, a: 0}
+  waitTime: 0.7
 --- !u!1 &5442612422018129407
 GameObject:
   m_ObjectHideFlags: 0
@@ -3173,9 +3203,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0, g: 0.9905019, b: 1, a: 0}
-  offColor: {r: 0, g: 0, b: 0, a: 0}
-  waitTime: 0.55
+  onColor: {r: 1, g: 0, b: 0, a: 1}
+  offColor: {r: 0.49056602, g: 0, b: 0, a: 0}
+  waitTime: 0.7
 --- !u!1 &5634127728468515227
 GameObject:
   m_ObjectHideFlags: 0
@@ -3504,9 +3534,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0.06132078, g: 1, b: 0.21720342, a: 0}
-  offColor: {r: 0, g: 0, b: 0, a: 0}
-  waitTime: 0.5
+  onColor: {r: 1, g: 0, b: 0, a: 1}
+  offColor: {r: 0.49056602, g: 0, b: 0, a: 0}
+  waitTime: 0.7
 --- !u!1 &6271989470391338126
 GameObject:
   m_ObjectHideFlags: 0
@@ -3598,9 +3628,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0.06132078, g: 1, b: 0.21720342, a: 0}
-  offColor: {r: 0, g: 0, b: 0, a: 0}
-  waitTime: 0.1
+  onColor: {r: 1, g: 0, b: 0, a: 1}
+  offColor: {r: 0.49056602, g: 0, b: 0, a: 0}
+  waitTime: 0.7
 --- !u!1 &6342188215815685419
 GameObject:
   m_ObjectHideFlags: 0
@@ -4102,9 +4132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0.06132078, g: 1, b: 0.21720342, a: 0}
-  offColor: {r: 0, g: 0, b: 0, a: 0}
-  waitTime: 0.3
+  onColor: {r: 1, g: 0, b: 0, a: 1}
+  offColor: {r: 0.49056602, g: 0, b: 0, a: 0}
+  waitTime: 0.7
 --- !u!1 &6734612047008248421
 GameObject:
   m_ObjectHideFlags: 0
@@ -4369,9 +4399,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0.06132078, g: 1, b: 0.21720342, a: 0}
-  offColor: {r: 0, g: 0, b: 0, a: 0}
-  waitTime: 0.5
+  onColor: {r: 1, g: 0, b: 0, a: 1}
+  offColor: {r: 0.49056602, g: 0, b: 0, a: 0}
+  waitTime: 0.7
 --- !u!1 &7297290534317927523
 GameObject:
   m_ObjectHideFlags: 0
@@ -4636,9 +4666,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0.06132078, g: 1, b: 0.21720342, a: 0}
-  offColor: {r: 0, g: 0, b: 0, a: 0}
-  waitTime: 0.2
+  onColor: {r: 1, g: 0, b: 0, a: 1}
+  offColor: {r: 0.49056602, g: 0, b: 0, a: 0}
+  waitTime: 0.7
 --- !u!1 &7402687511506452638
 GameObject:
   m_ObjectHideFlags: 0
@@ -4730,9 +4760,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0.06132078, g: 1, b: 0.21720342, a: 0}
-  offColor: {r: 0, g: 0, b: 0, a: 0}
-  waitTime: 0.4
+  onColor: {r: 1, g: 0, b: 0, a: 1}
+  offColor: {r: 0.49056602, g: 0, b: 0, a: 0}
+  waitTime: 0.7
 --- !u!1 &7420238508888199824
 GameObject:
   m_ObjectHideFlags: 0
@@ -4903,9 +4933,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0, g: 0.9905019, b: 1, a: 0}
-  offColor: {r: 0, g: 0, b: 0, a: 0}
-  waitTime: 0.4
+  onColor: {r: 1, g: 0, b: 0, a: 1}
+  offColor: {r: 0.49056602, g: 0, b: 0, a: 0}
+  waitTime: 0.7
 --- !u!1 &7797359804627677533
 GameObject:
   m_ObjectHideFlags: 0
@@ -5769,9 +5799,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0, g: 1, b: 0.39492488, a: 0}
-  offColor: {r: 0, g: 0, b: 0, a: 0}
-  waitTime: 1.75
+  onColor: {r: 1, g: 0, b: 0, a: 1}
+  offColor: {r: 0.49056602, g: 0, b: 0, a: 0}
+  waitTime: 0.7
 --- !u!1 &8942406618835762156
 GameObject:
   m_ObjectHideFlags: 0
@@ -5863,9 +5893,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0, g: 0.9905019, b: 1, a: 0}
-  offColor: {r: 0, g: 0, b: 0, a: 0}
-  waitTime: 0.5
+  onColor: {r: 1, g: 0, b: 0, a: 1}
+  offColor: {r: 0.49056602, g: 0, b: 0, a: 0}
+  waitTime: 0.7
 --- !u!1 &8954445827238302313
 GameObject:
   m_ObjectHideFlags: 0
@@ -6118,3 +6148,78 @@ MonoBehaviour:
   onColor: {r: 0, g: 0.9905019, b: 1, a: 0}
   offColor: {r: 0, g: 0, b: 0, a: 0}
   waitTime: 0.55
+--- !u!1001 &3850771157151217273
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 843314350593785583}
+    m_Modifications:
+    - target: {fileID: 4339974596545891053, guid: 689c82e181cead1418766ec8f89f8931,
+        type: 3}
+      propertyPath: m_Name
+      value: BrokenFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339974596545891054, guid: 689c82e181cead1418766ec8f89f8931,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339974596545891054, guid: 689c82e181cead1418766ec8f89f8931,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339974596545891054, guid: 689c82e181cead1418766ec8f89f8931,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339974596545891054, guid: 689c82e181cead1418766ec8f89f8931,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339974596545891054, guid: 689c82e181cead1418766ec8f89f8931,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339974596545891054, guid: 689c82e181cead1418766ec8f89f8931,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339974596545891054, guid: 689c82e181cead1418766ec8f89f8931,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339974596545891054, guid: 689c82e181cead1418766ec8f89f8931,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339974596545891054, guid: 689c82e181cead1418766ec8f89f8931,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339974596545891054, guid: 689c82e181cead1418766ec8f89f8931,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4339974596545891054, guid: 689c82e181cead1418766ec8f89f8931,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 689c82e181cead1418766ec8f89f8931, type: 3}
+--- !u!4 &669347571189628055 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4339974596545891054, guid: 689c82e181cead1418766ec8f89f8931,
+    type: 3}
+  m_PrefabInstance: {fileID: 3850771157151217273}
+  m_PrefabAsset: {fileID: 0}
