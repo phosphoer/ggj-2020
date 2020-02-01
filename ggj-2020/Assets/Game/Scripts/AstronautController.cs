@@ -16,6 +16,9 @@ public enum AstronautIdle
 
 public class AstronautController : MonoBehaviour
 {
+  public event System.Action Died;
+  public event System.Action Despawned;
+
   public Vector3 MoveVector
   {
     get { return _moveVector; }
@@ -52,6 +55,7 @@ public class AstronautController : MonoBehaviour
   private float _idleBlend;
   private AstronautIdle _currentIdleState;
   private float _outsideRoomTimer;
+  private bool _isDead;
 
   private static readonly int kAnimIdleState = Animator.StringToHash("IdleState");
   private static readonly int kAnimEmoteState = Animator.StringToHash("EmoteState");
@@ -96,12 +100,21 @@ public class AstronautController : MonoBehaviour
     _animator.SetFloat(kAnimIdleState, _idleBlend);
 
     // Count down to death outside room
-    if (_roomInhabitant.Room == null)
+    if (_roomInhabitant.IsBeingSuckedIntoSpace && _roomInhabitant.Room == null)
     {
       _outsideRoomTimer += Time.deltaTime;
-      if (_outsideRoomTimer > 5)
+      if (_outsideRoomTimer > 5 && !_isDead)
       {
-        // ...
+        _isDead = true;
+        Died?.Invoke();
+      }
+
+      if (_isDead && !Mathfx.IsPointInViewport(transform.position, Camera.main))
+      {
+        Destroy(gameObject);
+        Despawned?.Invoke();
+        Destroy(gameObject);
+        return;
       }
     }
 
