@@ -9,10 +9,11 @@ public class PlayerManager : Singleton<PlayerManager>
   private PlayerAstronautController _playerPrefab = null;
 
   private List<PlayerAstronautController> _players = new List<PlayerAstronautController>();
+  private List<bool> _playerJoinedStates = new List<bool>();
 
   public bool IsPlayerJoined(int playerId)
   {
-    return _players.Count > playerId && _players[playerId] != null;
+    return _playerJoinedStates.Count > playerId && _playerJoinedStates[playerId];
   }
 
   private void Awake()
@@ -33,17 +34,31 @@ public class PlayerManager : Singleton<PlayerManager>
       Rewired.Player player = Rewired.ReInput.players.GetPlayer(i);
       if (!IsPlayerJoined(i) && player.GetAnyButton())
       {
-        PlayerAstronautController astroPlayer = Instantiate(_playerPrefab, transform);
-        astroPlayer.RewiredPlayer = player;
-        _players.Add(astroPlayer);
+        AddPlayer(player);
       }
     }
+  }
+
+  private PlayerAstronautController AddPlayer(Rewired.Player rewiredPlayer)
+  {
+    PlayerAstronautController astroPlayer = Instantiate(_playerPrefab, transform);
+    astroPlayer.RewiredPlayer = rewiredPlayer;
+    _players.Add(astroPlayer);
+
+    // Set joined state
+    if (rewiredPlayer != null)
+    {
+      while (_playerJoinedStates.Count <= rewiredPlayer.id)
+        _playerJoinedStates.Add(false);
+      _playerJoinedStates[rewiredPlayer.id] = true;
+    }
+
+    return astroPlayer;
   }
 
   [ContextMenu("Add Debug Player")]
   private void DebugAddPlayer()
   {
-    PlayerAstronautController astroPlayer = Instantiate(_playerPrefab, transform);
-    _players.Add(astroPlayer);
+    AddPlayer(null);
   }
 }
