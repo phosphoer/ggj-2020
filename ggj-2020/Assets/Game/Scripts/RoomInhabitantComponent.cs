@@ -9,6 +9,10 @@ public class RoomInhabitantComponent : MonoBehaviour
 
     [SerializeField]
     private Rigidbody _rigidBody= null;
+    public Rigidbody PhysicsRigidBody
+    {
+      get { return _rigidBody; }
+    }
 
     public bool IsPressingInteraction
     {
