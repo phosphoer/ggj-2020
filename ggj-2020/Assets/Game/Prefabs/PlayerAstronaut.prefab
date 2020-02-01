@@ -50,8 +50,8 @@ MonoBehaviour:
   _rb: {fileID: 3361536974669979111}
   _visualRoot: {fileID: 7181139985772786116}
   _acceleration: 10
-  _decceleration: 1
-  _maxSpeed: 5
+  _decceleration: 0.5
+  _maxSpeed: 10
 --- !u!114 &8990602445605495633
 MonoBehaviour:
   m_ObjectHideFlags: 0
