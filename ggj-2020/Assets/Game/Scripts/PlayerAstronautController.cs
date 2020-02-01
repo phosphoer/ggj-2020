@@ -45,7 +45,7 @@ public class PlayerAstronautController : MonoBehaviour
 
   private void UpdateInteraction()
   {
-    bool isInteractionPressed = _rewiredPlayer.GetButton(RewiredConsts.Action.Interact);
+    bool isInteractionPressed = _rewiredPlayer.GetButtonDown(RewiredConsts.Action.Interact);
 
     if (_astronaut != null)
     {
