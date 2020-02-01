@@ -9,31 +9,39 @@ public class InteratibleDeviceComponent : MonoBehaviour
     private bool _isInteractionPressed;
     public bool IsInteractionPressed { 
       get { return _isInteractionPressed; }
-      set { _isInteractionPressed= value; }
     }
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
+      _isInteractionPressed= false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
       if (CurrentInhabitant == null)
       {
-        CurrentInhabitant= other.gameObject.GetComponent<RoomInhabitantComponent>();
-        this.OnInteractionEntered(CurrentInhabitant);
-        CurrentInhabitant.OnInteractionEntered(this);
+        CurrentInhabitant= other.gameObject.GetComponentInParent<RoomInhabitantComponent>();
+
+        if (CurrentInhabitant != null)
+        {
+          this.OnInteractionEntered(CurrentInhabitant);
+          CurrentInhabitant.OnInteractionEntered(this);
+        }
       }
     }
 
     private void OnTriggerExit(Collider other)
     {
-      if (CurrentInhabitant != null && other.gameObject.GetComponent<RoomInhabitantComponent>() == CurrentInhabitant)
+      if (CurrentInhabitant != null)
       {
-        this.OnInteractionExited(CurrentInhabitant);
-        CurrentInhabitant.OnInteractionExited(this);
-        CurrentInhabitant = null;
+        RoomInhabitantComponent Inhabitant= other.gameObject.GetComponentInParent<RoomInhabitantComponent>();
+
+        if (Inhabitant != null && Inhabitant == CurrentInhabitant)
+        {
+          CurrentInhabitant.OnInteractionExited(this);
+          this.OnInteractionExited(CurrentInhabitant);
+        }
       }
     }
 
@@ -51,10 +59,10 @@ public class InteratibleDeviceComponent : MonoBehaviour
     }
     public virtual void OnInteractionPressed()
     {
-      IsInteractionPressed= true;
+      _isInteractionPressed= true;
     }
     public virtual void OnInteractionReleased()
     {
-      IsInteractionPressed= false;
+      _isInteractionPressed= false;
     }
 }

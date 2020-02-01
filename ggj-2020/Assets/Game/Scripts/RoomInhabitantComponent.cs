@@ -6,16 +6,13 @@ public class RoomInhabitantComponent : MonoBehaviour
 {
     private RoomComponent _roomComponent;
     private InteratibleDeviceComponent _currentDevice;
-    private Rigidbody _rigidBody;
+
+    [SerializeField]
+    private Rigidbody _rigidBody= null;
+
     public bool IsPressingInteraction
     {
       get { return _currentDevice != null && _currentDevice.IsInteractionPressed; }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-      _rigidBody= GetComponent<Rigidbody>();
     }
   
     public virtual void OnRoomEntered(RoomComponent room)
@@ -47,7 +44,7 @@ public class RoomInhabitantComponent : MonoBehaviour
       }
     }
 
-    public void StartInteraction()
+    public void PressInteraction()
     {
       if (_currentDevice != null)
       {
@@ -55,7 +52,7 @@ public class RoomInhabitantComponent : MonoBehaviour
       }
     }
 
-    public void StopInteraction()
+    public void ReleaseInteraction()
     {
       if (_currentDevice != null)
       {

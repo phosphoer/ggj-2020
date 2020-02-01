@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class AIAstronautController : MonoBehaviour
 {
-  private RoomInhabitantComponent _roomInhabitant;
   private bool _isInteractionPressed;
 
-  private void Start()
-  {
-    _roomInhabitant= GetComponent<RoomInhabitantComponent>();
-  }
+  [SerializeField]
+  private RoomInhabitantComponent _roomInhabitant= null;
 
   // Update is called once per frame
   void Update()
@@ -30,11 +27,11 @@ public class AIAstronautController : MonoBehaviour
     {
       if (_isInteractionPressed && !_roomInhabitant.IsPressingInteraction)
       { 
-        _roomInhabitant.StartInteraction();
+        _roomInhabitant.PressInteraction();
       }
       else if (!_isInteractionPressed && _roomInhabitant.IsPressingInteraction)
       { 
-        _roomInhabitant.StopInteraction();
+        _roomInhabitant.ReleaseInteraction();
       }
     }
   }

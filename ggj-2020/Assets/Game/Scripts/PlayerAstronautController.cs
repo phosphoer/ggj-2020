@@ -22,12 +22,6 @@ public class PlayerAstronautController : MonoBehaviour
 
   private AstronautController _astronaut;
   private Rewired.Player _rewiredPlayer;
-  private RoomInhabitantComponent _roomInhabitant;
-
-  private void Start()
-  {
-    _roomInhabitant = GetComponent<RoomInhabitantComponent>();
-  }
 
   private void Awake()
   {
@@ -36,7 +30,7 @@ public class PlayerAstronautController : MonoBehaviour
 
   private void Update()
   {
-    if (!Rewired.ReInput.isReady || _astronaut == null)
+    if (!Rewired.ReInput.isReady || _astronaut == null || _rewiredPlayer == null)
     {
       return;
     }
@@ -53,15 +47,15 @@ public class PlayerAstronautController : MonoBehaviour
   {
     bool isInteractionPressed = _rewiredPlayer.GetButton(RewiredConsts.Action.Interact);
 
-    if (_roomInhabitant != null)
+    if (_astronaut != null)
     {
-      if (isInteractionPressed && !_roomInhabitant.IsPressingInteraction)
+      if (isInteractionPressed && !_astronaut.IsPressingInteraction())
       {
-        _roomInhabitant.StartInteraction();
+        _astronaut.PressInteraction();
       }
-      else if (!isInteractionPressed && _roomInhabitant.IsPressingInteraction)
+      else if (!isInteractionPressed && _astronaut.IsPressingInteraction())
       {
-        _roomInhabitant.StopInteraction();
+        _astronaut.ReleaseInteraction();
       }
     }
   }
