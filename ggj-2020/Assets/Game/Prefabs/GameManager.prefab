@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1449285578312933311}
   - component: {fileID: 1449285578312933310}
+  - component: {fileID: 4586679533618741792}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -46,11 +47,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultStage: 2
-  MainMenuPrefab: {fileID: 4713633419316229850, guid: 42a6b902bdf783648841c42c9971bda3,
+  MainMenuUIPrefab: {fileID: 4713633419316229850, guid: 42a6b902bdf783648841c42c9971bda3,
+    type: 3}
+  GameUIPrefab: {fileID: 4713633419316229850, guid: a106bed9dbfb6e04198149ea43fa0af8,
+    type: 3}
+  WinGameUIPrefab: {fileID: 4713633419316229850, guid: 4834a1923e516814eba993d33c6d4a8e,
+    type: 3}
+  LoseGameUIPrefab: {fileID: 4713633419316229850, guid: 01dac430f047a284ea47d81e9fd8e79e,
     type: 3}
   MusicMenuLoop: {fileID: 0}
   MenuCamera: {fileID: 1449285580147211698}
   GameCamera: {fileID: 1449285579953228451}
+  _shipHealth: {fileID: 4586679533618741792}
+--- !u!114 &4586679533618741792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449285578312933305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6924fc39ac6f064aa090c913688112d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TotalShipHealth: 100
+  VictoryTime: 300
 --- !u!1 &1449285579953228450
 GameObject:
   m_ObjectHideFlags: 0

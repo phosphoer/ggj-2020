@@ -28,6 +28,8 @@ public class AstronautController : MonoBehaviour
     }
   }
 
+  public RoomInhabitantComponent RoomInhabitant => _roomInhabitant;
+
   [SerializeField]
   private RoomInhabitantComponent _roomInhabitant = null;
 
@@ -41,10 +43,10 @@ public class AstronautController : MonoBehaviour
   private Transform _visualRoot = null;
 
   [SerializeField]
-  private GameObject _headVisualRoot = null;
+  private GameObject[] _hideOnDie = null;
 
   [SerializeField]
-  private GameObject _headExplodeFx = null;
+  private GameObject[] _showOnDie = null;
 
   [SerializeField]
   private float _acceleration = 10;
@@ -61,6 +63,7 @@ public class AstronautController : MonoBehaviour
   private float _idleBlend;
   private AstronautIdle _currentIdleState;
   private bool _isDead;
+  private bool _isColliding;
 
   private static readonly int kAnimIdleState = Animator.StringToHash("IdleState");
   private static readonly int kAnimEmoteState = Animator.StringToHash("EmoteState");
@@ -70,6 +73,20 @@ public class AstronautController : MonoBehaviour
   {
     _animator.SetFloat(kAnimEmoteState, (float)emote);
     _animator.Play(kAnimEmoteName, 0, 0);
+  }
+
+  public void PressInteraction()
+  {
+    if (_attackCooldownTimer <= 0)
+    {
+      _attackCooldownTimer = _attackCooldown;
+      PlayEmote(AstronautEmote.Attack);
+
+      if (_roomInhabitant.CurrentDevice != null)
+      {
+        _roomInhabitant.CurrentDevice.OnInteractionPressed();
+      }
+    }
   }
 
   private void Update()
@@ -107,10 +124,13 @@ public class AstronautController : MonoBehaviour
     // Handle sucked into space 
     if (_roomInhabitant.IsBeingSuckedIntoSpace)
     {
-      if (_headVisualRoot.activeSelf)
+      if (_hideOnDie[0].activeSelf)
       {
-        _headVisualRoot.SetActive(false);
-        _headExplodeFx.SetActive(true);
+        foreach (GameObject obj in _hideOnDie)
+          obj.SetActive(false);
+
+        foreach (GameObject obj in _showOnDie)
+          obj.SetActive(true);
       }
 
       if (!_isDead && _roomInhabitant.Room == null)
@@ -131,35 +151,32 @@ public class AstronautController : MonoBehaviour
     _attackCooldownTimer -= Time.deltaTime;
   }
 
+  private void OnCollisionEnter(Collision col)
+  {
+    _isColliding = true;
+  }
+
+  private void OnCollisionExit(Collision col)
+  {
+    _isColliding = false;
+  }
+
   private void FixedUpdate()
   {
+    // Move out of spaceship when sucked out
+    if (_roomInhabitant.IsBeingSuckedIntoSpace)
+    {
+      if (_isColliding)
+      {
+        _rb.constraints = RigidbodyConstraints.None;
+        _rb.AddForce(Vector3.up * Time.deltaTime * 10, ForceMode.Acceleration);
+      }
+    }
     // Apply movement to physics
-    if (!_roomInhabitant.IsBeingSuckedIntoSpace)
+    else
     {
       _rb.AddForce(MoveVector * _acceleration * Time.deltaTime, ForceMode.Acceleration);
       _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, _maxSpeed);
-    }
-  }
-
-  public bool IsPressingInteraction()
-  {
-    return _roomInhabitant != null ? _roomInhabitant.IsPressingInteraction : false;
-  }
-
-  public void PressInteraction()
-  {
-    if (_roomInhabitant != null && _attackCooldownTimer <= 0)
-    {
-      _attackCooldownTimer = _attackCooldown;
-      _roomInhabitant.PressInteraction();
-      PlayEmote(AstronautEmote.Attack);
-    }
-  }
-  public void ReleaseInteraction()
-  {
-    if (_roomInhabitant != null)
-    {
-      _roomInhabitant.ReleaseInteraction();
     }
   }
 }

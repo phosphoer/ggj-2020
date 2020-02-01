@@ -10,7 +10,7 @@ public class LeverComponent : InteratibleDeviceComponent
     TurnedOn
   }
 
-  public ELeverState InitialLeverState= ELeverState.TurnedOff;
+  public ELeverState InitialLeverState = ELeverState.TurnedOff;
 
   private ELeverState _currentLeverState;
   public ELeverState CurrentLeverState
@@ -18,18 +18,16 @@ public class LeverComponent : InteratibleDeviceComponent
     get { return _currentLeverState; }
   }
 
-  // Start is called before the first frame update
-  public override void Start()
+  private void Start()
   {
-    base.Start();
-     _currentLeverState= InitialLeverState;
+    _currentLeverState = InitialLeverState;
   }
 
   public void SetLeverState(ELeverState newState)
   {
     if (newState != CurrentLeverState)
     {
-      _currentLeverState= newState;
+      _currentLeverState = newState;
       OnLeverStateChanged(newState);
     }
   }

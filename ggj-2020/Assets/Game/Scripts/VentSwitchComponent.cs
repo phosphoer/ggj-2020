@@ -16,14 +16,12 @@ public class VentSwitchComponent : LeverComponent
   [SerializeField]
   private CameraFocusPoint _cameraFocusPoint = null;
 
-  public float ResetDuration= 5.0f;
+  public float ResetDuration = 5.0f;
 
   private float _resetTimer;
 
-  // Start is called before the first frame update
-  public override void Start()
+  private void Start()
   {
-    base.Start();
     UpdateLeverAnimation(CurrentLeverState);
     UpdateAirlock(CurrentLeverState);
     UpdateCameraFocus(CurrentLeverState);
@@ -33,7 +31,7 @@ public class VentSwitchComponent : LeverComponent
   {
     if (CurrentLeverState == ELeverState.TurnedOn)
     {
-      _resetTimer+= Time.deltaTime;
+      _resetTimer += Time.deltaTime;
 
       if (_resetTimer > ResetDuration)
       {

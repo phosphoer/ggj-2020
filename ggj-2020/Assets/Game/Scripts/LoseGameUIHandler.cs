@@ -1,22 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class MainMenuHandler : MonoBehaviour
+public class LoseGameUIHandler : MonoBehaviour
 {
-  public void OnNewGameClicked()
+  public void OnPlayAgainClicked()
   {
-    GameStateManager.Instance.SetGameStage(GameStateManager.GameStage.Game);
-  }
-
-  public void OnInstructionsClicked()
-  {
-
-  }
-
-  public void OnSettingsClicked()
-  {
-
+    SceneManager.LoadScene("GameScene");
   }
 
   public void OnQuitGameClicked()
