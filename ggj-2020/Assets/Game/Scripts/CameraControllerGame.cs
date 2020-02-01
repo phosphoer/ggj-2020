@@ -19,13 +19,13 @@ public class CameraControllerGame : CameraControllerBase
     Vector3 playerCenter = Vector3.zero;
     float zoomDelta = 0;
     bool anyOffscreen = false;
-    for (int i = 0; i < PlayerManager.Instance.Players.Count; ++i)
+    for (int i = 0; i < CameraFocusPoint.Instances.Count; ++i)
     {
-      PlayerAstronautController player = PlayerManager.Instance.Players[i];
-      playerCenter += player.Astronaut.transform.position;
+      CameraFocusPoint focusPoint = CameraFocusPoint.Instances[i];
+      playerCenter += focusPoint.transform.position;
 
       // Get centered viewport pos
-      Vector3 viewportPos = cam.WorldToViewportPoint(player.Astronaut.transform.position);
+      Vector3 viewportPos = cam.WorldToViewportPoint(focusPoint.transform.position);
       viewportPos -= Vector3.one * 0.5f;
       viewportPos *= 2;
 
