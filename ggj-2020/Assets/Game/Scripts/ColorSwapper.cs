@@ -4,37 +4,38 @@ using UnityEngine;
 
 public class ColorSwapper : MonoBehaviour
 {
-	Material mat;
-	
-	public Color onColor;
-	public Color offColor;
-	bool on;
-	float timer;
-	public float waitTime;
+  Material mat;
 
-    void Start()
-    {
-		mat = this.GetComponent<Renderer>().material;
-		on = true;
-    }
+  public Color onColor;
+  public Color offColor;
+  bool on;
+  float timer;
+  public float waitTime;
 
-    // Update is called once per frame
-    void Update()
+  void Start()
+  {
+    mat = this.GetComponent<Renderer>().material;
+    on = true;
+  }
+
+  // Update is called once per frame
+  void Update()
+  {
+    timer += Time.deltaTime;
+    if (timer > waitTime)
     {
-		timer += Time.deltaTime;
-		if (timer > waitTime)
-		{
-			if (on)
-			{
-				mat.color = onColor;
-				on = false;
-			}
-			else{
-				mat.color = offColor;
-				on = true;
-			}
-			timer = 0;
-		}
+      if (on)
+      {
+        mat.color = onColor;
+        on = false;
+      }
+      else
+      {
+        mat.color = offColor;
+        on = true;
+      }
+      timer = 0;
     }
+  }
 }
 
