@@ -81,7 +81,7 @@ public class AstronautController : MonoBehaviour
     // {
     //   _currentIdleState = AstronautIdle.Panic;
     // }
-    else if (_moveVector.sqrMagnitude > 0.01f)
+    if (_moveVector.sqrMagnitude > 0.01f)
     {
       _currentIdleState = AstronautIdle.Move;
     }
