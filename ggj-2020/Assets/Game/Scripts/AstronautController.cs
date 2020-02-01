@@ -41,6 +41,12 @@ public class AstronautController : MonoBehaviour
   private Transform _visualRoot = null;
 
   [SerializeField]
+  private GameObject _headVisualRoot = null;
+
+  [SerializeField]
+  private GameObject _headExplodeFx = null;
+
+  [SerializeField]
   private float _acceleration = 10;
 
   [SerializeField]
@@ -54,7 +60,6 @@ public class AstronautController : MonoBehaviour
   private float _attackCooldownTimer;
   private float _idleBlend;
   private AstronautIdle _currentIdleState;
-  private float _outsideRoomTimer;
   private bool _isDead;
 
   private static readonly int kAnimIdleState = Animator.StringToHash("IdleState");
@@ -99,11 +104,16 @@ public class AstronautController : MonoBehaviour
     _idleBlend = Mathfx.Damp(_idleBlend, (float)_currentIdleState, 0.25f, Time.deltaTime * 5);
     _animator.SetFloat(kAnimIdleState, _idleBlend);
 
-    // Count down to death outside room
-    if (_roomInhabitant.IsBeingSuckedIntoSpace && _roomInhabitant.Room == null)
+    // Handle sucked into space 
+    if (_roomInhabitant.IsBeingSuckedIntoSpace)
     {
-      _outsideRoomTimer += Time.deltaTime;
-      if (_outsideRoomTimer > 5 && !_isDead)
+      if (_headVisualRoot.activeSelf)
+      {
+        _headVisualRoot.SetActive(false);
+        _headExplodeFx.SetActive(true);
+      }
+
+      if (!_isDead && _roomInhabitant.Room == null)
       {
         _isDead = true;
         Died?.Invoke();
@@ -124,8 +134,11 @@ public class AstronautController : MonoBehaviour
   private void FixedUpdate()
   {
     // Apply movement to physics
-    _rb.AddForce(MoveVector * _acceleration * Time.deltaTime, ForceMode.Acceleration);
-    _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, _maxSpeed);
+    if (!_roomInhabitant.IsBeingSuckedIntoSpace)
+    {
+      _rb.AddForce(MoveVector * _acceleration * Time.deltaTime, ForceMode.Acceleration);
+      _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, _maxSpeed);
+    }
   }
 
   public bool IsPressingInteraction()

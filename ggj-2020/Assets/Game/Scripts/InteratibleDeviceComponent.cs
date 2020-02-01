@@ -4,65 +4,66 @@ using UnityEngine;
 
 public class InteratibleDeviceComponent : MonoBehaviour
 {
-    private RoomInhabitantComponent CurrentInhabitant;
-    
-    private bool _isInteractionPressed;
-    public bool IsInteractionPressed { 
-      get { return _isInteractionPressed; }
-    }
+  private RoomInhabitantComponent CurrentInhabitant;
 
-    // Start is called before the first frame update
-    public virtual void Start()
+  private bool _isInteractionPressed;
+  public bool IsInteractionPressed
+  {
+    get { return _isInteractionPressed; }
+  }
+
+  // Start is called before the first frame update
+  public virtual void Start()
+  {
+    _isInteractionPressed = false;
+  }
+
+  private void OnTriggerEnter(Collider other)
+  {
+    if (CurrentInhabitant == null)
     {
-      _isInteractionPressed= false;
-    }
+      CurrentInhabitant = other.gameObject.GetComponentInParent<RoomInhabitantComponent>();
 
-    private void OnTriggerEnter(Collider other)
-    {
-      if (CurrentInhabitant == null)
-      {
-        CurrentInhabitant= other.gameObject.GetComponentInParent<RoomInhabitantComponent>();
-
-        if (CurrentInhabitant != null)
-        {
-          this.OnInteractionEntered(CurrentInhabitant);
-          CurrentInhabitant.OnInteractionEntered(this);
-        }
-      }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
       if (CurrentInhabitant != null)
       {
-        RoomInhabitantComponent Inhabitant= other.gameObject.GetComponentInParent<RoomInhabitantComponent>();
-
-        if (Inhabitant != null && Inhabitant == CurrentInhabitant)
-        {
-          CurrentInhabitant.OnInteractionExited(this);
-          this.OnInteractionExited(CurrentInhabitant);
-        }
+        this.OnInteractionEntered(CurrentInhabitant);
+        CurrentInhabitant.OnInteractionEntered(this);
       }
     }
+  }
 
-    protected virtual void OnInteractionEntered(RoomInhabitantComponent Inhabitant)
+  private void OnTriggerExit(Collider other)
+  {
+    if (CurrentInhabitant != null)
     {
-      CurrentInhabitant = Inhabitant;
-    }
+      RoomInhabitantComponent Inhabitant = other.gameObject.GetComponentInParent<RoomInhabitantComponent>();
 
-    protected virtual void OnInteractionExited(RoomInhabitantComponent Inhabitant)
-    {
-      if (CurrentInhabitant == Inhabitant)
+      if (Inhabitant != null && Inhabitant == CurrentInhabitant)
       {
-        CurrentInhabitant = null;
+        CurrentInhabitant.OnInteractionExited(this);
+        this.OnInteractionExited(CurrentInhabitant);
       }
     }
-    public virtual void OnInteractionPressed()
+  }
+
+  protected virtual void OnInteractionEntered(RoomInhabitantComponent Inhabitant)
+  {
+    CurrentInhabitant = Inhabitant;
+  }
+
+  protected virtual void OnInteractionExited(RoomInhabitantComponent Inhabitant)
+  {
+    if (CurrentInhabitant == Inhabitant)
     {
-      _isInteractionPressed= true;
+      CurrentInhabitant = null;
     }
-    public virtual void OnInteractionReleased()
-    {
-      _isInteractionPressed= false;
-    }
+  }
+  public virtual void OnInteractionPressed()
+  {
+    _isInteractionPressed = true;
+  }
+  public virtual void OnInteractionReleased()
+  {
+    _isInteractionPressed = false;
+  }
 }
