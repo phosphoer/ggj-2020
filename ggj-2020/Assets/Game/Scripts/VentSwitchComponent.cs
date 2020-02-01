@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class VentSwitchComponent : LeverComponent
 {
-  public GameObject SwitchHandle;
+  [SerializeField]
+  private Animator _switchAnimator = null;
 
   [SerializeField]
   private ExteriorAirlockComponent _exteriorAirlock = null;
@@ -23,7 +24,7 @@ public class VentSwitchComponent : LeverComponent
   public override void Start()
   {
     base.Start();
-    UpdateLeverTransform(CurrentLeverState);
+    UpdateLeverAnimation(CurrentLeverState);
     UpdateAirlock(CurrentLeverState);
     UpdateCameraFocus(CurrentLeverState);
   }
@@ -45,25 +46,16 @@ public class VentSwitchComponent : LeverComponent
   {
     base.OnLeverStateChanged(newState);
     _resetTimer = 0;
-    UpdateLeverTransform(newState);
+    UpdateLeverAnimation(newState);
     UpdateAirlock(newState);
     UpdateCameraFocus(newState);
   }
 
-  private void UpdateLeverTransform(ELeverState state)
+  private void UpdateLeverAnimation(ELeverState state)
   {
-    if (SwitchHandle == null)
-      return;
-
-    Transform pivot = SwitchHandle.transform.parent;
-    switch (state)
+    if (_switchAnimator != null)
     {
-    case ELeverState.TurnedOff:
-      pivot.localRotation = Quaternion.Euler(0, 45, 0);
-      break;
-    case ELeverState.TurnedOn:
-      pivot.localRotation = Quaternion.Euler(0, -45, 0);
-      break;
+      _switchAnimator.SetBool("IsOn", state == ELeverState.TurnedOn);
     }
   }
 
