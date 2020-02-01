@@ -6,10 +6,10 @@ public class InteratibleDeviceComponent : MonoBehaviour
 {
     private RoomInhabitantComponent CurrentInhabitant;
     
-    private bool _isInteractionActive;
-    public bool IsInteractionActive { 
-      get { return _isInteractionActive; }
-      set { _isInteractionActive= value; }
+    private bool _isInteractionPressed;
+    public bool IsInteractionPressed { 
+      get { return _isInteractionPressed; }
+      set { _isInteractionPressed= value; }
     }
 
     // Start is called before the first frame update
@@ -49,17 +49,12 @@ public class InteratibleDeviceComponent : MonoBehaviour
         CurrentInhabitant = null;
       }
     }
-    public virtual void OnInteractionStarted()
+    public virtual void OnInteractionPressed()
     {
-      IsInteractionActive= true;
+      IsInteractionPressed= true;
     }
-    public virtual void OnInteractionStopped()
+    public virtual void OnInteractionReleased()
     {
-      IsInteractionActive= false;
-    }
-
-    void Update()
-    {
-        
+      IsInteractionPressed= false;
     }
 }

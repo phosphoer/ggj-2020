@@ -28,11 +28,11 @@ public class AIAstronautController : MonoBehaviour
   {
     if (_roomInhabitant)
     {
-      if (_isInteractionPressed && !_roomInhabitant.IsUsingInteraction)
+      if (_isInteractionPressed && !_roomInhabitant.IsPressingInteraction)
       { 
         _roomInhabitant.StartInteraction();
       }
-      else if (!_isInteractionPressed && _roomInhabitant.IsUsingInteraction)
+      else if (!_isInteractionPressed && _roomInhabitant.IsPressingInteraction)
       { 
         _roomInhabitant.StopInteraction();
       }

@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class RoomComponent : MonoBehaviour
 {
-    private List<RoomInhabitantComponent> RoomInhabitants;
+    private List<RoomInhabitantComponent> _roomInhabitants = new List<RoomInhabitantComponent>();
 
     // Start is called before the first frame update
     void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         
     }
@@ -23,7 +17,7 @@ public class RoomComponent : MonoBehaviour
       RoomInhabitantComponent inhabitant= other.gameObject.GetComponent<RoomInhabitantComponent>();
       if (inhabitant != null)
       {
-        RoomInhabitants.Add(inhabitant);
+        _roomInhabitants.Add(inhabitant);
         inhabitant.OnRoomEntered(this);
       }
     }
@@ -34,7 +28,7 @@ public class RoomComponent : MonoBehaviour
       if (inhabitant != null)
       {
         inhabitant.OnRoomExited(this);
-        RoomInhabitants.Remove(inhabitant);
+        _roomInhabitants.Remove(inhabitant);
       }
     }
 }

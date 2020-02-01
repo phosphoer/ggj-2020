@@ -55,11 +55,11 @@ public class PlayerAstronautController : MonoBehaviour
 
     if (_roomInhabitant != null)
     {
-      if (isInteractionPressed && !_roomInhabitant.IsUsingInteraction)
+      if (isInteractionPressed && !_roomInhabitant.IsPressingInteraction)
       {
         _roomInhabitant.StartInteraction();
       }
-      else if (!isInteractionPressed && _roomInhabitant.IsUsingInteraction)
+      else if (!isInteractionPressed && _roomInhabitant.IsPressingInteraction)
       {
         _roomInhabitant.StopInteraction();
       }

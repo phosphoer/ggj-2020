@@ -4,15 +4,43 @@ using UnityEngine;
 
 public class LeverComponent : InteratibleDeviceComponent
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  public enum ELeverState
+  {
+    TurnedOff,
+    TurnedOn
+  }
 
-    // Update is called once per frame
-    void Update()
+  public ELeverState InitialLeverState= ELeverState.TurnedOff;
+
+  private ELeverState _currentLeverState;
+  public ELeverState CurrentLeverState
+  {
+    get { return _currentLeverState; }
+  }
+
+  // Start is called before the first frame update
+  void Start()
+  {
+     _currentLeverState= InitialLeverState;
+  }
+
+  public void SetLeverState(ELeverState newState)
+  {
+    if (newState != CurrentLeverState)
     {
-        
+      _currentLeverState= newState;
+      OnLeverStateChanged(newState);
     }
+  }
+  public override void OnInteractionPressed()
+  {
+    base.OnInteractionPressed();
+
+    SetLeverState(CurrentLeverState == ELeverState.TurnedOff ? ELeverState.TurnedOn : ELeverState.TurnedOff);
+  }
+
+  public virtual void OnLeverStateChanged(ELeverState newState)
+  {
+
+  }
 }

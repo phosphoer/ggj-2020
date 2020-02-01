@@ -12,10 +12,4 @@ public class DoorComponent : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
