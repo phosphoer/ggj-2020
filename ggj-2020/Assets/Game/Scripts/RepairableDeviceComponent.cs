@@ -10,7 +10,7 @@ public class RepairableDeviceComponent : InteratibleDeviceComponent
     Broken
   }
 
-  public IReadOnlyList<RepairableDeviceComponent> Instances => _instances;
+  public static IReadOnlyList<RepairableDeviceComponent> Instances => _instances;
 
   private ERepairState _currentRepairState;
   public ERepairState CurrentRepairState
@@ -26,9 +26,8 @@ public class RepairableDeviceComponent : InteratibleDeviceComponent
 
   private static List<RepairableDeviceComponent> _instances = new List<RepairableDeviceComponent>();
 
-  public override void Start()
+  private void Start()
   {
-    base.Start();
     _currentRepairState = ERepairState.Fixed;
     OnRepairStateChanged(_currentRepairState);
   }

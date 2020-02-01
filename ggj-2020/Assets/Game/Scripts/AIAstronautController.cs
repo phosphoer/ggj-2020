@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class AIAstronautController : MonoBehaviour
 {
-  private bool _isInteractionPressed;
-
-  [SerializeField]
-  private RoomInhabitantComponent _roomInhabitant = null;
-
   [SerializeField]
   private AstronautController _astronaut = null;
 
+  private bool _isInteractionPressed;
   private Vector3 _moveDir;
+  private int _repairDeviceIndex;
 
   private void Update()
   {
@@ -29,20 +26,23 @@ public class AIAstronautController : MonoBehaviour
   {
     _moveDir += Random.insideUnitSphere * Time.deltaTime;
     _astronaut.MoveVector = _moveDir;
+
+    if (_repairDeviceIndex < RepairableDeviceComponent.Instances.Count)
+    {
+      RepairableDeviceComponent device = RepairableDeviceComponent.Instances[_repairDeviceIndex];
+      float distToRepair = Vector3.Distance(_astronaut.transform.position, device.transform.position);
+      if (distToRepair < 3)
+      {
+        _isInteractionPressed = true;
+      }
+    }
   }
 
   private void UpdateInteraction()
   {
-    if (_roomInhabitant)
+    if (_isInteractionPressed && _astronaut.RoomInhabitant.CurrentDevice != null)
     {
-      if (_isInteractionPressed && !_roomInhabitant.IsPressingInteraction)
-      {
-        _roomInhabitant.PressInteraction();
-      }
-      else if (!_isInteractionPressed && _roomInhabitant.IsPressingInteraction)
-      {
-        _roomInhabitant.ReleaseInteraction();
-      }
+      _astronaut.RoomInhabitant.CurrentDevice.OnInteractionPressed();
     }
   }
 }

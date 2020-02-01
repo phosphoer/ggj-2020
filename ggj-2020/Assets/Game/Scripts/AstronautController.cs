@@ -28,6 +28,8 @@ public class AstronautController : MonoBehaviour
     }
   }
 
+  public RoomInhabitantComponent RoomInhabitant => _roomInhabitant;
+
   [SerializeField]
   private RoomInhabitantComponent _roomInhabitant = null;
 
@@ -144,25 +146,13 @@ public class AstronautController : MonoBehaviour
     }
   }
 
-  public bool IsPressingInteraction()
-  {
-    return _roomInhabitant != null ? _roomInhabitant.IsPressingInteraction : false;
-  }
-
   public void PressInteraction()
   {
-    if (_roomInhabitant != null && _attackCooldownTimer <= 0)
+    if (_roomInhabitant != null && _roomInhabitant.CurrentDevice != null && _attackCooldownTimer <= 0)
     {
       _attackCooldownTimer = _attackCooldown;
-      _roomInhabitant.PressInteraction();
+      _roomInhabitant.CurrentDevice.OnInteractionPressed();
       PlayEmote(AstronautEmote.Attack);
-    }
-  }
-  public void ReleaseInteraction()
-  {
-    if (_roomInhabitant != null)
-    {
-      _roomInhabitant.ReleaseInteraction();
     }
   }
 }

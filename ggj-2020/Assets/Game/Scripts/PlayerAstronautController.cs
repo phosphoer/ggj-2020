@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerAstronautController : MonoBehaviour
 {
+  public static event System.Action<PlayerAstronautController> PlayerSpawned;
+
   public Rewired.Player RewiredPlayer
   {
     get { return _rewiredPlayer; }
@@ -46,17 +48,9 @@ public class PlayerAstronautController : MonoBehaviour
   private void UpdateInteraction()
   {
     bool isInteractionPressed = _rewiredPlayer.GetButtonDown(RewiredConsts.Action.Interact);
-
-    if (_astronaut != null)
+    if (_astronaut != null && isInteractionPressed)
     {
-      if (isInteractionPressed && !_astronaut.IsPressingInteraction())
-      {
-        _astronaut.PressInteraction();
-      }
-      else if (!isInteractionPressed && _astronaut.IsPressingInteraction())
-      {
-        _astronaut.ReleaseInteraction();
-      }
+      _astronaut.PressInteraction();
     }
   }
 
@@ -65,6 +59,8 @@ public class PlayerAstronautController : MonoBehaviour
     _astronaut = Instantiate(_astronautPrefab, transform);
     _astronaut.Died += OnDied;
     _astronaut.Despawned += OnDespawned;
+
+    PlayerSpawned?.Invoke(this);
   }
 
   private void OnDied()
