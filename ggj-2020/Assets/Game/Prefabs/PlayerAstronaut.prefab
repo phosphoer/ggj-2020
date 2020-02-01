@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8582730457766153559}
   - component: {fileID: 2299966557755452355}
   - component: {fileID: 3361536974669979111}
+  - component: {fileID: -6197183261982267265}
   m_Layer: 0
   m_Name: PlayerAstronaut
   m_TagString: Untagged
@@ -45,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c030832aa1dc0464d9b60969f167fdbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _roomInhabitant: {fileID: -6197183261982267265}
   _rb: {fileID: 3361536974669979111}
   _visualRoot: {fileID: 7181139985772786116}
   _acceleration: 10

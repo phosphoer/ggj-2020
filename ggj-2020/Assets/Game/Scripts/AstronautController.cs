@@ -12,6 +12,9 @@ public class AstronautController : MonoBehaviour
   }
 
   [SerializeField]
+  private RoomInhabitantComponent _roomInhabitant= null;
+
+  [SerializeField]
   private Rigidbody _rb = null;
 
   [SerializeField]
@@ -53,5 +56,25 @@ public class AstronautController : MonoBehaviour
   {
     // Apply movement to physics
     _rb.velocity = _currentVelocity;
+  }
+
+  public bool IsPressingInteraction()
+  {
+    return _roomInhabitant != null ? _roomInhabitant.IsPressingInteraction : false;
+  }
+
+  public void PressInteraction()
+  {
+    if (_roomInhabitant != null)
+    {
+        _roomInhabitant.PressInteraction();
+    }
+  }
+  public void ReleaseInteraction()
+  {
+    if (_roomInhabitant != null)
+    {
+        _roomInhabitant.ReleaseInteraction();
+    }
   }
 }
