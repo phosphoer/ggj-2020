@@ -63,6 +63,7 @@ public class AstronautController : MonoBehaviour
   private float _idleBlend;
   private AstronautIdle _currentIdleState;
   private bool _isDead;
+  private bool _isColliding;
 
   private static readonly int kAnimIdleState = Animator.StringToHash("IdleState");
   private static readonly int kAnimEmoteState = Animator.StringToHash("EmoteState");
@@ -72,6 +73,20 @@ public class AstronautController : MonoBehaviour
   {
     _animator.SetFloat(kAnimEmoteState, (float)emote);
     _animator.Play(kAnimEmoteName, 0, 0);
+  }
+
+  public void PressInteraction()
+  {
+    if (_attackCooldownTimer <= 0)
+    {
+      _attackCooldownTimer = _attackCooldown;
+      PlayEmote(AstronautEmote.Attack);
+
+      if (_roomInhabitant.CurrentDevice != null)
+      {
+        _roomInhabitant.CurrentDevice.OnInteractionPressed();
+      }
+    }
   }
 
   private void Update()
@@ -136,23 +151,32 @@ public class AstronautController : MonoBehaviour
     _attackCooldownTimer -= Time.deltaTime;
   }
 
+  private void OnCollisionEnter(Collision col)
+  {
+    _isColliding = true;
+  }
+
+  private void OnCollisionExit(Collision col)
+  {
+    _isColliding = false;
+  }
+
   private void FixedUpdate()
   {
+    // Move out of spaceship when sucked out
+    if (_roomInhabitant.IsBeingSuckedIntoSpace)
+    {
+      if (_isColliding)
+      {
+        _rb.constraints = RigidbodyConstraints.None;
+        _rb.AddForce(Vector3.up * Time.deltaTime * 10, ForceMode.Acceleration);
+      }
+    }
     // Apply movement to physics
-    if (!_roomInhabitant.IsBeingSuckedIntoSpace)
+    else
     {
       _rb.AddForce(MoveVector * _acceleration * Time.deltaTime, ForceMode.Acceleration);
       _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, _maxSpeed);
-    }
-  }
-
-  public void PressInteraction()
-  {
-    if (_roomInhabitant != null && _roomInhabitant.CurrentDevice != null && _attackCooldownTimer <= 0)
-    {
-      _attackCooldownTimer = _attackCooldown;
-      _roomInhabitant.CurrentDevice.OnInteractionPressed();
-      PlayEmote(AstronautEmote.Attack);
     }
   }
 }
