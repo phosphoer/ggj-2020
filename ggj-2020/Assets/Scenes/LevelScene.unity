@@ -321,6 +321,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AirlockLeverUL
       objectReference: {fileID: 0}
+    - target: {fileID: 5375038085100315879, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 6212965769586725468, guid: 4beffa1f432bfde44a5d2afd7ec3ec6c,
+        type: 3}
     - target: {fileID: 5705285627676201826, guid: 25992738164da0e448af32b1e9e1ba7e,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
