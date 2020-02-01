@@ -70,7 +70,7 @@ ModelImporter:
       name: Close
       takeName: Take 001
       internalID: 0
-      firstFrame: 30
+      firstFrame: 31
       lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
