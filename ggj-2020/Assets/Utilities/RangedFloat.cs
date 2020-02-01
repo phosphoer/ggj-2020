@@ -29,6 +29,11 @@ public struct RangedFloat
     return value > MinValue && value < MaxValue;
   }
 
+  public float Clamp(float value)
+  {
+    return Mathf.Clamp(value, MinValue, MaxValue);
+  }
+
   public float SeededRandom(System.Random rand)
   {
     return MinValue + (float)rand.NextDouble() * RangeSize;

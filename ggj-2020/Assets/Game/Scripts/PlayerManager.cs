@@ -39,4 +39,11 @@ public class PlayerManager : Singleton<PlayerManager>
       }
     }
   }
+
+  [ContextMenu("Add Debug Player")]
+  private void DebugAddPlayer()
+  {
+    PlayerAstronautController astroPlayer = Instantiate(_playerPrefab, transform);
+    _players.Add(astroPlayer);
+  }
 }
