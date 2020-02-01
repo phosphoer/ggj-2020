@@ -7,30 +7,40 @@ public class AIAstronautController : MonoBehaviour
   private bool _isInteractionPressed;
 
   [SerializeField]
-  private RoomInhabitantComponent _roomInhabitant= null;
+  private RoomInhabitantComponent _roomInhabitant = null;
 
-  // Update is called once per frame
-  void Update()
+  [SerializeField]
+  private AstronautController _astronaut = null;
+
+  private Vector3 _moveDir;
+
+  private void Update()
   {
     UpdateInput();
     UpdateInteraction();
   }
-  void UpdateInput()
+
+  private void OnCollisionEnter(Collision col)
   {
-    // TODO: Decide when to press interaction
-    _isInteractionPressed= false;
+    _moveDir = Random.insideUnitSphere;
   }
 
-  void UpdateInteraction()
+  private void UpdateInput()
+  {
+    _moveDir += Random.insideUnitSphere * Time.deltaTime;
+    _astronaut.MoveVector = _moveDir;
+  }
+
+  private void UpdateInteraction()
   {
     if (_roomInhabitant)
     {
       if (_isInteractionPressed && !_roomInhabitant.IsPressingInteraction)
-      { 
+      {
         _roomInhabitant.PressInteraction();
       }
       else if (!_isInteractionPressed && _roomInhabitant.IsPressingInteraction)
-      { 
+      {
         _roomInhabitant.ReleaseInteraction();
       }
     }

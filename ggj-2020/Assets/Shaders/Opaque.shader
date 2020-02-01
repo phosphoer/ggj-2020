@@ -7,6 +7,7 @@ Shader "Custom/Opaque"
     _LightRamp ("Light Ramp", 2D) = "white" {}
     _FogScale ("Fog Scale", float) = 1
     _LightingScale ("Lighting Scale", float) = 0.1
+    _ExtraLight ("Extra Light", float) = 0.1
 
     [Enum(Off,0,On,1)] 
     _ZWrite ("ZWrite", Float) = 1
@@ -61,6 +62,7 @@ Shader "Custom/Opaque"
       fixed4 _Color;
       fixed _FogScale;
       fixed _LightingScale;
+      float _ExtraLight;
 
       v2f vert (appdata v)
       {
@@ -82,6 +84,7 @@ Shader "Custom/Opaque"
         
         float lightDot = max(dot(normalize(i.worldNormal), normalize(_WorldSpaceLightPos0.xyz)), 0);
         lightDot *= SHADOW_ATTENUATION(i);
+        lightDot += _ExtraLight;
 
         fixed3 lightRamp = tex2D(_LightRamp, float2(0.5, lightDot)).rgb;
         lightDot = lightRamp;
