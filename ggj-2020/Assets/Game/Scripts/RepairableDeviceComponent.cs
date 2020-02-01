@@ -69,5 +69,15 @@ public class RepairableDeviceComponent : InteratibleDeviceComponent
     {
       _brokenGameObject.SetActive(newState == ERepairState.Broken);
     }
+
+    switch (newState)
+    {
+    case ERepairState.Fixed:
+      GameStateManager.Instance.ShipHealth.OnDeviceBecameFixed();
+      break;
+    case ERepairState.Broken:
+      GameStateManager.Instance.ShipHealth.OnDeviceBecameDamaged();
+      break;
+    }
   }
 }
