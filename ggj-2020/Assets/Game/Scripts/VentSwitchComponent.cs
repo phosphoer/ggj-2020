@@ -12,6 +12,10 @@ public class VentSwitchComponent : LeverComponent
   [SerializeField]
   private InteriorAirlockComponent _interiorAirlock = null;
 
+  public float ResetDuration= 5.0f;
+
+  private float _resetTimer;
+
   // Start is called before the first frame update
   public override void Start()
   {
@@ -20,9 +24,23 @@ public class VentSwitchComponent : LeverComponent
     UpdateAirlock(CurrentLeverState);
   }
 
+  public void Update()
+  {
+    if (CurrentLeverState == ELeverState.TurnedOn)
+    {
+      _resetTimer+= Time.deltaTime;
+
+      if (_resetTimer > ResetDuration)
+      {
+        SetLeverState(ELeverState.TurnedOff);
+      }
+    }
+  }
+
   public override void OnLeverStateChanged(ELeverState newState)
   {
     base.OnLeverStateChanged(newState);
+    _resetTimer = 0;
     UpdateLeverTransform(newState);
     UpdateAirlock(CurrentLeverState);
   }
@@ -35,12 +53,12 @@ public class VentSwitchComponent : LeverComponent
     Transform pivot = SwitchHandle.transform.parent;
     switch (state)
     {
-      case ELeverState.TurnedOff:
-        pivot.localRotation = Quaternion.Euler(0, 45, 0);
-        break;
-      case ELeverState.TurnedOn:
-        pivot.localRotation = Quaternion.Euler(0, -45, 0);
-        break;
+    case ELeverState.TurnedOff:
+      pivot.localRotation = Quaternion.Euler(0, 45, 0);
+      break;
+    case ELeverState.TurnedOn:
+      pivot.localRotation = Quaternion.Euler(0, -45, 0);
+      break;
     }
   }
 
