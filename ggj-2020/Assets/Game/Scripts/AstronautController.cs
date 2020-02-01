@@ -14,16 +14,24 @@ public class AstronautController : MonoBehaviour
   [SerializeField]
   private Rigidbody _rb = null;
 
+  [SerializeField]
+  private float _moveForce = 10;
+
   private Vector3 _moveVector;
 
   private void Update()
   {
     // Orient to face movement direction
+    if (_rb.velocity.sqrMagnitude > 0.01f)
+    {
+      Quaternion desiredRot = Quaternion.LookRotation(_rb.velocity, Vector3.up);
+      transform.rotation = Mathfx.Damp(transform.rotation, desiredRot, 0.25f, Time.deltaTime * 5);
+    }
   }
 
   private void FixedUpdate()
   {
     // Apply movement to physics
-    _rb.AddForce(_moveVector * Time.fixedDeltaTime, ForceMode.Force);
+    _rb.AddForce(_moveVector * _moveForce * Time.fixedDeltaTime, ForceMode.Force);
   }
 }
