@@ -5,10 +5,10 @@ using UnityEngine;
 public class ExteriorAirlockComponent : MonoBehaviour
 {
   [SerializeField]
-  private RoomComponent _room;
+  private RoomComponent _room = null;
 
   [SerializeField]
-  private Animator _hatchAnimator;
+  private Animator _hatchAnimator = null;
 
   public float VentForceScale = 1000.0f;
 
@@ -26,24 +26,24 @@ public class ExteriorAirlockComponent : MonoBehaviour
 
   private void Start()
   {
-     _currentAirlockState= EAirlockState.Closed;
+    _currentAirlockState = EAirlockState.Closed;
   }
 
   private void FixedUpdate()
-  {    
+  {
     // Suck everyone in the room out of the airlock
     if (_room != null && CurrentAirlockState == EAirlockState.Open)
     {
-      Vector3 suctionPoint= GetAirlockCenter();
+      Vector3 suctionPoint = GetAirlockCenter();
 
       foreach (RoomInhabitantComponent inhabitant in _room.RoomInhabitants)
       {
-        Rigidbody rigidBody= inhabitant.PhysicsRigidBody;
+        Rigidbody rigidBody = inhabitant.PhysicsRigidBody;
 
         if (rigidBody != null)
         {
-          Vector3 directionToAirlock= (suctionPoint - rigidBody.transform.position).normalized;
-          Vector3 ventForce= directionToAirlock * VentForceScale * Time.deltaTime;
+          Vector3 directionToAirlock = (suctionPoint - rigidBody.transform.position).normalized;
+          Vector3 ventForce = directionToAirlock * VentForceScale * Time.deltaTime;
 
           rigidBody.AddForce(ventForce, ForceMode.Acceleration);
         }
@@ -62,7 +62,7 @@ public class ExteriorAirlockComponent : MonoBehaviour
   {
     if (newState != CurrentAirlockState)
     {
-      _currentAirlockState= newState;
+      _currentAirlockState = newState;
       OnAirlockStateChanged(newState);
     }
   }

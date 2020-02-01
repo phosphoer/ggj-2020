@@ -7,17 +7,17 @@ public class VentSwitchComponent : LeverComponent
   public GameObject SwitchHandle;
 
   [SerializeField]
-  private ExteriorAirlockComponent _exteriorAirlock;
+  private ExteriorAirlockComponent _exteriorAirlock = null;
 
   [SerializeField]
-  private InteriorAirlockComponent _interiorAirlock;
+  private InteriorAirlockComponent _interiorAirlock = null;
 
   // Start is called before the first frame update
   public override void Start()
   {
-      base.Start();
-      UpdateLeverTransform(CurrentLeverState);
-      UpdateAirlock(CurrentLeverState);
+    base.Start();
+    UpdateLeverTransform(CurrentLeverState);
+    UpdateAirlock(CurrentLeverState);
   }
 
   public override void OnLeverStateChanged(ELeverState newState)
@@ -32,15 +32,15 @@ public class VentSwitchComponent : LeverComponent
     if (SwitchHandle == null)
       return;
 
-    Transform pivot= SwitchHandle.transform.parent;
-    switch(state)
+    Transform pivot = SwitchHandle.transform.parent;
+    switch (state)
     {
-    case ELeverState.TurnedOff:
-      pivot.localRotation= Quaternion.Euler(0, 45, 0);
-      break;
-    case ELeverState.TurnedOn:
-      pivot.localRotation= Quaternion.Euler(0, -45, 0);
-      break;
+      case ELeverState.TurnedOff:
+        pivot.localRotation = Quaternion.Euler(0, 45, 0);
+        break;
+      case ELeverState.TurnedOn:
+        pivot.localRotation = Quaternion.Euler(0, -45, 0);
+        break;
     }
   }
 

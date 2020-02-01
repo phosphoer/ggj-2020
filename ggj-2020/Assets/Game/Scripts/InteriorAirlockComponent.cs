@@ -5,10 +5,10 @@ using UnityEngine;
 public class InteriorAirlockComponent : MonoBehaviour
 {
   [SerializeField]
-  private RoomComponent _room;
+  private RoomComponent _room = null;
 
   [SerializeField]
-  private Animator _hatchAnimator;
+  private Animator _hatchAnimator = null;
 
   public enum EAirlockState
   {
@@ -24,7 +24,7 @@ public class InteriorAirlockComponent : MonoBehaviour
 
   private void Start()
   {
-     _currentAirlockState= EAirlockState.Open;
+    _currentAirlockState = EAirlockState.Open;
     OnAirlockStateChanged(EAirlockState.Open);
   }
 
@@ -32,7 +32,7 @@ public class InteriorAirlockComponent : MonoBehaviour
   {
     if (newState != CurrentAirlockState)
     {
-      _currentAirlockState= newState;
+      _currentAirlockState = newState;
       OnAirlockStateChanged(newState);
     }
   }

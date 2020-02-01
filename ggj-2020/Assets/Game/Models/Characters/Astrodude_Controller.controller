@@ -35,10 +35,19 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: IdleState
     m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -5712879460312820070, guid: a1681a3d4b8761049ade15b83abf3be9,
+      type: 3}
+    m_Threshold: 3
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: IdleState
+    m_Mirror: 0
   m_BlendParameter: IdleState
   m_BlendParameterY: Blend
   m_MinThreshold: 0
-  m_MaxThreshold: 2
+  m_MaxThreshold: 3
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 0
