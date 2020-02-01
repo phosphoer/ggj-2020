@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public enum AstronautEmote
 {
@@ -16,6 +17,8 @@ public enum AstronautIdle
 
 public class AstronautController : MonoBehaviour
 {
+  public static IReadOnlyList<AstronautController> Instances => _instances;
+
   public event System.Action Died;
   public event System.Action Despawned;
 
@@ -29,6 +32,7 @@ public class AstronautController : MonoBehaviour
   }
 
   public RoomInhabitantComponent RoomInhabitant => _roomInhabitant;
+  public bool IsStunned => _stunTimer > 0;
 
   [SerializeField]
   private RoomInhabitantComponent _roomInhabitant = null;
@@ -64,6 +68,9 @@ public class AstronautController : MonoBehaviour
   private AstronautIdle _currentIdleState;
   private bool _isDead;
   private bool _isColliding;
+  private float _stunTimer;
+
+  private static List<AstronautController> _instances = new List<AstronautController>();
 
   private static readonly int kAnimIdleState = Animator.StringToHash("IdleState");
   private static readonly int kAnimEmoteState = Animator.StringToHash("EmoteState");
@@ -86,7 +93,21 @@ public class AstronautController : MonoBehaviour
       {
         _roomInhabitant.CurrentDevice.OnInteractionPressed();
       }
+      else
+      {
+        TryWhackAstronaut();
+      }
     }
+  }
+
+  private void OnEnable()
+  {
+    _instances.Add(this);
+  }
+
+  private void OnDisable()
+  {
+    _instances.Remove(this);
   }
 
   private void Update()
@@ -100,6 +121,11 @@ public class AstronautController : MonoBehaviour
 
     // Roll based on movement
     float targetZRot = Mathf.Abs(_moveVector.x) > 0.1f ? Mathf.Sign(_moveVector.x) * -90 : 0;
+    if (IsStunned)
+    {
+      targetZRot = 0;
+    }
+
     _zRot = Mathfx.Damp(_zRot, targetZRot, 0.5f, Time.deltaTime * 5);
     _visualRoot.localEulerAngles = _visualRoot.localEulerAngles.WithZ(_zRot);
 
@@ -107,6 +133,10 @@ public class AstronautController : MonoBehaviour
     if (_roomInhabitant.IsBeingSuckedIntoSpace)
     {
       _currentIdleState = AstronautIdle.Panic;
+    }
+    else if (IsStunned)
+    {
+      _currentIdleState = AstronautIdle.Stunned;
     }
     else if (_moveVector.sqrMagnitude > 0.01f)
     {
@@ -149,6 +179,7 @@ public class AstronautController : MonoBehaviour
     }
 
     _attackCooldownTimer -= Time.deltaTime;
+    _stunTimer -= Time.deltaTime;
   }
 
   private void OnCollisionEnter(Collision col)
@@ -175,8 +206,37 @@ public class AstronautController : MonoBehaviour
     // Apply movement to physics
     else
     {
-      _rb.AddForce(MoveVector * _acceleration * Time.deltaTime, ForceMode.Acceleration);
+      if (!IsStunned)
+      {
+        _rb.AddForce(MoveVector * _acceleration * Time.deltaTime, ForceMode.Acceleration);
+      }
+
       _rb.velocity = Vector3.ClampMagnitude(_rb.velocity, _maxSpeed);
     }
+  }
+
+  private void TryWhackAstronaut()
+  {
+    for (int i = 0; i < AstronautController.Instances.Count; ++i)
+    {
+      AstronautController astro = AstronautController.Instances[i];
+      if (astro != this)
+      {
+        Vector3 toAstro = astro.transform.position - transform.position;
+        if (toAstro.magnitude < 3.0f && Vector3.Angle(transform.forward, toAstro) < 30)
+        {
+          astro.GetWhacked(transform.position);
+          return;
+        }
+      }
+    }
+  }
+
+  private void GetWhacked(Vector3 fromPos)
+  {
+    Debug.Log($"{name} got whacked");
+    _rb.AddForce((transform.position - fromPos).normalized * 3, ForceMode.VelocityChange);
+    PlayEmote(AstronautEmote.HitReact);
+    _stunTimer = 5;
   }
 }
