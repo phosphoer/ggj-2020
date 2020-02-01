@@ -52,11 +52,16 @@ public class CameraControllerGame : CameraControllerBase
     Debug.DrawLine(MountPoint.position, focusCenter);
 
     float desiredZoom = ZoomRange.Clamp(MountPoint.position.y + zoomDelta);
-    _zoom = Mathfx.Damp(_zoom, desiredZoom, 0.25f, Time.deltaTime * 5);
+    _zoom = Mathfx.Damp(_zoom, desiredZoom, 0.25f, Time.deltaTime * 2);
     Vector3 desiredPos = focusCenter.WithY(_zoom);
-    MountPoint.position = desiredPos;
-
-    Quaternion desiredRot = Quaternion.LookRotation(focusCenter - MountPoint.position, Vector3.forward);
-    MountPoint.rotation = Mathfx.Damp(MountPoint.rotation, desiredRot, 0.5f, Time.deltaTime * 5);
+    Vector3 toDesiredPos = MountPoint.position - desiredPos;
+    if (toDesiredPos.sqrMagnitude > 0.1f)
+    {
+      MountPoint.position = Mathfx.Damp(MountPoint.position, desiredPos, 0.5f, Time.deltaTime * 2);
+    }
+    else
+    {
+      MountPoint.position = desiredPos;
+    }
   }
 }
