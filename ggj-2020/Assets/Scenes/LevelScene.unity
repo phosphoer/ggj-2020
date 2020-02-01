@@ -288,7 +288,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642363280}
   m_LocalRotation: {x: 0.5616576, y: -0.13511643, z: -0.0043397387, w: 0.8162509}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -54.3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -301,37 +301,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 955095202381574852, guid: 25992738164da0e448af32b1e9e1ba7e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 263353075a8483a45bbc5f39bf2b3e5c, type: 2}
-    - target: {fileID: 2491554925160197247, guid: 25992738164da0e448af32b1e9e1ba7e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 263353075a8483a45bbc5f39bf2b3e5c, type: 2}
     - target: {fileID: 4210754047186308281, guid: 25992738164da0e448af32b1e9e1ba7e,
         type: 3}
       propertyPath: m_Name
       value: ShipStructure
       objectReference: {fileID: 0}
-    - target: {fileID: 4228631613507786915, guid: 25992738164da0e448af32b1e9e1ba7e,
-        type: 3}
-      propertyPath: m_Name
-      value: AirlockLeverUL
-      objectReference: {fileID: 0}
-    - target: {fileID: 5375038085100315879, guid: 25992738164da0e448af32b1e9e1ba7e,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 6212965769586725468, guid: 4beffa1f432bfde44a5d2afd7ec3ec6c,
-        type: 3}
-    - target: {fileID: 5705285627676201826, guid: 25992738164da0e448af32b1e9e1ba7e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 263353075a8483a45bbc5f39bf2b3e5c, type: 2}
     - target: {fileID: 5875921831286454218, guid: 25992738164da0e448af32b1e9e1ba7e,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 5235935359930449967}
   - component: {fileID: 1987580695794695382}
   - component: {fileID: 6591231399696815971}
+  - component: {fileID: 2733879652775824213}
   m_Layer: 0
   m_Name: AirlockLever
   m_TagString: Untagged
@@ -179,6 +180,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &2733879652775824213
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263909247712364554}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.586461, y: 3.8931472, z: 2.1929135}
+  m_Center: {x: 0.053781033, y: 1.9408644, z: -0.015889406}
 --- !u!1 &3585657648376176503
 GameObject:
   m_ObjectHideFlags: 0
