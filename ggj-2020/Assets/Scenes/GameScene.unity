@@ -211,27 +211,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1016033719 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 302287949653307553, guid: 25992738164da0e448af32b1e9e1ba7e,
+--- !u!114 &1016033723 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7782485317738176985, guid: 25992738164da0e448af32b1e9e1ba7e,
     type: 3}
   m_PrefabInstance: {fileID: 2014064575}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1016033723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016033719}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c9ef4ce795be0d4c94fd2877f0a95f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _room: {fileID: 2061005317}
-  _hatchAnimator: {fileID: 0}
-  VentForceScale: 2000
 --- !u!1001 &1708224252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -400,6 +391,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7782485317738176985, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: _room
+      value: 
+      objectReference: {fileID: 2061005317}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25992738164da0e448af32b1e9e1ba7e, type: 3}
 --- !u!1 &2061005315
