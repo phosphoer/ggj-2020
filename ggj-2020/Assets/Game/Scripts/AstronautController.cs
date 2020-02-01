@@ -15,12 +15,24 @@ public class AstronautController : MonoBehaviour
   private Rigidbody _rb = null;
 
   [SerializeField]
-  private float _moveForce = 10;
+  private float _acceleration = 10;
+
+  [SerializeField]
+  private float _decceleration = 5;
+
+  [SerializeField]
+  private float _maxSpeed = 1;
 
   private Vector3 _moveVector;
+  private Vector3 _currentVelocity;
 
   private void Update()
   {
+    if (MoveVector.sqrMagnitude > 0.1f)
+      _currentVelocity = Mathfx.Damp(_currentVelocity, MoveVector * _maxSpeed, 0.25f, Time.deltaTime * _acceleration);
+    else
+      _currentVelocity = Mathfx.Damp(_currentVelocity, MoveVector * _maxSpeed, 0.5f, Time.deltaTime * _decceleration);
+
     // Orient to face movement direction
     if (_rb.velocity.sqrMagnitude > 0.01f)
     {
@@ -32,6 +44,6 @@ public class AstronautController : MonoBehaviour
   private void FixedUpdate()
   {
     // Apply movement to physics
-    _rb.AddForce(_moveVector * _moveForce * Time.fixedDeltaTime, ForceMode.Force);
+    _rb.velocity = _currentVelocity;
   }
 }
