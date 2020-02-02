@@ -101,6 +101,7 @@ MonoBehaviour:
   _acceleration: 500
   _maxSpeed: 7
   _attackCooldown: 1
+  _canBeStunned: 0
 --- !u!114 &5406903726915392115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28970d31c93400943bb71a7b81054fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanUseEscapePod: 1
   _rigidBody: {fileID: 3361536974669979111}
 --- !u!54 &3361536974669979111
 Rigidbody:
