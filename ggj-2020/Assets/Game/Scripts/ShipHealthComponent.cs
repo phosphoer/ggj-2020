@@ -9,6 +9,19 @@ public class ShipHealthComponent : MonoBehaviour
   public float ShipDamageRate = 1;
   public float ShipRepairRate = 1;
 
+  public float ShipHealthHalf = 50.0f;
+  public float ShipHealthWarning = 25.0f;
+  public float ShipHealthCritical = 10.0f;
+
+  [SerializeField]
+  private SoundBank _shipHealthHalfAlert;
+  
+  [SerializeField]
+  private SoundBank _shipHealthWarningAlert;
+
+  [SerializeField]
+  private SoundBank _shipHealthCriticalAlert;
+
   private float _currentShipHealth;
   public float CurrentShipHealthGame
   {
@@ -86,7 +99,10 @@ public class ShipHealthComponent : MonoBehaviour
       {
         if (_damagedDeviceCount > 0)
         {
+          float previousShipHealth= _currentShipHealth;
           _currentShipHealth = Mathf.Max(_currentShipHealth - ShipDamageRate * _damagedDeviceCount * Time.deltaTime, 0.0f);
+
+          PostShipHealthAlerts(previousShipHealth, _currentShipHealth);
         }
         else
         {
@@ -97,6 +113,30 @@ public class ShipHealthComponent : MonoBehaviour
       if (IsShipAlive)
       {
         _shipAliveTimer += Time.deltaTime;
+      }
+    }
+  }
+
+  void PostShipHealthAlerts(float PreviousHealth, float NewHealth)
+  {
+    if (PreviousHealth > ShipHealthCritical && NewHealth <= ShipHealthCritical)
+    {      if (_shipHealthCriticalAlert != null)
+      {
+        AudioManager.Instance.PlaySound(_shipHealthCriticalAlert);
+      }
+    }
+    else if (PreviousHealth > ShipHealthWarning && NewHealth <= ShipHealthWarning)
+    {
+      if (_shipHealthWarningAlert != null)
+      {
+        AudioManager.Instance.PlaySound(_shipHealthWarningAlert);
+      }
+    }
+    else if (PreviousHealth > ShipHealthHalf && NewHealth <= ShipHealthHalf)
+    {
+      if (_shipHealthHalfAlert != null)
+      {
+        AudioManager.Instance.PlaySound(_shipHealthHalfAlert);
       }
     }
   }
