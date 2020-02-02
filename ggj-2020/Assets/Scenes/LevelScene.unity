@@ -301,10 +301,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4004291354212449804, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4210754047186308281, guid: 25992738164da0e448af32b1e9e1ba7e,
         type: 3}
       propertyPath: m_Name
       value: ShipStructure
+      objectReference: {fileID: 0}
+    - target: {fileID: 5454201212548615199, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.4
       objectReference: {fileID: 0}
     - target: {fileID: 5875921831286454218, guid: 25992738164da0e448af32b1e9e1ba7e,
         type: 3}
@@ -360,6 +370,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7844881581400159880, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473895941864478365, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839819448215465262, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25992738164da0e448af32b1e9e1ba7e, type: 3}
