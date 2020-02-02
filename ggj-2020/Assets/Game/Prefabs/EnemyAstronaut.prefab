@@ -74,6 +74,8 @@ MonoBehaviour:
   _stunFx: {fileID: 6393336864490836337}
   _spawnFxPrefab: {fileID: 5640717745722686975, guid: 8b19f80b27beac143928b0c972387cf1,
     type: 3}
+  _attackFxPrefab: {fileID: 128383872814587320, guid: f80d91ab53b022c4592f1056db9ebb23,
+    type: 3}
   _headPrefabs:
   - {fileID: 2413501530669143743, guid: f2c166cb3c83eff48aa42a9c3d58c455, type: 3}
   - {fileID: 6185734807980901484, guid: 63d7f9d06c7430a4182648c082c0fd37, type: 3}

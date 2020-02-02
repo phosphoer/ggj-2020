@@ -40,8 +40,14 @@ public class EscapePodComponent : MonoBehaviour
       }
 
       // Attach the inhabitant to the escape pod
-      inhabitant.transform.SetParent(_escapePodAnimation.gameObject.transform);
+      inhabitant.transform.SetParent(_escapePodAnimation.transform);
       inhabitant.PhysicsRigidBody.isKinematic = true;
+
+      VentSwitchComponent[] ventSwitches = FindObjectsOfType<VentSwitchComponent>();
+      foreach (VentSwitchComponent ventSwitch in ventSwitches)
+      {
+        ventSwitch.TriggerInteraction(gameObject);
+      }
     }
   }
 }
