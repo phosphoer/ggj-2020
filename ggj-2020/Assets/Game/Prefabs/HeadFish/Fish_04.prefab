@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6447606913956081455}
   - component: {fileID: 740289327044465622}
   - component: {fileID: -7748572854502082429}
+  - component: {fileID: 5370586528658352070}
   m_Layer: 0
   m_Name: Fish_04
   m_TagString: Untagged
@@ -93,3 +94,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotationMask: {x: 1, y: 0.5, z: 0.5}
   RotationSpeed: 0.5
+--- !u!114 &5370586528658352070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331622055160686346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebe34bce74ee420aafff4a8d42968d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colors:
+  - {r: 0.43329477, g: 0.8584906, b: 0.46351668, a: 1}
+  - {r: 0.8962264, g: 0.84674716, b: 0.26633143, a: 1}
+  - {r: 0.9245283, g: 0.416629, b: 0.31835172, a: 1}
+  - {r: 0.9056604, g: 0.33748665, b: 0.62717354, a: 1}
+  - {r: 0.61189544, g: 0.317647, b: 0.9254902, a: 1}
+  - {r: 0.317647, g: 0.5630877, b: 0.9254902, a: 1}
+  - {r: 0.317647, g: 0.8616113, b: 0.9254902, a: 1}
+  _renderer: {fileID: 740289327044465622}
