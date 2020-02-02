@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnergySinkController : InteratibleDeviceComponent
 {
-  public float MaxEnergy= 10;
+  public float MaxEnergy = 10;
 
   [SerializeField]
   private Animator _animator = null;
 
-  private float _depositedEnergy= 0;
+  private float _depositedEnergy = 0;
   public float DepositedEnergy
   {
     get { return _depositedEnergy; }
@@ -25,14 +25,12 @@ public class EnergySinkController : InteratibleDeviceComponent
     get { return DepositedEnergy >= MaxEnergy; }
   }
 
-  public override void OnInteractionPressed(GameObject gameObject)
+  protected override void OnInteractionPressed(GameObject gameObject)
   {
-    base.OnInteractionPressed(gameObject);
-
-    BatteryComponent battery= gameObject.GetComponentInChildren<BatteryComponent>();
+    BatteryComponent battery = gameObject.GetComponentInChildren<BatteryComponent>();
     if (battery != null && battery.HasCharge)
     {
-      _depositedEnergy= Mathf.Min(_depositedEnergy + battery.DrainCharge(), MaxEnergy);
+      _depositedEnergy = Mathf.Min(_depositedEnergy + battery.DrainCharge(), MaxEnergy);
 
       if (IsFull && _animator != null)
       {

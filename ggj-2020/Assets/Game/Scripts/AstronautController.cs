@@ -101,14 +101,14 @@ public class AstronautController : MonoBehaviour
 
   public void PressInteraction()
   {
-    if (_attackCooldownTimer <= 0)
+    if (_attackCooldownTimer <= 0 && !_roomInhabitant.IsBeingSuckedIntoSpace && !IsStunned)
     {
       _attackCooldownTimer = _attackCooldown;
       PlayEmote(AstronautEmote.Attack);
 
       if (_roomInhabitant.CurrentDevice != null)
       {
-        _roomInhabitant.CurrentDevice.OnInteractionPressed(this.gameObject);
+        _roomInhabitant.CurrentDevice.TriggerInteraction(gameObject);
 
         // Always drain the battery after all interactions (if not drained already)
         if (_batteryComponent != null && _roomInhabitant.CurrentDevice.DrainsBatteryOnInteraction())
@@ -155,7 +155,7 @@ public class AstronautController : MonoBehaviour
 
     // Roll based on movement
     float targetZRot = Mathf.Abs(_moveVector.x) > 0.1f ? Mathf.Sign(_moveVector.x) * -90 : 0;
-    if (IsStunned)
+    if (IsStunned || _roomInhabitant.IsBeingSuckedIntoSpace)
     {
       targetZRot = 0;
     }
@@ -218,7 +218,9 @@ public class AstronautController : MonoBehaviour
       _stunFx.SetActive(IsStunned);
     }
 
-    _attackCooldownTimer -= Time.deltaTime;
+    if (!_roomInhabitant.IsBeingSuckedIntoSpace)
+      _attackCooldownTimer -= Time.deltaTime;
+
     _stunTimer -= Time.deltaTime;
   }
 
