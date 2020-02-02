@@ -657,6 +657,18 @@ PrefabInstance:
       propertyPath: EditorDefaultStage
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1449285578312933310, guid: 45fe93d3a72a04da58e4638f32479b86,
+        type: 3}
+      propertyPath: MusicWinLoop
+      value: 
+      objectReference: {fileID: 11400000, guid: e95460154ddb89149897163610b89e70,
+        type: 2}
+    - target: {fileID: 1449285578312933310, guid: 45fe93d3a72a04da58e4638f32479b86,
+        type: 3}
+      propertyPath: MusicLoseLoop
+      value: 
+      objectReference: {fileID: 11400000, guid: e95460154ddb89149897163610b89e70,
+        type: 2}
     - target: {fileID: 1449285578312933311, guid: 45fe93d3a72a04da58e4638f32479b86,
         type: 3}
       propertyPath: m_LocalPosition.x
