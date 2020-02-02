@@ -53,10 +53,10 @@ public class ExteriorAirlockComponent : MonoBehaviour
         if (rigidBody != null)
         {
           Vector3 directionToAirlock = suctionPoint - rigidBody.transform.position;
-          directionToAirlock.y= 0;
+          directionToAirlock.y = 0;
           directionToAirlock.Normalize();
 
-          bool isPastAirlock= Vector3.Dot(GetAirlockForward(), directionToAirlock) > 0;
+          bool isPastAirlock = Vector3.Dot(GetAirlockForward(), directionToAirlock) > 0;
 
           if (!isPastAirlock)
           {
@@ -99,7 +99,7 @@ public class ExteriorAirlockComponent : MonoBehaviour
 
     if (_cameraFocusPoint != null)
     {
-      _cameraFocusPoint.enabled= newState == EAirlockState.Open;
+      // _cameraFocusPoint.enabled= newState == EAirlockState.Open;
     }
 
     foreach (GameObject effect in _warningEffects)

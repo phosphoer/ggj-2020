@@ -261,7 +261,7 @@ public class AstronautController : MonoBehaviour
       if (astro != this)
       {
         Vector3 toAstro = astro.transform.position - transform.position;
-        if (toAstro.magnitude < 3.0f && Vector3.Angle(transform.forward, toAstro) < 30)
+        if (toAstro.magnitude < 3.0f)
         {
           astro.GetWhacked(transform.position);
           return;
@@ -273,7 +273,7 @@ public class AstronautController : MonoBehaviour
   private void GetWhacked(Vector3 fromPos)
   {
     Debug.Log($"{name} got whacked");
-    _rb.AddForce((transform.position - fromPos).normalized * 3, ForceMode.VelocityChange);
+    _rb.AddForce((transform.position - fromPos).normalized * 30, ForceMode.VelocityChange);
     PlayEmote(AstronautEmote.HitReact);
     _stunTimer = 5;
   }
