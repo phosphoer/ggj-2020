@@ -17,12 +17,15 @@ public class GameStateManager : Singleton<GameStateManager>
 
   public GameStage CurrentStage => _gameStage;
 
-  public GameStage DefaultStage;
+  public GameStage EditorDefaultStage= GameStage.Game;
   public GameObject MainMenuUIPrefab;
   public GameObject GameUIPrefab;
   public GameObject WinGameUIPrefab;
   public GameObject LoseGameUIPrefab;
   public SoundBank MusicMenuLoop;
+  public SoundBank MusicGameLoop;
+  public SoundBank MusicWinLoop;
+  public SoundBank MusicLoseLoop;
   public CameraControllerBase MenuCamera;
   public CameraControllerGame GameCamera;
 
@@ -63,7 +66,11 @@ public class GameStateManager : Singleton<GameStateManager>
     // Base camera controller
     CameraControllerStack.Instance.PushController(MenuCamera);
 
-    SetGameStage(DefaultStage);
+    GameStage InitialStage= GameStage.MainMenu;
+#if UNITY_EDITOR
+    InitialStage= EditorDefaultStage;
+#endif
+    SetGameStage(InitialStage);
   }
 
   private void Update()
@@ -111,7 +118,7 @@ public class GameStateManager : Singleton<GameStateManager>
         {
           if (MusicMenuLoop != null)
           {
-            AudioManager.Instance.FadeOutSound(gameObject, MusicMenuLoop, 3.0f);
+            AudioManager.Instance.FadeOutSound(gameObject, MusicMenuLoop, 0.5f);
           }
 
           Destroy(_mainMenuUI);
@@ -120,6 +127,11 @@ public class GameStateManager : Singleton<GameStateManager>
         break;
       case GameStage.Game:
         {
+          if (MusicGameLoop != null)
+          {
+            AudioManager.Instance.FadeOutSound(gameObject, MusicGameLoop, 1.0f);
+          }
+
           _shipHealth.OnCompletedGame();
 
           CameraControllerStack.Instance.PopController(GameCamera);
@@ -130,12 +142,22 @@ public class GameStateManager : Singleton<GameStateManager>
         break;
       case GameStage.WinGame:
         {
+          if (MusicWinLoop != null)
+          {
+            AudioManager.Instance.StopSound(MusicWinLoop);
+          }
+
           Destroy(_winGameUI);
           _winGameUI = null;
         }
         break;
       case GameStage.LoseGame:
         {
+          if (MusicLoseLoop != null)
+          {
+            AudioManager.Instance.StopSound(MusicLoseLoop);
+          }
+
           Destroy(_loseGameUI);
           _loseGameUI = null;
         }
@@ -159,6 +181,11 @@ public class GameStateManager : Singleton<GameStateManager>
         break;
       case GameStage.Game:
         {
+          if (MusicGameLoop != null)
+          {
+            AudioManager.Instance.FadeInSound(gameObject, MusicGameLoop, 1.0f);
+          }
+
           _gameUI = (GameObject)Instantiate(GameUIPrefab, Vector3.zero, Quaternion.identity);
           _shipHealth.OnStartedGame();
 
@@ -169,11 +196,21 @@ public class GameStateManager : Singleton<GameStateManager>
         break;
       case GameStage.WinGame:
         {
+          if (MusicWinLoop != null)
+          {
+            AudioManager.Instance.FadeInSound(gameObject, MusicWinLoop, 1.0f);
+          }
+
           _winGameUI = (GameObject)Instantiate(WinGameUIPrefab, Vector3.zero, Quaternion.identity);
         }
         break;
       case GameStage.LoseGame:
         {
+          if (MusicLoseLoop != null)
+          {
+            AudioManager.Instance.FadeInSound(gameObject, MusicLoseLoop, 1.0f);
+          }
+
           _loseGameUI = (GameObject)Instantiate(LoseGameUIPrefab, Vector3.zero, Quaternion.identity);
         }
         break;
