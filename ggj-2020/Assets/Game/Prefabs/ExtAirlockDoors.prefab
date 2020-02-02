@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9ef4ce795be0d4c94fd2877f0a95f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VentForceScale: 2000
   _room: {fileID: 0}
   _hatchAnimator: {fileID: 7865622884966708997}
   _cameraFocusPoint: {fileID: 3251663255101830209}
@@ -274,7 +275,6 @@ MonoBehaviour:
   - {fileID: 4149556000474596414}
   - {fileID: 0}
   - {fileID: 0}
-  VentForceScale: 2000
 --- !u!1 &6323727441188155866
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +626,7 @@ PrefabInstance:
     - target: {fileID: 306518352098863801, guid: 7c50489270d11a847b93f669f6349c77,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.44
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 306518352098863801, guid: 7c50489270d11a847b93f669f6349c77,
         type: 3}
