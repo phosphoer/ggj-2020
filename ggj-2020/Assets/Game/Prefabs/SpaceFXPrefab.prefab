@@ -4810,6 +4810,7 @@ Transform:
   m_Children:
   - {fileID: 5395395636660131026}
   - {fileID: 740998651392886963}
+  - {fileID: 4696944389192416118}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5557,7 +5558,7 @@ ParticleSystem:
     m_TextureBilinearFiltering: 0
     randomDirectionAmount: 0
     sphericalDirectionAmount: 0
-    randomPositionAmount: 0
+    randomPositionAmount: 0.5
     radius:
       value: 125
       mode: 0
@@ -14347,6 +14348,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotateAmount: {x: 1, y: 0, z: 0}
   RotateSpeed: 50
+--- !u!1 &6817370255314930475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4696944389192416118}
+  - component: {fileID: 867124730210800886}
+  m_Layer: 0
+  m_Name: PlanetSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4696944389192416118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6817370255314930475}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 150, y: -45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7391074690813867640}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &867124730210800886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6817370255314930475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f51e75c73d06640bbfc1c7de675e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnHeightVarience: 150
+  PlanetBase: {fileID: 6391927857515022937, guid: 7196f5939d621e142a1ccc034b1e6bb5,
+    type: 3}
+  PlanetMeshes:
+  - {fileID: 928164642055089628, guid: 381f4649a0de41b43bd15c913032251b, type: 3}
+  - {fileID: -5346026147239146468, guid: 381f4649a0de41b43bd15c913032251b, type: 3}
+  - {fileID: 1700631287792688266, guid: 381f4649a0de41b43bd15c913032251b, type: 3}
+  - {fileID: 4801074934846099854, guid: 381f4649a0de41b43bd15c913032251b, type: 3}
+  - {fileID: -4026952986417431711, guid: 381f4649a0de41b43bd15c913032251b, type: 3}
+  - {fileID: -7251050560761555159, guid: 381f4649a0de41b43bd15c913032251b, type: 3}
+  KillDistance: 400
+  PlanetSpawnTime_Max: 7
+  PlanetSpawnTime_Min: 2
+  PlanetSpeed_Max: 50
+  PlanetSpeed_Min: 10
+  PlanetScale_Max: 2
+  PlanetScale_Min: 0.5
 --- !u!114 &8278561524688185474
 MonoBehaviour:
   m_ObjectHideFlags: 0
