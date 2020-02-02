@@ -116,10 +116,8 @@ public class AstronautController : MonoBehaviour
           _batteryComponent.DrainCharge();
         }
       }
-      else
-      {
-        TryWhackAstronaut();
-      }
+
+      TryWhackAstronaut();
     }
   }
 

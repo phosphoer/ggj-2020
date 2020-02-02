@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8945ec94320754896a9c8a73d0ca8f6e, type: 3}
   m_Name: build-windows
   m_EditorClassIdentifier: 
-  LocationPathName: relative/path/build.exe
+  LocationPathName: ../build/blow-hatch-windows/blow-hatch.exe
   ProductNameOverride: 
   CompanyNameOverride: 
-  BuildTarget: 0
-  BuildTargetGroup: 0
+  BuildTarget: 5
+  BuildTargetGroup: 1
   Defines: []
-  Scenes: []
-  WriteBuildInfo: 1
+  Scenes:
+  - sceneAsset: {fileID: 102900000, guid: 8092b3cf40048de459b7e36f0ce74943, type: 3}
+    sceneName: GameScene
+  WriteBuildInfo: 0
   BuildInfoFile: BuildInfo.cs
   BuildName: Main
