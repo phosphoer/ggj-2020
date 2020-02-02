@@ -40,7 +40,8 @@ public class EscapePodComponent : MonoBehaviour
       }
 
       // Attach the inhabitant to the escape pod
-      inhabitant.gameObject.transform.SetParent(this.transform);
+      inhabitant.transform.SetParent(transform);
+      inhabitant.PhysicsRigidBody.isKinematic = true;
     }
   }
 }

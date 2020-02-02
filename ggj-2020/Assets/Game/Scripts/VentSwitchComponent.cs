@@ -53,6 +53,11 @@ public class VentSwitchComponent : LeverComponent
     UpdateCameraFocus(newState);
   }
 
+  public override bool DrainsBatteryOnInteraction()
+  {
+    return false;
+  }
+
   protected override void OnInteractionPressed(GameObject gameObject)
   {
     base.OnInteractionPressed(gameObject);

@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TotalShipHealth: 100
   VictoryTime: 300
-  ShipDamageRate: 0.1
+  ShipDamageRate: 0.05
   ShipRepairRate: 1
   ShipHealthHalf: 50
   ShipHealthWarning: 25
