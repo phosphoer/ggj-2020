@@ -17,7 +17,7 @@ public class GameStateManager : Singleton<GameStateManager>
 
   public GameStage CurrentStage => _gameStage;
 
-  public GameStage EditorDefaultStage= GameStage.Game;
+  public GameStage EditorDefaultStage = GameStage.Game;
   public GameObject MainMenuUIPrefab;
   public GameObject GameUIPrefab;
   public GameObject WinGameUIPrefab;
@@ -67,9 +67,9 @@ public class GameStateManager : Singleton<GameStateManager>
     // Base camera controller
     CameraControllerStack.Instance.PushController(MenuCamera);
 
-    GameStage InitialStage= GameStage.MainMenu;
+    GameStage InitialStage = GameStage.MainMenu;
 #if UNITY_EDITOR
-    InitialStage= EditorDefaultStage;
+    InitialStage = EditorDefaultStage;
 #endif
     SetGameStage(InitialStage);
   }
