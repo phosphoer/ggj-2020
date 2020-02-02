@@ -14402,8 +14402,8 @@ MonoBehaviour:
   - {fileID: -4026952986417431711, guid: 381f4649a0de41b43bd15c913032251b, type: 3}
   - {fileID: -7251050560761555159, guid: 381f4649a0de41b43bd15c913032251b, type: 3}
   KillDistance: 400
-  PlanetSpawnTime_Max: 10
-  PlanetSpawnTime_Min: 3
+  PlanetSpawnTime_Max: 7
+  PlanetSpawnTime_Min: 2
   PlanetSpeed_Max: 50
   PlanetSpeed_Min: 10
   PlanetScale_Max: 2
