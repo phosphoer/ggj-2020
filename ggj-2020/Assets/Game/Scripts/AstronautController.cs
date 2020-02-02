@@ -63,10 +63,16 @@ public class AstronautController : MonoBehaviour
   private GameObject _spawnFxPrefab = null;
 
   [SerializeField]
+  private GameObject _attackFxPrefab = null;
+
+  [SerializeField]
   private GameObject[] _headPrefabs = null;
 
   [SerializeField]
   private Transform _headSpawnRoot = null;
+
+  [SerializeField]
+  private GameObject _exclamationEffect = null;
 
   [SerializeField]
   private float _acceleration = 10;
@@ -110,6 +116,9 @@ public class AstronautController : MonoBehaviour
       _attackCooldownTimer = _attackCooldown;
       PlayEmote(AstronautEmote.Attack);
 
+      GameObject attackFx = Instantiate(_attackFxPrefab, transform.position, transform.rotation);
+      Destroy(attackFx, 3.0f);
+
       if (_roomInhabitant.CurrentDevice != null)
       {
         _roomInhabitant.CurrentDevice.TriggerInteraction(gameObject);
@@ -125,6 +134,14 @@ public class AstronautController : MonoBehaviour
       {
         TryWhackAstronaut();
       }
+    }
+  }
+
+  private void Awake()
+  {
+    if (_exclamationEffect != null)
+    {
+      _exclamationEffect.SetActive(false);
     }
   }
 
@@ -225,6 +242,11 @@ public class AstronautController : MonoBehaviour
 
     if (!_roomInhabitant.IsBeingSuckedIntoSpace)
       _attackCooldownTimer -= Time.deltaTime;
+
+    if (_exclamationEffect != null)
+    {
+      _exclamationEffect.SetActive(_attackCooldownTimer > 0);
+    }
 
     _stunTimer -= Time.deltaTime;
   }
