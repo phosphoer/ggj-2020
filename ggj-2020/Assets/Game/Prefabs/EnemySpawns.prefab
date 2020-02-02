@@ -43,9 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc41cdd5b93542d39fba4a6daf555a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnOnPlayerSpawn: 0
+  SpawnOnPlayerSpawn: 1
   SpawnOnGameStart: 1
-  SpawnOnTimer: 60
+  SpawnOnTimer: 50
   SpawnRadius: 2
   _aiPrefab: {fileID: 9133156469366022811, guid: 1dadb9a3fe6a34bc9b555957f6a57c15,
     type: 3}
@@ -92,9 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc41cdd5b93542d39fba4a6daf555a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnOnPlayerSpawn: 0
+  SpawnOnPlayerSpawn: 1
   SpawnOnGameStart: 1
-  SpawnOnTimer: 60
+  SpawnOnTimer: 45
   SpawnRadius: 2
   _aiPrefab: {fileID: 9133156469366022811, guid: 1dadb9a3fe6a34bc9b555957f6a57c15,
     type: 3}
@@ -175,9 +175,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc41cdd5b93542d39fba4a6daf555a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnOnPlayerSpawn: 0
+  SpawnOnPlayerSpawn: 1
   SpawnOnGameStart: 1
-  SpawnOnTimer: 60
+  SpawnOnTimer: 35
   SpawnRadius: 2
   _aiPrefab: {fileID: 9133156469366022811, guid: 1dadb9a3fe6a34bc9b555957f6a57c15,
     type: 3}
@@ -224,9 +224,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc41cdd5b93542d39fba4a6daf555a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnOnPlayerSpawn: 0
+  SpawnOnPlayerSpawn: 1
   SpawnOnGameStart: 1
-  SpawnOnTimer: 60
+  SpawnOnTimer: 40
   SpawnRadius: 2
   _aiPrefab: {fileID: 9133156469366022811, guid: 1dadb9a3fe6a34bc9b555957f6a57c15,
     type: 3}
