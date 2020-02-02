@@ -97,6 +97,10 @@ public class AstronautController : MonoBehaviour
       {
         TryWhackAstronaut();
       }
+      else
+      {
+        TryWhackAstronaut();
+      }
     }
   }
 

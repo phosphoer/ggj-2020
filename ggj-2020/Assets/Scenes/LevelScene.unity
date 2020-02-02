@@ -301,10 +301,60 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1282381109683240707, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: _warningEffects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1457375722636486750, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: _warningEffects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4210754047186308281, guid: 25992738164da0e448af32b1e9e1ba7e,
         type: 3}
       propertyPath: m_Name
       value: ShipStructure
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704930682217885480, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704930682217885480, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704930682217885480, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704930682217885480, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704930682217885480, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704930682217885480, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -22.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704930682217885480, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 27.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704930682217885480, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.7325
       objectReference: {fileID: 0}
     - target: {fileID: 5875921831286454218, guid: 25992738164da0e448af32b1e9e1ba7e,
         type: 3}
@@ -360,6 +410,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972153706827192825, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: _warningEffects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972153708056909358, guid: 25992738164da0e448af32b1e9e1ba7e,
+        type: 3}
+      propertyPath: _warningEffects.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25992738164da0e448af32b1e9e1ba7e, type: 3}
