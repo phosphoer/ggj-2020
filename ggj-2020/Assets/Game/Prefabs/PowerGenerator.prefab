@@ -9624,6 +9624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7981031833747056691}
   - component: {fileID: 8456347306497924877}
+  - component: {fileID: 5715794708381113864}
   m_Layer: 0
   m_Name: PowerGenerator
   m_TagString: Untagged
@@ -9661,3 +9662,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.220728, y: 2.641261, z: 9.107625}
   m_Center: {x: 3.0697756, y: -0.00000023841858, z: 0}
+--- !u!114 &5715794708381113864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6384147081590020640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7265869fc978f7d41895aa465560146c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
