@@ -24,8 +24,8 @@ public class GameStateManager : Singleton<GameStateManager>
   public GameObject LoseGameUIPrefab;
   public SoundBank MusicMenuLoop;
   public SoundBank MusicGameLoop;
-  public SoundBank MusicWinLoop;
-  public SoundBank MusicLoseLoop;
+  public SoundBank WinAlert;
+  public SoundBank LoseAlert;
   public CameraControllerBase MenuCamera;
   public CameraControllerGame GameCamera;
 
@@ -142,22 +142,12 @@ public class GameStateManager : Singleton<GameStateManager>
         break;
       case GameStage.WinGame:
         {
-          if (MusicWinLoop != null)
-          {
-            AudioManager.Instance.StopSound(MusicWinLoop);
-          }
-
           Destroy(_winGameUI);
           _winGameUI = null;
         }
         break;
       case GameStage.LoseGame:
         {
-          if (MusicLoseLoop != null)
-          {
-            AudioManager.Instance.StopSound(MusicLoseLoop);
-          }
-
           Destroy(_loseGameUI);
           _loseGameUI = null;
         }
@@ -196,9 +186,9 @@ public class GameStateManager : Singleton<GameStateManager>
         break;
       case GameStage.WinGame:
         {
-          if (MusicWinLoop != null)
+          if (WinAlert != null)
           {
-            AudioManager.Instance.FadeInSound(gameObject, MusicWinLoop, 1.0f);
+            AudioManager.Instance.PlaySound(WinAlert);
           }
 
           _winGameUI = (GameObject)Instantiate(WinGameUIPrefab, Vector3.zero, Quaternion.identity);
@@ -206,9 +196,9 @@ public class GameStateManager : Singleton<GameStateManager>
         break;
       case GameStage.LoseGame:
         {
-          if (MusicLoseLoop != null)
+          if (LoseAlert != null)
           {
-            AudioManager.Instance.FadeInSound(gameObject, MusicLoseLoop, 1.0f);
+            AudioManager.Instance.PlaySound(LoseAlert);
           }
 
           _loseGameUI = (GameObject)Instantiate(LoseGameUIPrefab, Vector3.zero, Quaternion.identity);
