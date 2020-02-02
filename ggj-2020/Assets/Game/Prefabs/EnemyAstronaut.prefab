@@ -67,6 +67,7 @@ MonoBehaviour:
   _visualRoot: {fileID: 7181139985772786116}
   _hideOnDie:
   - {fileID: 1948538885544411669}
+  - {fileID: 6341384540850060437}
   _showOnDie:
   - {fileID: 8819367405851201363}
   - {fileID: 2128096833553760299}
@@ -92,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28970d31c93400943bb71a7b81054fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanUseEscapePod: 0
   _rigidBody: {fileID: 3361536974669979111}
 --- !u!54 &3361536974669979111
 Rigidbody:
@@ -470,6 +472,12 @@ Animator:
 --- !u!4 &6845082771128666199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4105173773023937069, guid: a1681a3d4b8761049ade15b83abf3be9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1871774198526719364}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6341384540850060437 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4469542172434609903, guid: a1681a3d4b8761049ade15b83abf3be9,
     type: 3}
   m_PrefabInstance: {fileID: 1871774198526719364}
   m_PrefabAsset: {fileID: 0}

@@ -27,36 +27,11 @@ public class ExteriorAirlockComponent : MonoBehaviour
   private List<GameObject> _warningEffects = null;
 
   private EAirlockState _currentAirlockState;
-  private List<RoomInhabitantComponent> _wooshTargets = new List<RoomInhabitantComponent>();
 
   private void Start()
   {
     _currentAirlockState = EAirlockState.Closed;
     OnAirlockStateChanged(EAirlockState.Closed);
-  }
-
-  private void FixedUpdate()
-  {
-    // Suck everyone in the room out of the airlock
-    if (_room != null && CurrentAirlockState == EAirlockState.Open)
-    {
-      Vector3 suctionPoint = GetAirlockCenter();
-
-      for (int i = 0; i < _wooshTargets.Count; ++i)
-      {
-        RoomInhabitantComponent inhabitant = _wooshTargets[i];
-        ApplyWoosh(inhabitant, suctionPoint);
-      }
-
-      for (int i = 0; i < _room.RoomInhabitants.Count; ++i)
-      {
-        RoomInhabitantComponent inhabitant = _room.RoomInhabitants[i];
-        if (!_wooshTargets.Contains(inhabitant))
-        {
-          ApplyWoosh(inhabitant, suctionPoint);
-        }
-      }
-    }
   }
 
   private void ApplyWoosh(RoomInhabitantComponent inhabitant, Vector3 suctionPoint)
@@ -79,9 +54,25 @@ public class ExteriorAirlockComponent : MonoBehaviour
     inhabitant.NotifySuckedIntoSpace();
   }
 
-  public Vector3 GetAirlockCenter()
+  private IEnumerator WooshAsync()
   {
-    return transform.position;
+    for (float timer = 0; timer < 1.5f; timer += Time.deltaTime)
+    {
+      yield return null;
+    }
+
+    WaitForFixedUpdate fixedUpdate = new WaitForFixedUpdate();
+    Vector3 suctionPoint = transform.position;
+    while (CurrentAirlockState == EAirlockState.Open)
+    {
+      for (int i = 0; i < _room.RoomInhabitants.Count; ++i)
+      {
+        RoomInhabitantComponent inhabitant = _room.RoomInhabitants[i];
+        ApplyWoosh(inhabitant, suctionPoint);
+      }
+
+      yield return fixedUpdate;
+    }
   }
 
   public Vector3 GetAirlockForward()
@@ -115,11 +106,9 @@ public class ExteriorAirlockComponent : MonoBehaviour
       effect.SetActive(newState == EAirlockState.Open);
     }
 
-    // Gather all woosh targets
-    _wooshTargets.Clear();
     if (newState == EAirlockState.Open)
     {
-      _wooshTargets.AddRange(_room.RoomInhabitants);
+      StartCoroutine(WooshAsync());
     }
   }
 }

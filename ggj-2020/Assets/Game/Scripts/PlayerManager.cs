@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class PlayerManager : Singleton<PlayerManager>
 {
+  public static event System.Action<PlayerAstronautController> PlayerJoined;
+
   public IReadOnlyList<PlayerAstronautController> Players => _players;
 
   [SerializeField]
@@ -61,6 +63,8 @@ public class PlayerManager : Singleton<PlayerManager>
         _playerJoinedStates.Add(false);
       _playerJoinedStates[rewiredPlayer.id] = true;
     }
+
+    PlayerJoined?.Invoke(astroPlayer);
 
     return astroPlayer;
   }

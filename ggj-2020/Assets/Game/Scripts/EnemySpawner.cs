@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
       PlayerAstronautController.PlayerSpawned += OnPlayerSpawned;
 
     if (SpawnOnGameStart)
-      GameStateManager.GameStarted += OnGameStarted;
+      PlayerManager.PlayerJoined += OnPlayerJoined;
 
     if (SpawnOnTimer > 0)
       StartCoroutine(SpawnTimerAsync());
@@ -29,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
       PlayerAstronautController.PlayerSpawned -= OnPlayerSpawned;
 
     if (SpawnOnGameStart)
-      GameStateManager.GameStarted -= OnGameStarted;
+      PlayerManager.PlayerJoined -= OnPlayerJoined;
   }
 
   private IEnumerator SpawnTimerAsync()
@@ -51,9 +51,13 @@ public class EnemySpawner : MonoBehaviour
     SpawnEnemy();
   }
 
-  private void OnGameStarted()
+  private void OnPlayerJoined(PlayerAstronautController player)
   {
-    SpawnEnemy();
+    // Spawn on first player join
+    if (PlayerManager.Instance.Players.Count == 1)
+    {
+      SpawnEnemy();
+    }
   }
 
   private void SpawnEnemy()

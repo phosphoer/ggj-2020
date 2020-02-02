@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InteratibleDeviceComponent : MonoBehaviour
 {
+  public bool InteractionEnabled = true;
+
   private void OnTriggerEnter(Collider other)
   {
     var inhabitant = other.gameObject.GetComponentInParent<RoomInhabitantComponent>();
@@ -22,7 +24,13 @@ public class InteratibleDeviceComponent : MonoBehaviour
     }
   }
 
-  public virtual void OnInteractionPressed(GameObject gameObject)
+  public void TriggerInteraction(GameObject gameObject)
+  {
+    if (InteractionEnabled)
+      OnInteractionPressed(gameObject);
+  }
+
+  protected virtual void OnInteractionPressed(GameObject gameObject)
   {
   }
 

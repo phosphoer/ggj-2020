@@ -42,10 +42,8 @@ public class RepairableDeviceComponent : InteratibleDeviceComponent
     _instances.Remove(this);
   }
 
-  public override void OnInteractionPressed(GameObject gameObject)
+  protected override void OnInteractionPressed(GameObject gameObject)
   {
-    base.OnInteractionPressed(gameObject);
-
     SetRepairState(CurrentRepairState == ERepairState.Fixed ? ERepairState.Broken : ERepairState.Fixed);
   }
 
@@ -72,12 +70,12 @@ public class RepairableDeviceComponent : InteratibleDeviceComponent
 
     switch (newState)
     {
-    case ERepairState.Fixed:
-      GameStateManager.Instance.ShipHealth.OnDeviceBecameFixed();
-      break;
-    case ERepairState.Broken:
-      GameStateManager.Instance.ShipHealth.OnDeviceBecameDamaged();
-      break;
+      case ERepairState.Fixed:
+        GameStateManager.Instance.ShipHealth.OnDeviceBecameFixed();
+        break;
+      case ERepairState.Broken:
+        GameStateManager.Instance.ShipHealth.OnDeviceBecameDamaged();
+        break;
     }
   }
 }

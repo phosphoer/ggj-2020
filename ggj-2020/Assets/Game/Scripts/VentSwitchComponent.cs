@@ -36,6 +36,7 @@ public class VentSwitchComponent : LeverComponent
       if (_resetTimer > ResetDuration)
       {
         SetLeverState(ELeverState.TurnedOff);
+        InteractionEnabled = true;
       }
     }
   }
@@ -47,6 +48,12 @@ public class VentSwitchComponent : LeverComponent
     UpdateLeverAnimation(newState);
     UpdateAirlock(newState);
     UpdateCameraFocus(newState);
+  }
+
+  protected override void OnInteractionPressed(GameObject gameObject)
+  {
+    base.OnInteractionPressed(gameObject);
+    InteractionEnabled = false;
   }
 
   private void UpdateLeverAnimation(ELeverState state)

@@ -6,7 +6,7 @@ public class EnergySinkController : InteratibleDeviceComponent
 {
   public List<Animator> _doorAnimators;
 
-  private int _openedDoors= 0;
+  private int _openedDoors = 0;
   public float openedDoors
   {
     get { return _openedDoors; }
@@ -22,11 +22,9 @@ public class EnergySinkController : InteratibleDeviceComponent
     get { return _openedDoors >= _doorAnimators.Count; }
   }
 
-  public override void OnInteractionPressed(GameObject gameObject)
+  protected override void OnInteractionPressed(GameObject gameObject)
   {
-    base.OnInteractionPressed(gameObject);
-
-    BatteryComponent battery= gameObject.GetComponentInChildren<BatteryComponent>();
+    BatteryComponent battery = gameObject.GetComponentInChildren<BatteryComponent>();
     if (battery != null && battery.HasCharge)
     {
       battery.DrainCharge();
