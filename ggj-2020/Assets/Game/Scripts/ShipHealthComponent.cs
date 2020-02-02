@@ -14,13 +14,13 @@ public class ShipHealthComponent : MonoBehaviour
   public float ShipHealthCritical = 10.0f;
 
   [SerializeField]
-  private SoundBank _shipHealthHalfAlert;
-  
-  [SerializeField]
-  private SoundBank _shipHealthWarningAlert;
+  private SoundBank _shipHealthHalfAlert = null;
 
   [SerializeField]
-  private SoundBank _shipHealthCriticalAlert;
+  private SoundBank _shipHealthWarningAlert = null;
+
+  [SerializeField]
+  private SoundBank _shipHealthCriticalAlert = null;
 
   private float _currentShipHealth;
   public float CurrentShipHealthGame
@@ -99,7 +99,7 @@ public class ShipHealthComponent : MonoBehaviour
       {
         if (_damagedDeviceCount > 0)
         {
-          float previousShipHealth= _currentShipHealth;
+          float previousShipHealth = _currentShipHealth;
           _currentShipHealth = Mathf.Max(_currentShipHealth - ShipDamageRate * _damagedDeviceCount * Time.deltaTime, 0.0f);
 
           PostShipHealthAlerts(previousShipHealth, _currentShipHealth);
@@ -120,7 +120,8 @@ public class ShipHealthComponent : MonoBehaviour
   void PostShipHealthAlerts(float PreviousHealth, float NewHealth)
   {
     if (PreviousHealth > ShipHealthCritical && NewHealth <= ShipHealthCritical)
-    {      if (_shipHealthCriticalAlert != null)
+    {
+      if (_shipHealthCriticalAlert != null)
       {
         AudioManager.Instance.PlaySound(_shipHealthCriticalAlert);
       }
