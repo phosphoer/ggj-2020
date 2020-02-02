@@ -27,7 +27,7 @@ public class PlayerManager : Singleton<PlayerManager>
 
   private void Update()
   {
-    if (!Rewired.ReInput.isReady)
+    if (!Rewired.ReInput.isReady || GameStateManager.Instance.CurrentStage != GameStateManager.GameStage.Game)
     {
       return;
     }

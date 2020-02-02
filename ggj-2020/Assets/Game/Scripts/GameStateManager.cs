@@ -13,6 +13,10 @@ public class GameStateManager : Singleton<GameStateManager>
     LoseGame,
   }
 
+  public static event System.Action GameStarted;
+
+  public GameStage CurrentStage => _gameStage;
+
   public GameStage DefaultStage;
   public GameObject MainMenuUIPrefab;
   public GameObject GameUIPrefab;
@@ -159,6 +163,8 @@ public class GameStateManager : Singleton<GameStateManager>
           _shipHealth.OnStartedGame();
 
           CameraControllerStack.Instance.PushController(GameCamera);
+
+          GameStarted?.Invoke();
         }
         break;
       case GameStage.WinGame:
