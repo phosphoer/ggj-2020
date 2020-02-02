@@ -15,6 +15,8 @@ public class GameStateManager : Singleton<GameStateManager>
 
   public static event System.Action GameStarted;
 
+  public GameStage CurrentStage => _gameStage;
+
   public GameStage DefaultStage;
   public GameObject MainMenuUIPrefab;
   public GameObject GameUIPrefab;
