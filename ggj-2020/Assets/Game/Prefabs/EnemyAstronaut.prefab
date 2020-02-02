@@ -85,6 +85,7 @@ MonoBehaviour:
   _maxSpeed: 7
   _attackCooldown: 1
   _canStun: 0
+  _hitSound: {fileID: 11400000, guid: 032095a8edf225649b605e21d99461f5, type: 2}
   _deathSound: {fileID: 11400000, guid: 4c461add36e647f45bb22a102a0d109e, type: 2}
 --- !u!114 &8990602445605495633
 MonoBehaviour:
