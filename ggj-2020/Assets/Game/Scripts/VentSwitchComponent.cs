@@ -16,6 +16,9 @@ public class VentSwitchComponent : LeverComponent
   [SerializeField]
   private CameraFocusPoint _cameraFocusPoint = null;
 
+  [SerializeField]
+  private SoundBank _ventAlert;
+
   public float ResetDuration = 5.0f;
 
   private float _resetTimer;
@@ -75,6 +78,10 @@ public class VentSwitchComponent : LeverComponent
       else
       {
         _exteriorAirlock.SetAirlockState(ExteriorAirlockComponent.EAirlockState.Open);
+        if (_ventAlert != null)
+        {
+          AudioManager.Instance.PlaySound(_ventAlert);
+        }
       }
     }
 
