@@ -407,6 +407,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1814746052, guid: 25992738164da0e448af32b1e9e1ba7e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814746052, guid: 25992738164da0e448af32b1e9e1ba7e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814746052, guid: 25992738164da0e448af32b1e9e1ba7e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.85709
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814746052, guid: 25992738164da0e448af32b1e9e1ba7e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814746052, guid: 25992738164da0e448af32b1e9e1ba7e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.228908
+      objectReference: {fileID: 0}
     - target: {fileID: 398394774482158440, guid: 25992738164da0e448af32b1e9e1ba7e,
         type: 3}
       propertyPath: _doorAnimators.Array.size
