@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnergySinkController : InteratibleDeviceComponent
 {
+  [SerializeField]
+  private SoundBank _doorAlert;
+
   public List<Animator> _doorAnimators;
 
   private int _openedDoors = 0;
@@ -34,6 +37,11 @@ public class EnergySinkController : InteratibleDeviceComponent
         if (_doorAnimators[_openedDoors] != null)
         {
           _doorAnimators[_openedDoors].SetBool("IsOpen", true);
+
+          if (_doorAlert != null)
+          {
+            AudioManager.Instance.PlaySound(_doorAlert);
+          }
         }
 
         _openedDoors++;
