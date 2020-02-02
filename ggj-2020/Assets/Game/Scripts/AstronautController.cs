@@ -263,7 +263,7 @@ public class AstronautController : MonoBehaviour
       if (astro != this)
       {
         Vector3 toAstro = (astro.transform.position - transform.position).WithY(0);
-        if (toAstro.magnitude < 5.0f)
+        if (toAstro.magnitude < 2.0f)
         {
           astro.GetWhacked(transform.position);
           return;

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed39b8ae8c8eae4dad26d2745cada6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultStage: 2
+  EditorDefaultStage: 2
   MainMenuUIPrefab: {fileID: 4713633419316229850, guid: 42a6b902bdf783648841c42c9971bda3,
     type: 3}
   GameUIPrefab: {fileID: 4713633419316229850, guid: a106bed9dbfb6e04198149ea43fa0af8,
@@ -56,10 +56,10 @@ MonoBehaviour:
     type: 3}
   LoseGameUIPrefab: {fileID: 4713633419316229850, guid: 01dac430f047a284ea47d81e9fd8e79e,
     type: 3}
-  MusicMenuLoop: {fileID: 0}
-  MusicGameLoop: {fileID: 0}
-  MusicWinLoop: {fileID: 0}
-  MusicLoseLoop: {fileID: 0}
+  MusicMenuLoop: {fileID: 11400000, guid: e95460154ddb89149897163610b89e70, type: 2}
+  MusicGameLoop: {fileID: 11400000, guid: 8f5ebe05e44cbe14d857a29227e84823, type: 2}
+  MusicWinLoop: {fileID: 11400000, guid: e95460154ddb89149897163610b89e70, type: 2}
+  MusicLoseLoop: {fileID: 11400000, guid: e95460154ddb89149897163610b89e70, type: 2}
   MenuCamera: {fileID: 1449285580147211698}
   GameCamera: {fileID: 1449285579953228451}
   _shipHealth: {fileID: 4586679533618741792}
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TotalShipHealth: 100
   VictoryTime: 300
-  ShipDamageRate: 0.1
+  ShipDamageRate: 0.6
   ShipRepairRate: 1
 --- !u!114 &4235824220247678257
 MonoBehaviour:
