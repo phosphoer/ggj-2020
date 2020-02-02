@@ -33,6 +33,7 @@ public class EnergyDispensorComponent : InteratibleDeviceComponent
     if (battery != null && !battery.HasCharge)
     {
       battery.AddCharge(ChargePerInteraction);
+      StartCooldownTimer();
     }
   }
 

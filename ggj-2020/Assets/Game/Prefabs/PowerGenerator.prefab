@@ -167,6 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7265869fc978f7d41895aa465560146c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChargePerInteraction: 1
+  BaseCooldownTimer: 3
+  BrokenDeviceDelay: 0.5
+  _emitterFX: {fileID: 5012376153095193451}
 --- !u!1001 &5817227280002080635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -236,6 +240,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3abc7d955a762234783588934222855b, type: 3}
+--- !u!1 &5012376153095193451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1528260612560034832, guid: 3abc7d955a762234783588934222855b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5817227280002080635}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5012376153095193450 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1528260612560034833, guid: 3abc7d955a762234783588934222855b,

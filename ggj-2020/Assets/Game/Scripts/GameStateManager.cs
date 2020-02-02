@@ -77,7 +77,7 @@ public class GameStateManager : Singleton<GameStateManager>
         {
           nextGameStage = GameStage.LoseGame;
         }
-        else if (_escapePod != null && _escapePod.IsEscapePodEntered)
+        else if (_escapePod != null && _escapePod.HasEscapeDurationElasped)
         {
           nextGameStage = GameStage.WinGame;
         }

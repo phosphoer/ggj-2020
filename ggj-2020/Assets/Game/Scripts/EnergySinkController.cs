@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnergySinkController : InteratibleDeviceComponent
 {
-  private List<Animator> _doorAnimators;
+  public List<Animator> _doorAnimators;
 
   private int _openedDoors= 0;
   public float openedDoors
