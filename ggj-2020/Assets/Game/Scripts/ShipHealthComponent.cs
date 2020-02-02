@@ -60,24 +60,14 @@ public class ShipHealthComponent : MonoBehaviour
     get { return _shipAliveTimer / VictoryTime; }
   }
 
-  private bool _isGameRunning;
-
-  // Start is called before the first frame update
-  void Start()
-  {
-    _isGameRunning = false;
-  }
-
   public void OnStartedGame()
   {
-    _isGameRunning = true;
     _currentShipHealth = TotalShipHealth;
     _damagedDeviceCount = 0;
   }
 
   public void OnCompletedGame()
   {
-    _isGameRunning = false;
     _currentShipHealth = TotalShipHealth;
   }
 
@@ -93,27 +83,24 @@ public class ShipHealthComponent : MonoBehaviour
 
   void Update()
   {
-    if (_isGameRunning)
+    if (IsShipAlive)
     {
-      if (IsShipAlive)
+      if (_damagedDeviceCount > 0)
       {
-        if (_damagedDeviceCount > 0)
-        {
-          float previousShipHealth = _currentShipHealth;
-          _currentShipHealth = Mathf.Max(_currentShipHealth - ShipDamageRate * _damagedDeviceCount * Time.deltaTime, 0.0f);
+        float previousShipHealth = _currentShipHealth;
+        _currentShipHealth = Mathf.Max(_currentShipHealth - ShipDamageRate * _damagedDeviceCount * Time.deltaTime, 0.0f);
 
-          PostShipHealthAlerts(previousShipHealth, _currentShipHealth);
-        }
-        else
-        {
-          _currentShipHealth = Mathf.Min(_currentShipHealth + ShipRepairRate * Time.deltaTime, TotalShipHealth);
-        }
+        PostShipHealthAlerts(previousShipHealth, _currentShipHealth);
       }
-
-      if (IsShipAlive)
+      else
       {
-        _shipAliveTimer += Time.deltaTime;
+        _currentShipHealth = Mathf.Min(_currentShipHealth + ShipRepairRate * Time.deltaTime, TotalShipHealth);
       }
+    }
+
+    if (IsShipAlive)
+    {
+      _shipAliveTimer += Time.deltaTime;
     }
   }
 
