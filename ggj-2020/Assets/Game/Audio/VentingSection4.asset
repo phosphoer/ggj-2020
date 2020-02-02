@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: VentingSection4
   m_EditorClassIdentifier: 
   AudioClips:
-  - {fileID: 8300000, guid: 2eb1c897a374c1146b13fd933edeeb14, type: 3}
+  - {fileID: 8300000, guid: c33ed7e1d19a25d4094685502609e69a, type: 3}
   IsSpatial: 0
   MaxDistance: 100
   MinDistance: 10
