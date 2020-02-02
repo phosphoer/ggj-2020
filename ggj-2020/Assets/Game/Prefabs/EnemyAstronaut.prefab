@@ -81,6 +81,7 @@ MonoBehaviour:
   _acceleration: 500
   _maxSpeed: 7
   _attackCooldown: 1
+  _canStun: 0
 --- !u!114 &8990602445605495633
 MonoBehaviour:
   m_ObjectHideFlags: 0

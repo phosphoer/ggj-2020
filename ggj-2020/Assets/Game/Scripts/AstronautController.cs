@@ -78,7 +78,7 @@ public class AstronautController : MonoBehaviour
   private float _attackCooldown = 1;
 
   [SerializeField]
-  private bool _canBeStunned = true;
+  private bool _canStun = true;
 
   private Vector3 _moveVector;
   private float _zRot;
@@ -121,7 +121,10 @@ public class AstronautController : MonoBehaviour
         }
       }
 
-      TryWhackAstronaut();
+      if (_canStun)
+      {
+        TryWhackAstronaut();
+      }
     }
   }
 
@@ -280,7 +283,7 @@ public class AstronautController : MonoBehaviour
     for (int i = 0; i < AstronautController.Instances.Count; ++i)
     {
       AstronautController astro = AstronautController.Instances[i];
-      if (astro != this && astro._canBeStunned)
+      if (astro != this)
       {
         Vector3 toAstro = (astro.transform.position - transform.position).WithY(0);
         if (toAstro.magnitude < 2.5f)
