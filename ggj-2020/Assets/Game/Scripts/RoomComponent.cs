@@ -4,35 +4,27 @@ using UnityEngine;
 
 public class RoomComponent : MonoBehaviour
 {
-    private List<RoomInhabitantComponent> _roomInhabitants = new List<RoomInhabitantComponent>();
-    public List<RoomInhabitantComponent> RoomInhabitants
-    {
-      get { return _roomInhabitants; }
-    }
+  public IReadOnlyList<RoomInhabitantComponent> RoomInhabitants => _roomInhabitants;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  private List<RoomInhabitantComponent> _roomInhabitants = new List<RoomInhabitantComponent>();
 
-    private void OnTriggerEnter(Collider other)
+  private void OnTriggerEnter(Collider other)
+  {
+    RoomInhabitantComponent inhabitant = other.GetComponentInParent<RoomInhabitantComponent>();
+    if (inhabitant != null)
     {
-      RoomInhabitantComponent inhabitant= other.gameObject.GetComponentInParent<RoomInhabitantComponent>();
-      if (inhabitant != null)
-      {
-        _roomInhabitants.Add(inhabitant);
-        inhabitant.OnRoomEntered(this);
-      }
+      _roomInhabitants.Add(inhabitant);
+      inhabitant.OnRoomEntered(this);
     }
+  }
 
-    private void OnTriggerExit(Collider other)
+  private void OnTriggerExit(Collider other)
+  {
+    RoomInhabitantComponent inhabitant = other.GetComponentInParent<RoomInhabitantComponent>();
+    if (inhabitant != null)
     {
-      RoomInhabitantComponent inhabitant= other.gameObject.GetComponentInParent<RoomInhabitantComponent>();
-      if (inhabitant != null)
-      {
-        inhabitant.OnRoomExited(this);
-        _roomInhabitants.Remove(inhabitant);
-      }
+      inhabitant.OnRoomExited(this);
+      _roomInhabitants.Remove(inhabitant);
     }
+  }
 }

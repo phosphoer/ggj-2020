@@ -84,6 +84,7 @@ public class AstronautController : MonoBehaviour
   private bool _isDead;
   private bool _isColliding;
   private float _stunTimer;
+  private float _deathTimer;
   private GameObject _headObj;
 
   private static List<AstronautController> _instances = new List<AstronautController>();
@@ -196,13 +197,14 @@ public class AstronautController : MonoBehaviour
           obj.SetActive(true);
       }
 
-      if (!_isDead && _roomInhabitant.Room == null)
+      _deathTimer += Time.deltaTime;
+      if (!_isDead && (_roomInhabitant.Room == null || _deathTimer > 5))
       {
         _isDead = true;
         Died?.Invoke();
       }
 
-      if (_isDead && !Mathfx.IsPointInViewport(transform.position, Camera.main))
+      if (_isDead && (!Mathfx.IsPointInViewport(transform.position, Camera.main) || _deathTimer > 10))
       {
         Destroy(gameObject);
         Despawned?.Invoke();
