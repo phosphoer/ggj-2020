@@ -147,7 +147,7 @@ public class AstronautController : MonoBehaviour
   private void Update()
   {
     // Orient to face movement direction
-    if (_rb.velocity.sqrMagnitude > 0.01f)
+    if (_rb.velocity.sqrMagnitude > 0.01f && !IsStunned)
     {
       Quaternion desiredRot = Quaternion.LookRotation(_rb.velocity, Vector3.up);
       transform.rotation = Mathfx.Damp(transform.rotation, desiredRot, 0.25f, Time.deltaTime * 5);
@@ -264,8 +264,8 @@ public class AstronautController : MonoBehaviour
       AstronautController astro = AstronautController.Instances[i];
       if (astro != this)
       {
-        Vector3 toAstro = astro.transform.position - transform.position;
-        if (toAstro.magnitude < 3.0f)
+        Vector3 toAstro = (astro.transform.position - transform.position).WithY(0);
+        if (toAstro.magnitude < 5.0f)
         {
           astro.GetWhacked(transform.position);
           return;
