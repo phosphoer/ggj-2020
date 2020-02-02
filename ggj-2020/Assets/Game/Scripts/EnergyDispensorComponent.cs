@@ -16,4 +16,9 @@ public class EnergyDispensorComponent : InteratibleDeviceComponent
       battery.AddCharge(ChargePerInteraction);
     }
   }
+
+  public override bool DrainsBatteryOnInteraction()
+  {
+    return false;
+  }
 }
