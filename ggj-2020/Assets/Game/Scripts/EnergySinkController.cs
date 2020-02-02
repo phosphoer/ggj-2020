@@ -8,9 +8,14 @@ public class EnergySinkController : InteratibleDeviceComponent
   private SoundBank _doorAlert = null;
 
   public List<Animator> _doorAnimators;
+  public List<GameObject> powerGears;
+  
+  public float gearTurnTime = 2;
+  private float _gearTurnTimer = 0;
 
   private int _openedDoors = 0;
   public float openedDoors
+  
   {
     get { return _openedDoors; }
   }
@@ -23,6 +28,21 @@ public class EnergySinkController : InteratibleDeviceComponent
   public bool IsFull
   {
     get { return _openedDoors >= _doorAnimators.Count; }
+  }
+	
+  private void Update ()
+  {
+	  if (_gearTurnTimer > 0)
+	  {
+		_gearTurnTimer -= Time.deltaTime;
+		if (_gearTurnTimer <= 0)
+		{
+			foreach (GameObject gear in powerGears)
+			{
+				gear.SetActive(false);
+			}
+		}
+	  }
   }
 
   protected override void OnInteractionPressed(GameObject gameObject)
@@ -43,7 +63,12 @@ public class EnergySinkController : InteratibleDeviceComponent
             AudioManager.Instance.PlaySound(_doorAlert);
           }
         }
-
+		foreach (GameObject gear in powerGears)
+		{
+			gear.SetActive(true);
+		}
+		_gearTurnTimer = gearTurnTime;
+		
         _openedDoors++;
       }
     }
