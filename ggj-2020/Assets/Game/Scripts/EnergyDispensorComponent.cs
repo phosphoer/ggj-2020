@@ -4,7 +4,26 @@ using UnityEngine;
 
 public class EnergyDispensorComponent : InteratibleDeviceComponent
 {
-  float ChargePerInteraction = 1;
+  public float ChargePerInteraction = 1.0f;
+  public float BaseCooldownTimer= 3.0f;
+  public float BrokenDeviceDelay= 0.5f;
+
+  private float _cooldownTimer= 0;
+  
+  [SerializeField]
+  private GameObject _emitterFX = null;
+
+  private void Update()
+  {
+    if (_cooldownTimer > 0)
+    {
+      _cooldownTimer= Mathf.Max(_cooldownTimer - Time.deltaTime, 0);
+      if (_cooldownTimer <= 0)
+      {
+        SetEmitterFXActive(true);
+      }
+    }
+  }
 
   public override void OnInteractionPressed(GameObject gameObject)
   {
@@ -14,6 +33,20 @@ public class EnergyDispensorComponent : InteratibleDeviceComponent
     if (battery != null && !battery.HasCharge)
     {
       battery.AddCharge(ChargePerInteraction);
+    }
+  }
+
+  private void StartCooldownTimer()
+  {
+    _cooldownTimer= BaseCooldownTimer + BrokenDeviceDelay * GameStateManager.Instance.ShipHealth.DamagedDeviceCount;
+    SetEmitterFXActive(false);
+  }
+
+  private void SetEmitterFXActive(bool isActive)
+  {
+    if (_emitterFX != null)
+    {
+      _emitterFX.SetActive(isActive);
     }
   }
 
