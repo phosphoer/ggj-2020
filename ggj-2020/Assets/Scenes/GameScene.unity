@@ -467,7 +467,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _ventAlert
       value: 
-      objectReference: {fileID: 11400000, guid: dffa3e2d0d7e08942adcc80783660370,
+      objectReference: {fileID: 11400000, guid: b507e1ad081afbc46a495a08e7600e0a,
         type: 2}
     - target: {fileID: 2264925784520501769, guid: 25992738164da0e448af32b1e9e1ba7e,
         type: 3}
@@ -494,7 +494,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _ventAlert
       value: 
-      objectReference: {fileID: 11400000, guid: b507e1ad081afbc46a495a08e7600e0a,
+      objectReference: {fileID: 11400000, guid: dffa3e2d0d7e08942adcc80783660370,
         type: 2}
     - target: {fileID: 5875921831286454218, guid: 25992738164da0e448af32b1e9e1ba7e,
         type: 3}
