@@ -51,26 +51,42 @@ public class EnergySinkController : InteratibleDeviceComponent
     if (battery != null && battery.HasCharge)
     {
       battery.DrainCharge();
+      OpenNextDoor();
+    }
+  }
 
-      if (_openedDoors < _doorAnimators.Count)
+  private void OpenNextDoor()
+  {
+    if (_openedDoors < _doorAnimators.Count)
+    {
+      if (_doorAnimators[_openedDoors] != null)
       {
-        if (_doorAnimators[_openedDoors] != null)
-        {
-          _doorAnimators[_openedDoors].SetBool("IsOpen", true);
+        _doorAnimators[_openedDoors].SetBool("IsOpen", true);
 
-          if (_doorAlert != null)
-          {
-            AudioManager.Instance.PlaySound(_doorAlert);
-          }
+        if (_doorAlert != null)
+        {
+          AudioManager.Instance.PlaySound(_doorAlert);
         }
-		foreach (GameObject gear in powerGears)
-		{
-			gear.SetActive(true);
-		}
-		_gearTurnTimer = gearTurnTime;
+
+        foreach (GameObject gear in powerGears)
+        {
+          gear.SetActive(true);
+        }
+
+        _gearTurnTimer = gearTurnTime;
 		
         _openedDoors++;
       }
+    }
+  }
+
+
+  [ContextMenu("Debug Fill Power")]
+  private void DebugOpenDoor()
+  {
+    while (_openedDoors < _doorAnimators.Count)
+    {
+      OpenNextDoor();
     }
   }
 }
