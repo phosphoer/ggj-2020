@@ -6,6 +6,9 @@ public class EnergySinkController : InteratibleDeviceComponent
 {
   public float MaxEnergy= 10;
 
+  [SerializeField]
+  private Animator _animator = null;
+
   private float _depositedEnergy= 0;
   public float DepositedEnergy
   {
@@ -30,6 +33,11 @@ public class EnergySinkController : InteratibleDeviceComponent
     if (battery != null && battery.HasCharge)
     {
       _depositedEnergy= Mathf.Min(_depositedEnergy + battery.DrainCharge(), MaxEnergy);
+
+      if (IsFull && _animator != null)
+      {
+        _animator.SetBool("IsFull", true);
+      }
     }
   }
 }

@@ -42,6 +42,13 @@ public class GameStateManager : Singleton<GameStateManager>
     get { return _energySink; }
   }
 
+  [SerializeField]
+  private EscapePodComponent _escapePod = null;
+  public EscapePodComponent EscapePod
+  {
+    get { return _escapePod; }
+  }
+
   private void Awake()
   {
     GameStateManager.Instance = this;
@@ -68,7 +75,7 @@ public class GameStateManager : Singleton<GameStateManager>
         {
           nextGameStage = GameStage.LoseGame;
         }
-        else if (_energySink.IsFull)
+        else if (_escapePod != null && _escapePod.IsEscapePodEntered)
         {
           nextGameStage = GameStage.WinGame;
         }
