@@ -4,25 +4,22 @@ using UnityEngine;
 
 public class EnergySinkController : InteratibleDeviceComponent
 {
-  public float MaxEnergy = 10;
+  public List<Animator> _doorAnimators;
 
-  [SerializeField]
-  private Animator _animator = null;
-
-  private float _depositedEnergy = 0;
-  public float DepositedEnergy
+  private int _openedDoors = 0;
+  public float openedDoors
   {
-    get { return _depositedEnergy; }
+    get { return _openedDoors; }
   }
 
-  public float DepositFractionOfMax
+  public float OpenedFractionOfMax
   {
-    get { return DepositedEnergy / MaxEnergy; }
+    get { return _doorAnimators.Count > 0 ? (float)_openedDoors / (float)_doorAnimators.Count : 0; }
   }
 
   public bool IsFull
   {
-    get { return DepositedEnergy >= MaxEnergy; }
+    get { return _openedDoors >= _doorAnimators.Count; }
   }
 
   protected override void OnInteractionPressed(GameObject gameObject)
@@ -30,11 +27,16 @@ public class EnergySinkController : InteratibleDeviceComponent
     BatteryComponent battery = gameObject.GetComponentInChildren<BatteryComponent>();
     if (battery != null && battery.HasCharge)
     {
-      _depositedEnergy = Mathf.Min(_depositedEnergy + battery.DrainCharge(), MaxEnergy);
+      battery.DrainCharge();
 
-      if (IsFull && _animator != null)
+      if (_openedDoors < _doorAnimators.Count)
       {
-        _animator.SetBool("IsFull", true);
+        if (_doorAnimators[_openedDoors] != null)
+        {
+          _doorAnimators[_openedDoors].SetBool("IsOpen", true);
+        }
+
+        _openedDoors++;
       }
     }
   }

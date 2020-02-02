@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1449285578312933311}
   - component: {fileID: 1449285578312933310}
   - component: {fileID: 4586679533618741792}
+  - component: {fileID: 4235824220247678257}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -56,6 +57,9 @@ MonoBehaviour:
   LoseGameUIPrefab: {fileID: 4713633419316229850, guid: 01dac430f047a284ea47d81e9fd8e79e,
     type: 3}
   MusicMenuLoop: {fileID: 0}
+  MusicGameLoop: {fileID: 0}
+  MusicWinLoop: {fileID: 0}
+  MusicLoseLoop: {fileID: 0}
   MenuCamera: {fileID: 1449285580147211698}
   GameCamera: {fileID: 1449285579953228451}
   _shipHealth: {fileID: 4586679533618741792}
@@ -77,6 +81,18 @@ MonoBehaviour:
   VictoryTime: 300
   ShipDamageRate: 0.1
   ShipRepairRate: 1
+--- !u!114 &4235824220247678257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449285578312933305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797ba9394c07740f5a8bf81ca4163a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1449285579953228450
 GameObject:
   m_ObjectHideFlags: 0

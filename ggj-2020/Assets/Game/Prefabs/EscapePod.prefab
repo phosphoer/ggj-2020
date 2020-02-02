@@ -4839,6 +4839,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f92d13211a547429999117319c795b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _escapePodAnimation: {fileID: 0}
+  EscapeDuration: 3
 --- !u!1 &7317249099471957403
 GameObject:
   m_ObjectHideFlags: 0
@@ -5128,6 +5130,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2c7766361472c4ba594e3ed9d905f2c2, type: 2}
+    - target: {fileID: -5716681864270162303, guid: a1e6be480be509f488b45246aac972b2,
+        type: 3}
+      propertyPath: m_PlayAutomatically
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4958783093887042548, guid: a1e6be480be509f488b45246aac972b2,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
