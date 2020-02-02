@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public enum AstronautEmote
 {
@@ -201,15 +202,15 @@ public class AstronautController : MonoBehaviour
       _deathTimer += Time.deltaTime;
       if (!_isDead && (_roomInhabitant.Room == null || _deathTimer > 5))
       {
+        _rb.AddForce(Vector3.up * 5, ForceMode.VelocityChange);
+        _rb.AddTorque(Random.onUnitSphere * 1, ForceMode.VelocityChange);
         _isDead = true;
         Died?.Invoke();
       }
 
       if (_isDead && (!Mathfx.IsPointInViewport(transform.position, Camera.main) || _deathTimer > 10))
       {
-        Destroy(gameObject);
-        Despawned?.Invoke();
-        Destroy(gameObject);
+        StartCoroutine(DieAsync());
         return;
       }
     }
@@ -258,6 +259,22 @@ public class AstronautController : MonoBehaviour
     }
   }
 
+  private IEnumerator DieAsync()
+  {
+    Vector3 startScale = transform.localScale;
+    const float duration = 1;
+    for (float time = 0; time < 1; time += Time.deltaTime)
+    {
+      float t = time / duration;
+      transform.localScale = Vector3.Lerp(startScale, Vector3.zero, t);
+      yield return null;
+    }
+
+    Destroy(gameObject);
+    Despawned?.Invoke();
+    Destroy(gameObject);
+  }
+
   private void TryWhackAstronaut()
   {
     for (int i = 0; i < AstronautController.Instances.Count; ++i)
@@ -269,6 +286,14 @@ public class AstronautController : MonoBehaviour
         if (toAstro.magnitude < 2.5f)
         {
           astro.GetWhacked(transform.position);
+
+          BatteryComponent battery = GetComponent<BatteryComponent>();
+          if (battery != null && battery.HasCharge)
+          {
+            astro.RoomInhabitant.NotifySuckedIntoSpace();
+            battery.DrainCharge();
+          }
+
           return;
         }
       }
@@ -278,7 +303,7 @@ public class AstronautController : MonoBehaviour
   private void GetWhacked(Vector3 fromPos)
   {
     Debug.Log($"{name} got whacked");
-    _rb.AddForce((transform.position - fromPos).normalized * 30, ForceMode.VelocityChange);
+    _rb.AddForce((transform.position - fromPos).normalized * 10, ForceMode.VelocityChange);
     PlayEmote(AstronautEmote.HitReact);
     _stunTimer = 5;
   }
