@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Astrodude_BowlHead
-  m_Shader: {fileID: 4800000, guid: 824b3edc68b0b284b94dc942d8585728, type: 3}
+  m_Shader: {fileID: 4800000, guid: aabc678ee11e740e1842b1b025a2a78d, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -80,7 +80,7 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZTest: 4
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.818, g: 0.818, b: 0.818, a: 1}
+    - _Color: {r: 0.6007476, g: 0.9433962, b: 0.9327877, a: 0.5647059}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

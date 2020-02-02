@@ -88,7 +88,7 @@ public class VentSwitchComponent : LeverComponent
   {
     if (_cameraFocusPoint != null)
     {
-      _cameraFocusPoint.enabled = state == ELeverState.TurnedOn;
+      // _cameraFocusPoint.enabled = state == ELeverState.TurnedOn;
     }
   }
 }

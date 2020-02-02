@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1331622055160686346
+--- !u!1 &1799007278906298657
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2603510411449554201}
-  - component: {fileID: 6447606913956081455}
-  - component: {fileID: 740289327044465622}
-  - component: {fileID: -7748572854502082429}
-  - component: {fileID: 5370586528658352070}
+  - component: {fileID: 3363065556845175602}
+  - component: {fileID: 6050310058985953540}
+  - component: {fileID: 57295113275008509}
+  - component: {fileID: 4622383785228308040}
+  - component: {fileID: 7815103674583279827}
   m_Layer: 0
-  m_Name: Fish_04
+  m_Name: EscapePodDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2603510411449554201
+--- !u!4 &3363065556845175602
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331622055160686346}
+  m_GameObject: {fileID: 1799007278906298657}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 37.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6447606913956081455
+--- !u!33 &6050310058985953540
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331622055160686346}
-  m_Mesh: {fileID: -6302389104256691588, guid: 885dd81573fdf9e40899ffe63f2c261b, type: 3}
---- !u!23 &740289327044465622
+  m_GameObject: {fileID: 1799007278906298657}
+  m_Mesh: {fileID: 6566325418836430709, guid: 80d1c02ecd4f544439dbf953a21e4f9a, type: 3}
+--- !u!23 &57295113275008509
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331622055160686346}
+  m_GameObject: {fileID: 1799007278906298657}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 80cd46b31fca85943b406a99c1efe4ad, type: 2}
+  - {fileID: 2100000, guid: bba3bc565fb7526439c81487b1ff3f6c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,38 +80,35 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &-7748572854502082429
-MonoBehaviour:
+--- !u!95 &4622383785228308040
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331622055160686346}
+  m_GameObject: {fileID: 1799007278906298657}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 420870ae04d4a3d4d975d6cda059df9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RotationMask: {x: 1, y: 0.5, z: 0.5}
-  RotationSpeed: 0.5
---- !u!114 &5370586528658352070
-MonoBehaviour:
+  m_Avatar: {fileID: 9000000, guid: 80d1c02ecd4f544439dbf953a21e4f9a, type: 3}
+  m_Controller: {fileID: 9100000, guid: 2f6aef788d4284c45ab17e38697ed182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &7815103674583279827
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331622055160686346}
+  m_GameObject: {fileID: 1799007278906298657}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ebe34bce74ee420aafff4a8d42968d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _colors:
-  - {r: 0.43329477, g: 0.8584906, b: 0.46351668, a: 1}
-  - {r: 0.8962264, g: 0.84674716, b: 0.26633143, a: 1}
-  - {r: 0.9245283, g: 0.416629, b: 0.31835172, a: 1}
-  - {r: 0.9056604, g: 0.33748665, b: 0.62717354, a: 1}
-  - {r: 0.61189544, g: 0.317647, b: 0.9254902, a: 1}
-  - {r: 0.317647, g: 0.5630877, b: 0.9254902, a: 1}
-  - {r: 0.317647, g: 0.8616113, b: 0.9254902, a: 1}
-  _renderer: {fileID: 740289327044465622}
+  serializedVersion: 2
+  m_Size: {x: 0.25846112, y: 2.4369092, z: 5}
+  m_Center: {x: -0.000000007450581, y: 1.2184546, z: -0.00000059604645}

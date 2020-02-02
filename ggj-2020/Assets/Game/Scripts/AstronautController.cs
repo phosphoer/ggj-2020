@@ -62,6 +62,12 @@ public class AstronautController : MonoBehaviour
   private GameObject _spawnFxPrefab = null;
 
   [SerializeField]
+  private GameObject[] _headPrefabs = null;
+
+  [SerializeField]
+  private Transform _headSpawnRoot = null;
+
+  [SerializeField]
   private float _acceleration = 10;
 
   [SerializeField]
@@ -78,6 +84,7 @@ public class AstronautController : MonoBehaviour
   private bool _isDead;
   private bool _isColliding;
   private float _stunTimer;
+  private GameObject _headObj;
 
   private static List<AstronautController> _instances = new List<AstronautController>();
 
@@ -119,6 +126,11 @@ public class AstronautController : MonoBehaviour
   {
     GameObject spawnfx = Instantiate(_spawnFxPrefab, transform.position, transform.rotation);
     Destroy(spawnfx, 10.0f);
+
+    GameObject headPrefab = _headPrefabs[Random.Range(0, _headPrefabs.Length)];
+    _headObj = Instantiate(headPrefab, _headSpawnRoot);
+    _headObj.transform.localPosition = Vector3.zero;
+    _headObj.transform.localRotation = Quaternion.identity;
   }
 
   private void OnEnable()
@@ -249,7 +261,7 @@ public class AstronautController : MonoBehaviour
       if (astro != this)
       {
         Vector3 toAstro = astro.transform.position - transform.position;
-        if (toAstro.magnitude < 3.0f && Vector3.Angle(transform.forward, toAstro) < 30)
+        if (toAstro.magnitude < 3.0f)
         {
           astro.GetWhacked(transform.position);
           return;
@@ -261,7 +273,7 @@ public class AstronautController : MonoBehaviour
   private void GetWhacked(Vector3 fromPos)
   {
     Debug.Log($"{name} got whacked");
-    _rb.AddForce((transform.position - fromPos).normalized * 3, ForceMode.VelocityChange);
+    _rb.AddForce((transform.position - fromPos).normalized * 30, ForceMode.VelocityChange);
     PlayEmote(AstronautEmote.HitReact);
     _stunTimer = 5;
   }
