@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1667777729446257836}
   - component: {fileID: 7673612309322571418}
   - component: {fileID: 4126050245592703587}
+  - component: {fileID: 8565732949824982572}
   m_Layer: 0
   m_Name: Fish_01
   m_TagString: Untagged
@@ -80,6 +81,27 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &8565732949824982572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2413501530669143743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebe34bce74ee420aafff4a8d42968d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colors:
+  - {r: 0.43329477, g: 0.8584906, b: 0.46351668, a: 1}
+  - {r: 0.8962264, g: 0.84674716, b: 0.26633143, a: 1}
+  - {r: 0.9245283, g: 0.416629, b: 0.31835172, a: 1}
+  - {r: 0.9056604, g: 0.33748665, b: 0.62717354, a: 1}
+  - {r: 0.61189544, g: 0.317647, b: 0.9254902, a: 1}
+  - {r: 0.317647, g: 0.5630877, b: 0.9254902, a: 1}
+  - {r: 0.317647, g: 0.8616113, b: 0.9254902, a: 1}
+  _renderer: {fileID: 4126050245592703587}
 --- !u!1 &5394396654329289463
 GameObject:
   m_ObjectHideFlags: 0

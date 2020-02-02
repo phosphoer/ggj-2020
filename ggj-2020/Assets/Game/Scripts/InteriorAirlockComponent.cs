@@ -49,7 +49,7 @@ public class InteriorAirlockComponent : MonoBehaviour
 
     if (_cameraFocusPoint != null)
     {
-      _cameraFocusPoint.enabled= newState == EAirlockState.Closed;
+      // _cameraFocusPoint.enabled= newState == EAirlockState.Closed;
     }
   }
 }
