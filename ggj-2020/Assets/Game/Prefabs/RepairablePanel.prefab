@@ -3019,6 +3019,8 @@ MonoBehaviour:
   InteractionEnabled: 1
   _repairedGameObject: {fileID: 7966386312752267938}
   _brokenGameObject: {fileID: 3750428385527848495}
+  _brokenSound: {fileID: 11400000, guid: 7c9ccdb5a1e9cd34cbf0774a9581d1ff, type: 2}
+  _fixedSound: {fileID: 11400000, guid: 217d7b2c3e4602941ad29f7bebcaa2df, type: 2}
 --- !u!1 &5286200989539466973
 GameObject:
   m_ObjectHideFlags: 0

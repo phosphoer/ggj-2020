@@ -275,6 +275,7 @@ MonoBehaviour:
   - {fileID: 4149556000474596414}
   - {fileID: 0}
   - {fileID: 0}
+  _ventSound: {fileID: 11400000, guid: 3c2d4f0f192c2f542a6eff7585c0d43c, type: 2}
 --- !u!1 &6323727441188155866
 GameObject:
   m_ObjectHideFlags: 0

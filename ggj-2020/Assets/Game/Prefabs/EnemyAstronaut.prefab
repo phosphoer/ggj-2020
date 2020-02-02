@@ -80,10 +80,13 @@ MonoBehaviour:
   - {fileID: 2413501530669143743, guid: f2c166cb3c83eff48aa42a9c3d58c455, type: 3}
   - {fileID: 6185734807980901484, guid: 63d7f9d06c7430a4182648c082c0fd37, type: 3}
   _headSpawnRoot: {fileID: 2000573300162391254}
+  _exclamationEffect: {fileID: 0}
   _acceleration: 500
   _maxSpeed: 7
   _attackCooldown: 1
   _canStun: 0
+  _hitSound: {fileID: 11400000, guid: 032095a8edf225649b605e21d99461f5, type: 2}
+  _deathSound: {fileID: 11400000, guid: 4c461add36e647f45bb22a102a0d109e, type: 2}
 --- !u!114 &8990602445605495633
 MonoBehaviour:
   m_ObjectHideFlags: 0

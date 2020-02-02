@@ -86,6 +86,12 @@ public class AstronautController : MonoBehaviour
   [SerializeField]
   private bool _canStun = true;
 
+  [SerializeField]
+  private SoundBank _hitSound = null;
+
+  [SerializeField]
+  private SoundBank _deathSound = null;
+
   private Vector3 _moveVector;
   private float _zRot;
   private float _attackCooldownTimer;
@@ -225,6 +231,10 @@ public class AstronautController : MonoBehaviour
         _rb.AddForce(Vector3.up * 5, ForceMode.VelocityChange);
         _rb.AddTorque(Random.onUnitSphere * 1, ForceMode.VelocityChange);
         _isDead = true;
+
+        if (_deathSound)
+          AudioManager.Instance.PlaySound(gameObject, _deathSound);
+
         Died?.Invoke();
       }
 
@@ -310,6 +320,9 @@ public class AstronautController : MonoBehaviour
         Vector3 toAstro = (astro.transform.position - transform.position).WithY(0);
         if (toAstro.magnitude < 2.5f)
         {
+          if (_hitSound)
+            AudioManager.Instance.PlaySound(gameObject, _hitSound);
+
           astro.GetWhacked(transform.position);
 
           BatteryComponent battery = GetComponent<BatteryComponent>();
