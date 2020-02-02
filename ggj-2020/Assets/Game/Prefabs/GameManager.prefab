@@ -58,8 +58,8 @@ MonoBehaviour:
     type: 3}
   MusicMenuLoop: {fileID: 11400000, guid: e95460154ddb89149897163610b89e70, type: 2}
   MusicGameLoop: {fileID: 11400000, guid: 8f5ebe05e44cbe14d857a29227e84823, type: 2}
-  MusicWinLoop: {fileID: 11400000, guid: e95460154ddb89149897163610b89e70, type: 2}
-  MusicLoseLoop: {fileID: 11400000, guid: e95460154ddb89149897163610b89e70, type: 2}
+  WinAlert: {fileID: 11400000, guid: b4e23fe2a7371044da902a7f16505d41, type: 2}
+  LoseAlert: {fileID: 11400000, guid: abb8b3efdab606a47a89c1ccfc979117, type: 2}
   MenuCamera: {fileID: 1449285580147211698}
   GameCamera: {fileID: 1449285579953228451}
   _shipHealth: {fileID: 4586679533618741792}
