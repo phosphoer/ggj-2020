@@ -41,7 +41,11 @@ public class EnemySpawner : MonoBehaviour
         yield return null;
       }
 
-      SpawnEnemy();
+      if (PlayerManager.Instance.Players.Count > 0)
+      {
+        SpawnEnemy();
+      }
+
       yield return null;
     }
   }
