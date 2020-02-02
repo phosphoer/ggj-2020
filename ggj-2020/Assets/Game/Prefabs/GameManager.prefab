@@ -122,8 +122,8 @@ MonoBehaviour:
   FieldOfView: 65
   _mountPoint: {fileID: 1449285579953228448}
   ZoomRange:
-    MinValue: 20
-    MaxValue: 35
+    MinValue: 30
+    MaxValue: 40
   ViewportBorder: 0.4
   ZoomSensitivity: 2
 --- !u!1 &1449285580147211709
