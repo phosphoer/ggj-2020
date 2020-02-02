@@ -6848,6 +6848,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6255688372424236297, guid: 0d1b408ad51ad854b82e78291cbe9665,
         type: 3}
+      propertyPath: _warningEffects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6255688372424236297, guid: 0d1b408ad51ad854b82e78291cbe9665,
+        type: 3}
       propertyPath: _room
       value: 
       objectReference: {fileID: 1909478262508169839}
@@ -13675,6 +13680,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6255688372424236297, guid: 0d1b408ad51ad854b82e78291cbe9665,
         type: 3}
+      propertyPath: _warningEffects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6255688372424236297, guid: 0d1b408ad51ad854b82e78291cbe9665,
+        type: 3}
       propertyPath: _room
       value: 
       objectReference: {fileID: 5073968968622770511}
@@ -18713,17 +18723,17 @@ PrefabInstance:
     - target: {fileID: 261857037758700159, guid: 0d1b408ad51ad854b82e78291cbe9665,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.75
+      value: -22.45
       objectReference: {fileID: 0}
     - target: {fileID: 261857037758700159, guid: 0d1b408ad51ad854b82e78291cbe9665,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9409
+      value: 1.7325
       objectReference: {fileID: 0}
     - target: {fileID: 261857037758700159, guid: 0d1b408ad51ad854b82e78291cbe9665,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 26.781
+      value: 27.74
       objectReference: {fileID: 0}
     - target: {fileID: 261857037758700159, guid: 0d1b408ad51ad854b82e78291cbe9665,
         type: 3}
@@ -18738,12 +18748,12 @@ PrefabInstance:
     - target: {fileID: 261857037758700159, guid: 0d1b408ad51ad854b82e78291cbe9665,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 261857037758700159, guid: 0d1b408ad51ad854b82e78291cbe9665,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 261857037758700159, guid: 0d1b408ad51ad854b82e78291cbe9665,
         type: 3}
@@ -18758,7 +18768,7 @@ PrefabInstance:
     - target: {fileID: 261857037758700159, guid: 0d1b408ad51ad854b82e78291cbe9665,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: 261857037758700159, guid: 0d1b408ad51ad854b82e78291cbe9665,
         type: 3}
@@ -18769,6 +18779,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ExtAirlockDoorsUL
+      objectReference: {fileID: 0}
+    - target: {fileID: 6255688372424236297, guid: 0d1b408ad51ad854b82e78291cbe9665,
+        type: 3}
+      propertyPath: _warningEffects.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6255688372424236297, guid: 0d1b408ad51ad854b82e78291cbe9665,
         type: 3}
@@ -18973,6 +18988,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ExtAirlockDoorsDL
+      objectReference: {fileID: 0}
+    - target: {fileID: 6255688372424236297, guid: 0d1b408ad51ad854b82e78291cbe9665,
+        type: 3}
+      propertyPath: _warningEffects.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6255688372424236297, guid: 0d1b408ad51ad854b82e78291cbe9665,
         type: 3}
