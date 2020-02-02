@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class ExteriorAirlockComponent : MonoBehaviour
 {
+  public enum EAirlockState
+  {
+    Closed,
+    Open
+  }
+
+  public EAirlockState CurrentAirlockState => _currentAirlockState;
+
+  public float VentForceScale = 1000.0f;
+
   [SerializeField]
   private RoomComponent _room = null;
 
@@ -16,22 +26,8 @@ public class ExteriorAirlockComponent : MonoBehaviour
   [SerializeField]
   private List<GameObject> _warningEffects = null;
 
-  public float VentForceScale = 1000.0f;
-
-  public enum EAirlockState
-  {
-    Closed,
-    Open
-  }
-
   private EAirlockState _currentAirlockState;
-  public EAirlockState CurrentAirlockState
-  {
-    get
-    {
-      return _currentAirlockState;
-    }
-  }
+  private List<RoomInhabitantComponent> _wooshTargets = new List<RoomInhabitantComponent>();
 
   private void Start()
   {
@@ -46,29 +42,41 @@ public class ExteriorAirlockComponent : MonoBehaviour
     {
       Vector3 suctionPoint = GetAirlockCenter();
 
-      foreach (RoomInhabitantComponent inhabitant in _room.RoomInhabitants)
+      for (int i = 0; i < _wooshTargets.Count; ++i)
       {
-        Rigidbody rigidBody = inhabitant.PhysicsRigidBody;
+        RoomInhabitantComponent inhabitant = _wooshTargets[i];
+        ApplyWoosh(inhabitant, suctionPoint);
+      }
 
-        if (rigidBody != null)
+      for (int i = 0; i < _room.RoomInhabitants.Count; ++i)
+      {
+        RoomInhabitantComponent inhabitant = _room.RoomInhabitants[i];
+        if (!_wooshTargets.Contains(inhabitant))
         {
-          Vector3 directionToAirlock = suctionPoint - rigidBody.transform.position;
-          directionToAirlock.y = 0;
-          directionToAirlock.Normalize();
-
-          bool isPastAirlock = Vector3.Dot(GetAirlockForward(), directionToAirlock) > 0;
-
-          if (!isPastAirlock)
-          {
-            Vector3 ventForce = directionToAirlock * VentForceScale * Time.deltaTime;
-
-            rigidBody.AddForce(ventForce, ForceMode.Acceleration);
-          }
+          ApplyWoosh(inhabitant, suctionPoint);
         }
-
-        inhabitant.NotifySuckedIntoSpace();
       }
     }
+  }
+
+  private void ApplyWoosh(RoomInhabitantComponent inhabitant, Vector3 suctionPoint)
+  {
+    Rigidbody rigidBody = inhabitant.PhysicsRigidBody;
+
+    if (rigidBody != null)
+    {
+      Vector3 directionToAirlock = (suctionPoint - rigidBody.transform.position).WithY(0).normalized;
+
+      bool isPastAirlock = Vector3.Dot(GetAirlockForward(), directionToAirlock) < 0;
+      if (!isPastAirlock)
+      {
+        Vector3 ventForce = directionToAirlock * VentForceScale * Time.deltaTime;
+
+        rigidBody.AddForce(ventForce, ForceMode.Acceleration);
+      }
+    }
+
+    inhabitant.NotifySuckedIntoSpace();
   }
 
   public Vector3 GetAirlockCenter()
@@ -78,7 +86,7 @@ public class ExteriorAirlockComponent : MonoBehaviour
 
   public Vector3 GetAirlockForward()
   {
-    return transform.forward;
+    return transform.right;
   }
 
   public void SetAirlockState(EAirlockState newState)
@@ -105,6 +113,13 @@ public class ExteriorAirlockComponent : MonoBehaviour
     foreach (GameObject effect in _warningEffects)
     {
       effect.SetActive(newState == EAirlockState.Open);
+    }
+
+    // Gather all woosh targets
+    _wooshTargets.Clear();
+    if (newState == EAirlockState.Open)
+    {
+      _wooshTargets.AddRange(_room.RoomInhabitants);
     }
   }
 }

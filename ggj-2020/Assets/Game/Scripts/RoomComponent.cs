@@ -16,6 +16,8 @@ public class RoomComponent : MonoBehaviour
       _roomInhabitants.Add(inhabitant);
       inhabitant.OnRoomEntered(this);
     }
+
+    CleanUpInhabitants();
   }
 
   private void OnTriggerExit(Collider other)
@@ -25,6 +27,19 @@ public class RoomComponent : MonoBehaviour
     {
       inhabitant.OnRoomExited(this);
       _roomInhabitants.Remove(inhabitant);
+    }
+
+    CleanUpInhabitants();
+  }
+
+  private void CleanUpInhabitants()
+  {
+    for (int i = _roomInhabitants.Count - 1; i >= 0; --i)
+    {
+      if (_roomInhabitants[i] == null)
+      {
+        _roomInhabitants.RemoveAt(i);
+      }
     }
   }
 }
