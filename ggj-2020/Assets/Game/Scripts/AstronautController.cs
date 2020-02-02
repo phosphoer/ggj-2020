@@ -53,6 +53,9 @@ public class AstronautController : MonoBehaviour
   private GameObject[] _showOnDie = null;
 
   [SerializeField]
+  private GameObject _stunFx = null;
+
+  [SerializeField]
   private float _acceleration = 10;
 
   [SerializeField]
@@ -176,6 +179,11 @@ public class AstronautController : MonoBehaviour
         Destroy(gameObject);
         return;
       }
+    }
+
+    if (_stunFx != null)
+    {
+      _stunFx.SetActive(IsStunned);
     }
 
     _attackCooldownTimer -= Time.deltaTime;
