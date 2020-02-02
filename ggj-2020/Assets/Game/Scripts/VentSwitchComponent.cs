@@ -17,7 +17,7 @@ public class VentSwitchComponent : LeverComponent
   private CameraFocusPoint _cameraFocusPoint = null;
 
   [SerializeField]
-  private SoundBank _ventAlert;
+  private SoundBank _ventAlert = null;
 
   public float ResetDuration = 5.0f;
 

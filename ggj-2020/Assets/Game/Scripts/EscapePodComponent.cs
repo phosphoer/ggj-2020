@@ -5,7 +5,7 @@ using UnityEngine;
 public class EscapePodComponent : MonoBehaviour
 {
   [SerializeField]
-  private Animation _escapePodAnimation;
+  private Animation _escapePodAnimation = null;
 
   private bool _isEscapePodEntered = false;
 

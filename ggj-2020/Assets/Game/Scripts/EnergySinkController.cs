@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnergySinkController : InteratibleDeviceComponent
 {
   [SerializeField]
-  private SoundBank _doorAlert;
+  private SoundBank _doorAlert = null;
 
   public List<Animator> _doorAnimators;
 
