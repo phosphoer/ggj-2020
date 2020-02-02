@@ -59,6 +59,9 @@ public class AstronautController : MonoBehaviour
   private GameObject _stunFx = null;
 
   [SerializeField]
+  private GameObject _spawnFxPrefab = null;
+
+  [SerializeField]
   private float _acceleration = 10;
 
   [SerializeField]
@@ -110,6 +113,12 @@ public class AstronautController : MonoBehaviour
         TryWhackAstronaut();
       }
     }
+  }
+
+  private void Start()
+  {
+    GameObject spawnfx = Instantiate(_spawnFxPrefab, transform.position, transform.rotation);
+    Destroy(spawnfx, 10.0f);
   }
 
   private void OnEnable()

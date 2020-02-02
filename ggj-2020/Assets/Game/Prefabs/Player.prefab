@@ -45,3 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _astronautPrefab: {fileID: 2299966557755452355, guid: f184898deba7b4fabb10d595369679da,
     type: 3}
+  _spawnFxPrefab: {fileID: 5640717745722686975, guid: 8b19f80b27beac143928b0c972387cf1,
+    type: 3}

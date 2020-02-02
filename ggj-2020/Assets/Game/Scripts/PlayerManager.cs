@@ -8,8 +8,12 @@ public class PlayerManager : Singleton<PlayerManager>
   [SerializeField]
   private PlayerAstronautController _playerPrefab = null;
 
+  [SerializeField]
+  private Transform[] _spawnPoints = null;
+
   private List<PlayerAstronautController> _players = new List<PlayerAstronautController>();
   private List<bool> _playerJoinedStates = new List<bool>();
+  private int _nextSpawnIndex = 0;
 
   public bool IsPlayerJoined(int playerId)
   {
@@ -41,9 +45,14 @@ public class PlayerManager : Singleton<PlayerManager>
 
   private PlayerAstronautController AddPlayer(Rewired.Player rewiredPlayer)
   {
+    Transform spawnPoint = _spawnPoints[_nextSpawnIndex];
     PlayerAstronautController astroPlayer = Instantiate(_playerPrefab, transform);
     astroPlayer.RewiredPlayer = rewiredPlayer;
+    astroPlayer.transform.position = spawnPoint.transform.position;
+    astroPlayer.transform.rotation = Quaternion.Euler(0, Random.value * 360, 0);
     _players.Add(astroPlayer);
+
+    _nextSpawnIndex = (_nextSpawnIndex + 1) % _spawnPoints.Length;
 
     // Set joined state
     if (rewiredPlayer != null)

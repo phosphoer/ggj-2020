@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _roomInhabitant: {fileID: 8990602445605495633}
+  _batteryComponent: {fileID: 0}
   _rb: {fileID: 3361536974669979111}
   _animator: {fileID: 3605509425636324324}
   _visualRoot: {fileID: 7181139985772786116}
@@ -70,6 +71,8 @@ MonoBehaviour:
   - {fileID: 8819367405851201363}
   - {fileID: 2128096833553760299}
   _stunFx: {fileID: 6393336864490836337}
+  _spawnFxPrefab: {fileID: 5640717745722686975, guid: 8b19f80b27beac143928b0c972387cf1,
+    type: 3}
   _acceleration: 500
   _maxSpeed: 7
   _attackCooldown: 1
