@@ -22,6 +22,7 @@ public class GameStateManager : Singleton<GameStateManager>
   public GameObject GameUIPrefab;
   public GameObject WinGameUIPrefab;
   public GameObject LoseGameUIPrefab;
+  public GameObject ShipExplosionPrefab;
   public SoundBank MusicMenuLoop;
   public SoundBank MusicGameLoop;
   public SoundBank WinAlert;
@@ -191,6 +192,11 @@ public class GameStateManager : Singleton<GameStateManager>
             AudioManager.Instance.PlaySound(WinAlert);
           }
 
+          if (ShipExplosionPrefab != null)
+          {
+            Instantiate(ShipExplosionPrefab, Vector3.zero, Quaternion.identity);
+          }
+
           _winGameUI = (GameObject)Instantiate(WinGameUIPrefab, Vector3.zero, Quaternion.identity);
         }
         break;
@@ -199,6 +205,11 @@ public class GameStateManager : Singleton<GameStateManager>
           if (LoseAlert != null)
           {
             AudioManager.Instance.PlaySound(LoseAlert);
+          }
+
+          if (ShipExplosionPrefab != null)
+          {
+            Instantiate(ShipExplosionPrefab, Vector3.zero, Quaternion.identity);
           }
 
           _loseGameUI = (GameObject)Instantiate(LoseGameUIPrefab, Vector3.zero, Quaternion.identity);

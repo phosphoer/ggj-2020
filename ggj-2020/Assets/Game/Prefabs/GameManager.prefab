@@ -56,6 +56,8 @@ MonoBehaviour:
     type: 3}
   LoseGameUIPrefab: {fileID: 4713633419316229850, guid: 01dac430f047a284ea47d81e9fd8e79e,
     type: 3}
+  ShipExplosionPrefab: {fileID: 435527638130396930, guid: be9e455887923ea45940c281290f9f65,
+    type: 3}
   MusicMenuLoop: {fileID: 11400000, guid: e95460154ddb89149897163610b89e70, type: 2}
   MusicGameLoop: {fileID: 11400000, guid: 8f5ebe05e44cbe14d857a29227e84823, type: 2}
   WinAlert: {fileID: 11400000, guid: b4e23fe2a7371044da902a7f16505d41, type: 2}
