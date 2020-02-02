@@ -26,6 +26,9 @@ public class ExteriorAirlockComponent : MonoBehaviour
   [SerializeField]
   private List<GameObject> _warningEffects = null;
 
+  [SerializeField]
+  private SoundBank _ventSound = null;
+
   private EAirlockState _currentAirlockState;
 
   private void Start()
@@ -109,6 +112,18 @@ public class ExteriorAirlockComponent : MonoBehaviour
     if (newState == EAirlockState.Open)
     {
       StartCoroutine(WooshAsync());
+
+      if (_ventSound != null)
+      {
+        AudioManager.Instance.FadeInSound(gameObject, _ventSound, 0.25f);
+      }
+    }
+    else if (newState == EAirlockState.Closed)
+    {
+      if (_ventSound != null)
+      {
+        AudioManager.Instance.FadeOutSound(gameObject, _ventSound, 0.25f);
+      }
     }
   }
 }
