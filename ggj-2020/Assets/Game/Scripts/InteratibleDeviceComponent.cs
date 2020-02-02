@@ -25,4 +25,9 @@ public class InteratibleDeviceComponent : MonoBehaviour
   public virtual void OnInteractionPressed(GameObject gameObject)
   {
   }
+
+  public virtual bool DrainsBatteryOnInteraction()
+  {
+    return true;
+  }
 }

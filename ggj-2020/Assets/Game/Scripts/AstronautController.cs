@@ -38,6 +38,9 @@ public class AstronautController : MonoBehaviour
   private RoomInhabitantComponent _roomInhabitant = null;
 
   [SerializeField]
+  private BatteryComponent _batteryComponent = null;
+
+  [SerializeField]
   private Rigidbody _rb = null;
 
   [SerializeField]
@@ -51,6 +54,9 @@ public class AstronautController : MonoBehaviour
 
   [SerializeField]
   private GameObject[] _showOnDie = null;
+
+  [SerializeField]
+  private GameObject _stunFx = null;
 
   [SerializeField]
   private float _acceleration = 10;
@@ -92,6 +98,12 @@ public class AstronautController : MonoBehaviour
       if (_roomInhabitant.CurrentDevice != null)
       {
         _roomInhabitant.CurrentDevice.OnInteractionPressed(this.gameObject);
+
+        // Always drain the battery after all interactions (if not drained already)
+        if (_batteryComponent != null && _roomInhabitant.CurrentDevice.DrainsBatteryOnInteraction())
+        {
+          _batteryComponent.DrainCharge();
+        }
       }
       else
       {
@@ -176,6 +188,11 @@ public class AstronautController : MonoBehaviour
         Destroy(gameObject);
         return;
       }
+    }
+
+    if (_stunFx != null)
+    {
+      _stunFx.SetActive(IsStunned);
     }
 
     _attackCooldownTimer -= Time.deltaTime;

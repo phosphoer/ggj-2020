@@ -59,6 +59,7 @@ MonoBehaviour:
   MenuCamera: {fileID: 1449285580147211698}
   GameCamera: {fileID: 1449285579953228451}
   _shipHealth: {fileID: 4586679533618741792}
+  _energySink: {fileID: 0}
 --- !u!114 &4586679533618741792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,6 +74,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TotalShipHealth: 100
   VictoryTime: 300
+  ShipDamageRate: 1
+  ShipRepairRate: 1
 --- !u!1 &1449285579953228450
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,8 +122,8 @@ MonoBehaviour:
   FieldOfView: 65
   _mountPoint: {fileID: 1449285579953228448}
   ZoomRange:
-    MinValue: 10
-    MaxValue: 30
+    MinValue: 30
+    MaxValue: 40
   ViewportBorder: 0.4
   ZoomSensitivity: 2
 --- !u!1 &1449285580147211709

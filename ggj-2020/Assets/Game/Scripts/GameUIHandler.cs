@@ -25,6 +25,6 @@ public class GameUIHandler : MonoBehaviour
 
   void RefreshTimer()
   {
-    _TimerImage.fillAmount= GameStateManager.Instance.ShipHealth.ShipVictoryFraction;
+    _TimerImage.fillAmount= GameStateManager.Instance.EnergySink.DepositFractionOfMax;
   }
 }
