@@ -76,6 +76,9 @@ public class AstronautController : MonoBehaviour
   [SerializeField]
   private float _attackCooldown = 1;
 
+  [SerializeField]
+  private bool _canBeStunned = true;
+
   private Vector3 _moveVector;
   private float _zRot;
   private float _attackCooldownTimer;
@@ -260,10 +263,10 @@ public class AstronautController : MonoBehaviour
     for (int i = 0; i < AstronautController.Instances.Count; ++i)
     {
       AstronautController astro = AstronautController.Instances[i];
-      if (astro != this)
+      if (astro != this && astro._canBeStunned)
       {
         Vector3 toAstro = (astro.transform.position - transform.position).WithY(0);
-        if (toAstro.magnitude < 2.0f)
+        if (toAstro.magnitude < 1.5f)
         {
           astro.GetWhacked(transform.position);
           return;
