@@ -5,9 +5,9 @@ using UnityEngine;
 public class ShipHealthComponent : MonoBehaviour
 {
   public float TotalShipHealth = 100;
-  public float VictoryTime= 300;
-  public float ShipDamageRate= 1;
-  public float ShipRepairRate= 1;
+  public float VictoryTime = 300;
+  public float ShipDamageRate = 1;
+  public float ShipRepairRate = 1;
 
   private float _currentShipHealth;
   public float CurrentShipHealthGame
@@ -21,7 +21,7 @@ public class ShipHealthComponent : MonoBehaviour
     get { return _shipAliveTimer; }
   }
 
-  private int _damagedDeviceCount= 0;
+  private int _damagedDeviceCount = 0;
   public int DamagedDeviceCount
   {
     get { return _damagedDeviceCount; }
@@ -52,20 +52,20 @@ public class ShipHealthComponent : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-      _isGameRunning= false;
+    _isGameRunning = false;
   }
 
   public void OnStartedGame()
   {
     _isGameRunning = true;
-    _currentShipHealth= TotalShipHealth;
-    _damagedDeviceCount= 0;
+    _currentShipHealth = TotalShipHealth;
+    _damagedDeviceCount = 0;
   }
 
   public void OnCompletedGame()
   {
     _isGameRunning = false;
-    _currentShipHealth= TotalShipHealth;
+    _currentShipHealth = TotalShipHealth;
   }
 
   public void OnDeviceBecameDamaged()
@@ -75,7 +75,7 @@ public class ShipHealthComponent : MonoBehaviour
 
   public void OnDeviceBecameFixed()
   {
-    _damagedDeviceCount= Mathf.Max(_damagedDeviceCount-1, 0);
+    _damagedDeviceCount = Mathf.Max(_damagedDeviceCount - 1, 0);
   }
 
   void Update()
@@ -86,18 +86,18 @@ public class ShipHealthComponent : MonoBehaviour
       {
         if (_damagedDeviceCount > 0)
         {
-          _currentShipHealth= Mathf.Max(_currentShipHealth - ShipDamageRate*_damagedDeviceCount*Time.deltaTime, 0.0f);
+          _currentShipHealth = Mathf.Max(_currentShipHealth - ShipDamageRate * _damagedDeviceCount * Time.deltaTime, 0.0f);
         }
         else
         {
-          _currentShipHealth= Mathf.Min(_currentShipHealth + ShipRepairRate*Time.deltaTime, TotalShipHealth);
+          _currentShipHealth = Mathf.Min(_currentShipHealth + ShipRepairRate * Time.deltaTime, TotalShipHealth);
         }
       }
 
       if (IsShipAlive)
       {
-        _shipAliveTimer+= Time.deltaTime;
-      }    
+        _shipAliveTimer += Time.deltaTime;
+      }
     }
   }
 }
