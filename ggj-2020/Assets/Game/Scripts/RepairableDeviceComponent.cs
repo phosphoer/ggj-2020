@@ -24,6 +24,12 @@ public class RepairableDeviceComponent : InteratibleDeviceComponent
   [SerializeField]
   private GameObject _brokenGameObject = null;
 
+  [SerializeField]
+  private SoundBank _brokenSound = null;
+
+  [SerializeField]
+  private SoundBank _fixedSound = null;
+
   private static List<RepairableDeviceComponent> _instances = new List<RepairableDeviceComponent>();
 
   private void Start()
@@ -72,9 +78,13 @@ public class RepairableDeviceComponent : InteratibleDeviceComponent
     {
       case ERepairState.Fixed:
         GameStateManager.Instance.ShipHealth.OnDeviceBecameFixed();
+        if (_fixedSound)
+          AudioManager.Instance.PlaySound(gameObject, _fixedSound);
         break;
       case ERepairState.Broken:
         GameStateManager.Instance.ShipHealth.OnDeviceBecameDamaged();
+        if (_brokenSound)
+          AudioManager.Instance.PlaySound(gameObject, _brokenSound);
         break;
     }
   }
