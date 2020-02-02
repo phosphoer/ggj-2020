@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TotalShipHealth: 100
   VictoryTime: 300
-  ShipDamageRate: 0.6
+  ShipDamageRate: 0.1
   ShipRepairRate: 1
   ShipHealthHalf: 50
   ShipHealthWarning: 25
@@ -149,7 +149,7 @@ MonoBehaviour:
   _mountPoint: {fileID: 1449285579953228448}
   ZoomRange:
     MinValue: 30
-    MaxValue: 40
+    MaxValue: 50
   ViewportBorder: 0.4
   ZoomSensitivity: 2
 --- !u!1 &1449285580147211709
