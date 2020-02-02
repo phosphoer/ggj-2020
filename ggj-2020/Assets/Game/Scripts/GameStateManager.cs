@@ -66,11 +66,11 @@ public class GameStateManager : Singleton<GameStateManager>
       case GameStage.Game:
         if (!_shipHealth.IsShipAlive)
         {
-          nextGameStage= GameStage.LoseGame;
+          nextGameStage = GameStage.LoseGame;
         }
         else if (_energySink.IsFull)
         {
-          nextGameStage= GameStage.WinGame;
+          nextGameStage = GameStage.WinGame;
         }
         break;
       case GameStage.WinGame:
