@@ -266,7 +266,7 @@ public class AstronautController : MonoBehaviour
       if (astro != this && astro._canBeStunned)
       {
         Vector3 toAstro = (astro.transform.position - transform.position).WithY(0);
-        if (toAstro.magnitude < 1.5f)
+        if (toAstro.magnitude < 2.5f)
         {
           astro.GetWhacked(transform.position);
           return;
