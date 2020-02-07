@@ -7,20 +7,32 @@ public class PlanetSpawnData
     public Transform planet;
     public Vector3 origin = new Vector3();
     public float planetSpeed = 0f;
+    public float planetSpinRate = 0f;
 }
-public class PlanetSpawner : MonoBehaviour
+
+[System.Serializable]
+public class PlanetSpawnStats
 {
-    public float SpawnHeightVarience = 5f;
-    public GameObject PlanetBase;
-    public Mesh[] PlanetMeshes = new Mesh[0];
-    public float KillDistance = 25f;
-    public float PlanetSpawnTime_Max = 10f;
-    public float PlanetSpawnTime_Min = 2f;
+    public Mesh PlanetCard;
     public float PlanetSpeed_Max = 5f;
     public float PlanetSpeed_Min = 1f;
     public float PlanetScale_Max = 1f;
     public float PlanetScale_Min = .25f;
-    
+    public float PlanetSpin_Max = 1f;
+    public float PlanetSpin_Min = -1f;
+
+}
+
+public class PlanetSpawner : MonoBehaviour
+{
+    public float SpawnHeightVarience = 5f;
+    public GameObject PlanetBase;
+    //public Mesh[] PlanetMeshes = new Mesh[0];
+    public float KillDistance = 25f;
+    public float ZVarience = 2f;
+    public float PlanetSpawnTime_Max = 10f;
+    public float PlanetSpawnTime_Min = 2f;
+    public PlanetSpawnStats[] PlanetStats = new PlanetSpawnStats[0];
 
 
     List<PlanetSpawnData> planets = new List<PlanetSpawnData>();
@@ -51,14 +63,18 @@ public class PlanetSpawner : MonoBehaviour
         GameObject newPlanet = (GameObject)Instantiate(PlanetBase,GetNewSpawnLoc(),PlanetBase.transform.rotation) as GameObject;
         newPlanet.transform.parent = transform;
 
+        int planetChoice = Random.Range(0,PlanetStats.Length);
+
         newData.planet = newPlanet.transform;
         newData.planet.transform.Rotate(Vector3.up,Random.Range(0f,360f),Space.World);
         newData.origin = newPlanet.transform.position;
-        newData.planetSpeed = Random.Range(PlanetSpeed_Min,PlanetSpeed_Max);   
+        
+        newData.planetSpeed = Random.Range(PlanetStats[planetChoice].PlanetSpeed_Min,PlanetStats[planetChoice].PlanetSpeed_Max); 
+        newData.planetSpinRate = Random.Range(PlanetStats[planetChoice].PlanetSpin_Min,PlanetStats[planetChoice].PlanetSpin_Max); 
         planets.Add(newData);
 
-        newPlanet.GetComponent<MeshFilter>().mesh = PlanetMeshes[Random.Range(0,PlanetMeshes.Length)];
-        newPlanet.transform.localScale = Vector3.one * Random.Range(PlanetScale_Min,PlanetScale_Max);
+        newPlanet.GetComponent<MeshFilter>().mesh = PlanetStats[planetChoice].PlanetCard;
+        newPlanet.transform.localScale = Vector3.one * Random.Range(PlanetStats[planetChoice].PlanetScale_Min,PlanetStats[planetChoice].PlanetScale_Max);
     }
 
     public void ManagePlanets()
@@ -66,6 +82,7 @@ public class PlanetSpawner : MonoBehaviour
         for(int i=0; i<planets.Count; i++)
         {
             planets[i].planet.position += Time.deltaTime*planets[i].planetSpeed*Vector3.left;
+            planets[i].planet.Rotate(Vector3.up,planets[i].planetSpinRate*Time.deltaTime);
             if(Vector3.Distance(planets[i].planet.position,planets[i].origin)>=KillDistance)
             {
                 Destroy(planets[i].planet.gameObject);
@@ -79,7 +96,7 @@ public class PlanetSpawner : MonoBehaviour
     {
         return new Vector3(
             transform.position.x,
-            transform.position.y,
+            transform.position.y+Random.Range(-ZVarience,ZVarience),
             transform.position.z + Random.Range(-SpawnHeightVarience,SpawnHeightVarience)
         );
     }

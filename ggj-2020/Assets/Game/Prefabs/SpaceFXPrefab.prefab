@@ -4840,7 +4840,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3307004794244173069}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 125, y: -45, z: 0}
+  m_LocalPosition: {x: 125, y: -50, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7391074690813867640}
@@ -14394,20 +14394,59 @@ MonoBehaviour:
   SpawnHeightVarience: 150
   PlanetBase: {fileID: 6391927857515022937, guid: 7196f5939d621e142a1ccc034b1e6bb5,
     type: 3}
-  PlanetMeshes:
-  - {fileID: 928164642055089628, guid: 381f4649a0de41b43bd15c913032251b, type: 3}
-  - {fileID: -5346026147239146468, guid: 381f4649a0de41b43bd15c913032251b, type: 3}
-  - {fileID: 1700631287792688266, guid: 381f4649a0de41b43bd15c913032251b, type: 3}
-  - {fileID: 4801074934846099854, guid: 381f4649a0de41b43bd15c913032251b, type: 3}
-  - {fileID: -4026952986417431711, guid: 381f4649a0de41b43bd15c913032251b, type: 3}
-  - {fileID: -7251050560761555159, guid: 381f4649a0de41b43bd15c913032251b, type: 3}
   KillDistance: 400
+  ZVarience: 2
   PlanetSpawnTime_Max: 7
   PlanetSpawnTime_Min: 2
-  PlanetSpeed_Max: 50
-  PlanetSpeed_Min: 10
-  PlanetScale_Max: 2
-  PlanetScale_Min: 0.5
+  PlanetStats:
+  - PlanetCard: {fileID: 928164642055089628, guid: 381f4649a0de41b43bd15c913032251b,
+      type: 3}
+    PlanetSpeed_Max: 10
+    PlanetSpeed_Min: 5
+    PlanetScale_Max: 1
+    PlanetScale_Min: 0.5
+    PlanetSpin_Max: 0
+    PlanetSpin_Min: 0
+  - PlanetCard: {fileID: -5346026147239146468, guid: 381f4649a0de41b43bd15c913032251b,
+      type: 3}
+    PlanetSpeed_Max: 10
+    PlanetSpeed_Min: 5
+    PlanetScale_Max: 1
+    PlanetScale_Min: 0.5
+    PlanetSpin_Max: 0
+    PlanetSpin_Min: 0
+  - PlanetCard: {fileID: 1700631287792688266, guid: 381f4649a0de41b43bd15c913032251b,
+      type: 3}
+    PlanetSpeed_Max: 10
+    PlanetSpeed_Min: 5
+    PlanetScale_Max: 1
+    PlanetScale_Min: 0.5
+    PlanetSpin_Max: 0
+    PlanetSpin_Min: 0
+  - PlanetCard: {fileID: 4801074934846099854, guid: 381f4649a0de41b43bd15c913032251b,
+      type: 3}
+    PlanetSpeed_Max: 10
+    PlanetSpeed_Min: 5
+    PlanetScale_Max: 1
+    PlanetScale_Min: 0.5
+    PlanetSpin_Max: 0
+    PlanetSpin_Min: 0
+  - PlanetCard: {fileID: -4026952986417431711, guid: 381f4649a0de41b43bd15c913032251b,
+      type: 3}
+    PlanetSpeed_Max: 10
+    PlanetSpeed_Min: 5
+    PlanetScale_Max: 0.75
+    PlanetScale_Min: 0.25
+    PlanetSpin_Max: 3
+    PlanetSpin_Min: -3
+  - PlanetCard: {fileID: -7251050560761555159, guid: 381f4649a0de41b43bd15c913032251b,
+      type: 3}
+    PlanetSpeed_Max: 10
+    PlanetSpeed_Min: 5
+    PlanetScale_Max: 0.75
+    PlanetScale_Min: 0.25
+    PlanetSpin_Max: 3
+    PlanetSpin_Min: -3
 --- !u!114 &8278561524688185474
 MonoBehaviour:
   m_ObjectHideFlags: 0
