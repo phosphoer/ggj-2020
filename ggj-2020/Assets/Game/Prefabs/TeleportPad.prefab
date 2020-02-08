@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 263353075a8483a45bbc5f39bf2b3e5c, type: 2}
+  - {fileID: 2100000, guid: 3fafa5f47b2ed4772bced1f8e28c8872, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0.19430864, g: 1, b: 0, a: 0}
+  onColor: {r: 0.7735849, g: 1, b: 0.054734774, a: 1}
   offColor: {r: 0, g: 0, b: 0, a: 0}
   waitTime: 1
 --- !u!1 &1667079321891232927
@@ -152,7 +152,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 263353075a8483a45bbc5f39bf2b3e5c, type: 2}
+  - {fileID: 2100000, guid: 3fafa5f47b2ed4772bced1f8e28c8872, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0.021013686, g: 0.6698113, b: 0, a: 0}
+  onColor: {r: 0.7735849, g: 1, b: 0.054734774, a: 1}
   offColor: {r: 0, g: 0, b: 0, a: 0}
   waitTime: 0.5
 --- !u!1 &3324027140234694559
@@ -390,7 +390,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 263353075a8483a45bbc5f39bf2b3e5c, type: 2}
+  - {fileID: 2100000, guid: 3fafa5f47b2ed4772bced1f8e28c8872, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75be0e3ab03d0f84eb0c5d9cac202050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onColor: {r: 0.021013686, g: 0.6698113, b: 0, a: 0}
+  onColor: {r: 0.7735849, g: 1, b: 0.054734774, a: 1}
   offColor: {r: 0, g: 0, b: 0, a: 0}
   waitTime: 0.5
 --- !u!1 &7762359311922041274
