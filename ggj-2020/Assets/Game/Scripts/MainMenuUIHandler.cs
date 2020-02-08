@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class MainMenuUIHandler : MonoBehaviour
 {
+  
+  public GameObject TutorialObj;
+  public float TutorialAnimSpeed = 1f;
+  Animator tutAnim;
+  
   public void OnNewGameClicked()
   {
     GameStateManager.Instance.SetGameStage(GameStateManager.GameStage.Game);
@@ -11,7 +16,13 @@ public class MainMenuUIHandler : MonoBehaviour
 
   public void OnInstructionsClicked()
   {
-
+    TutorialObj.SetActive(!TutorialObj.activeSelf);
+    if(!tutAnim)
+    {
+      tutAnim = TutorialObj.GetComponent<Animator>();
+      tutAnim.speed = TutorialAnimSpeed;
+    }
+    if(TutorialObj.activeSelf) tutAnim.Play("Start");
   }
 
   public void OnSettingsClicked()
