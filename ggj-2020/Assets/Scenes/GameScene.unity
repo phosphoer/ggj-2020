@@ -684,6 +684,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2.8524008
       objectReference: {fileID: 0}
+    - target: {fileID: 4586679533618741792, guid: 45fe93d3a72a04da58e4638f32479b86,
+        type: 3}
+      propertyPath: TotalShipHealth
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45fe93d3a72a04da58e4638f32479b86, type: 3}
 --- !u!1001 &3600077739343172458
