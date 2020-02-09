@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3600077738285165495}
   - component: {fileID: 3600077738285165494}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: EnemySpawnerDR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnOnPlayerSpawn: 1
   SpawnOnGameStart: 0
-  SpawnOnTimer: 50
+  SpawnOnTimer: -1
+  SpawnTimerMin: -1
+  SpawnTimerMax: -1
   SpawnRadius: 2
   _aiPrefab: {fileID: 9133156469366022811, guid: 1dadb9a3fe6a34bc9b555957f6a57c15,
     type: 3}
@@ -60,7 +62,7 @@ GameObject:
   - component: {fileID: 3600077738570878413}
   - component: {fileID: 3600077738570878412}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: EnemySpawnerUL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +96,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnOnPlayerSpawn: 1
   SpawnOnGameStart: 0
-  SpawnOnTimer: 45
+  SpawnOnTimer: -1
+  SpawnTimerMin: -1
+  SpawnTimerMax: -1
   SpawnRadius: 2
   _aiPrefab: {fileID: 9133156469366022811, guid: 1dadb9a3fe6a34bc9b555957f6a57c15,
     type: 3}
@@ -143,7 +147,7 @@ GameObject:
   - component: {fileID: 3600077739512826045}
   - component: {fileID: 3600077739512826044}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: EnemySpawnerDL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,7 +181,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnOnPlayerSpawn: 0
   SpawnOnGameStart: 1
-  SpawnOnTimer: 35
+  SpawnOnTimer: -1
+  SpawnTimerMin: -1
+  SpawnTimerMax: -1
   SpawnRadius: 2
   _aiPrefab: {fileID: 9133156469366022811, guid: 1dadb9a3fe6a34bc9b555957f6a57c15,
     type: 3}
@@ -192,7 +198,7 @@ GameObject:
   - component: {fileID: 3600077740362749722}
   - component: {fileID: 3600077740362749701}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: EnemySpawnerUR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,7 +232,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnOnPlayerSpawn: 1
   SpawnOnGameStart: 0
-  SpawnOnTimer: 40
+  SpawnOnTimer: -1
+  SpawnTimerMin: -1
+  SpawnTimerMax: -1
   SpawnRadius: 2
   _aiPrefab: {fileID: 9133156469366022811, guid: 1dadb9a3fe6a34bc9b555957f6a57c15,
     type: 3}

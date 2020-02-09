@@ -23,6 +23,7 @@ public class GameStateManager : Singleton<GameStateManager>
   public GameObject WinGameUIPrefab;
   public GameObject LoseGameUIPrefab;
   public GameObject ShipExplosionPrefab;
+
   public SoundBank MusicMenuLoop;
   public SoundBank MusicGameLoop;
   public SoundBank WinAlert;
@@ -110,6 +111,25 @@ public class GameStateManager : Singleton<GameStateManager>
       _gameStage = newGameStage;
     }
   }
+  
+  public void SetDifficulty(string difficulty)
+  {
+	  DifficultyManager difficultyManager = GetComponent<DifficultyManager>();
+
+	  if (difficulty == "easy")
+	  {
+		  difficultyManager.SetEasy();
+	  }
+	  if (difficulty == "med")
+	  {
+		  difficultyManager.SetMed();
+	  }
+	  if (difficulty == "hard")
+	  {
+		  difficultyManager.SetHard();
+	  }
+  }
+  
 
   public void OnExitStage(GameStage oldGameStage)
   {

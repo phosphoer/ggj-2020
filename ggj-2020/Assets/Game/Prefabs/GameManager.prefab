@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1449285578312933310}
   - component: {fileID: 4586679533618741792}
   - component: {fileID: 4235824220247678257}
+  - component: {fileID: 596303057}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed39b8ae8c8eae4dad26d2745cada6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EditorDefaultStage: 2
+  EditorDefaultStage: 1
   MainMenuUIPrefab: {fileID: 4713633419316229850, guid: 42a6b902bdf783648841c42c9971bda3,
     type: 3}
   GameUIPrefab: {fileID: 4713633419316229850, guid: a106bed9dbfb6e04198149ea43fa0af8,
@@ -104,6 +105,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797ba9394c07740f5a8bf81ca4163a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &596303057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449285578312933305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd1d11e8ea3f744a9e50d792917429d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySpawners:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  easyTimeMin: 60
+  easyTimeMax: 100
+  easyShipHealth: 150
+  medTimeMin: 50
+  medTimeMax: 75
+  medShipHealth: 100
+  hardTimeMin: 25
+  hardTimeMax: 50
+  hardShipHealth: 50
 --- !u!1 &1449285579953228450
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,8 +205,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449285580147211709}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalRotation: {x: -0.7000711, y: -0.0024065622, z: 0.0018844272, w: -0.7140667}
+  m_LocalPosition: {x: -9.066628, y: 82.765884, z: -2.8524008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1449285578312933311}
