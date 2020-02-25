@@ -20,6 +20,8 @@ public class PlanetSpawnStats
     public float PlanetScale_Min = .25f;
     public float PlanetSpin_Max = 1f;
     public float PlanetSpin_Min = -1f;
+    public bool RandomColor = false;
+    public Color[] ColorPicker = new Color[0];
 
 }
 
@@ -70,10 +72,22 @@ public class PlanetSpawner : MonoBehaviour
         newData.origin = newPlanet.transform.position;
         
         newData.planetSpeed = Random.Range(PlanetStats[planetChoice].PlanetSpeed_Min,PlanetStats[planetChoice].PlanetSpeed_Max); 
-        newData.planetSpinRate = Random.Range(PlanetStats[planetChoice].PlanetSpin_Min,PlanetStats[planetChoice].PlanetSpin_Max); 
+        newData.planetSpinRate = Random.Range(PlanetStats[planetChoice].PlanetSpin_Min,PlanetStats[planetChoice].PlanetSpin_Max);
+
         planets.Add(newData);
 
-        newPlanet.GetComponent<MeshFilter>().mesh = PlanetStats[planetChoice].PlanetCard;
+        MeshFilter newPlanetMesh = newPlanet.GetComponent<MeshFilter>();
+        newPlanetMesh.mesh = PlanetStats[planetChoice].PlanetCard;
+
+        if(PlanetStats[planetChoice].RandomColor)
+        {
+            int pickedColor = Random.Range(0,PlanetStats[planetChoice].ColorPicker.Length);
+            newPlanetMesh.mesh.colors = new Color[newPlanetMesh.mesh.vertexCount];
+            for(int i=0; i<newPlanetMesh.mesh.colors.Length; i++)
+            {
+                newPlanetMesh.mesh.colors[i] = PlanetStats[planetChoice].ColorPicker[pickedColor];
+            }
+        }
         newPlanet.transform.localScale = Vector3.one * Random.Range(PlanetStats[planetChoice].PlanetScale_Min,PlanetStats[planetChoice].PlanetScale_Max);
     }
 

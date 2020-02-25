@@ -14396,8 +14396,8 @@ MonoBehaviour:
     type: 3}
   KillDistance: 400
   ZVarience: 2
-  PlanetSpawnTime_Max: 7
-  PlanetSpawnTime_Min: 2
+  PlanetSpawnTime_Max: 15
+  PlanetSpawnTime_Min: 4
   PlanetStats:
   - PlanetCard: {fileID: 928164642055089628, guid: 381f4649a0de41b43bd15c913032251b,
       type: 3}
@@ -14407,6 +14407,12 @@ MonoBehaviour:
     PlanetScale_Min: 0.5
     PlanetSpin_Max: 0
     PlanetSpin_Min: 0
+    RandomColor: 1
+    ColorPicker:
+    - {r: 1, g: 0, b: 0, a: 1}
+    - {r: 0.5833335, g: 0, b: 1, a: 1}
+    - {r: 0, g: 1, b: 1, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
   - PlanetCard: {fileID: -5346026147239146468, guid: 381f4649a0de41b43bd15c913032251b,
       type: 3}
     PlanetSpeed_Max: 10
@@ -14415,14 +14421,26 @@ MonoBehaviour:
     PlanetScale_Min: 0.5
     PlanetSpin_Max: 0
     PlanetSpin_Min: 0
+    RandomColor: 1
+    ColorPicker:
+    - {r: 1, g: 0, b: 0, a: 1}
+    - {r: 0.5833335, g: 0, b: 1, a: 1}
+    - {r: 0, g: 1, b: 1, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
   - PlanetCard: {fileID: 1700631287792688266, guid: 381f4649a0de41b43bd15c913032251b,
       type: 3}
-    PlanetSpeed_Max: 10
+    PlanetSpeed_Max: 7.64
     PlanetSpeed_Min: 5
     PlanetScale_Max: 1
     PlanetScale_Min: 0.5
     PlanetSpin_Max: 0
     PlanetSpin_Min: 0
+    RandomColor: 1
+    ColorPicker:
+    - {r: 1, g: 0.8333334, b: 0, a: 0}
+    - {r: 0.5833335, g: 0, b: 1, a: 1}
+    - {r: 0, g: 1, b: 1, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
   - PlanetCard: {fileID: 4801074934846099854, guid: 381f4649a0de41b43bd15c913032251b,
       type: 3}
     PlanetSpeed_Max: 10
@@ -14431,6 +14449,12 @@ MonoBehaviour:
     PlanetScale_Min: 0.5
     PlanetSpin_Max: 0
     PlanetSpin_Min: 0
+    RandomColor: 1
+    ColorPicker:
+    - {r: 1, g: 0.8333334, b: 0, a: 1}
+    - {r: 0.5833335, g: 0, b: 1, a: 1}
+    - {r: 0, g: 1, b: 1, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
   - PlanetCard: {fileID: -4026952986417431711, guid: 381f4649a0de41b43bd15c913032251b,
       type: 3}
     PlanetSpeed_Max: 10
@@ -14439,6 +14463,11 @@ MonoBehaviour:
     PlanetScale_Min: 0.25
     PlanetSpin_Max: 3
     PlanetSpin_Min: -3
+    RandomColor: 1
+    ColorPicker:
+    - {r: 1, g: 1, b: 1, a: 1}
+    - {r: 0.5597099, g: 1, b: 0.231, a: 1}
+    - {r: 0.7875001, g: 0.49, b: 1, a: 1}
   - PlanetCard: {fileID: -7251050560761555159, guid: 381f4649a0de41b43bd15c913032251b,
       type: 3}
     PlanetSpeed_Max: 10
@@ -14447,6 +14476,11 @@ MonoBehaviour:
     PlanetScale_Min: 0.25
     PlanetSpin_Max: 3
     PlanetSpin_Min: -3
+    RandomColor: 1
+    ColorPicker:
+    - {r: 1, g: 1, b: 1, a: 1}
+    - {r: 0.7955872, g: 1, b: 0.45499998, a: 1}
+    - {r: 0.7958334, g: 0.51, b: 1, a: 1}
 --- !u!114 &8278561524688185474
 MonoBehaviour:
   m_ObjectHideFlags: 0
