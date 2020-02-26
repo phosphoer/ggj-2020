@@ -82,11 +82,13 @@ public class PlanetSpawner : MonoBehaviour
         if(PlanetStats[planetChoice].RandomColor)
         {
             int pickedColor = Random.Range(0,PlanetStats[planetChoice].ColorPicker.Length);
-            newPlanetMesh.mesh.colors = new Color[newPlanetMesh.mesh.vertexCount];
-            for(int i=0; i<newPlanetMesh.mesh.colors.Length; i++)
+            Color[] newColors = new Color[newPlanetMesh.mesh.vertexCount];
+            for(int i=0; i<newColors.Length; i++)
             {
-                newPlanetMesh.mesh.colors[i] = PlanetStats[planetChoice].ColorPicker[pickedColor];
+                newColors[i] = PlanetStats[planetChoice].ColorPicker[pickedColor];
             }
+            newPlanetMesh.mesh.colors = newColors;
+            Debug.Log("Set new planet color to " + PlanetStats[planetChoice].ColorPicker[pickedColor]);
         }
         newPlanet.transform.localScale = Vector3.one * Random.Range(PlanetStats[planetChoice].PlanetScale_Min,PlanetStats[planetChoice].PlanetScale_Max);
     }
