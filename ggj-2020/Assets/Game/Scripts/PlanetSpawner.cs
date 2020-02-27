@@ -116,4 +116,10 @@ public class PlanetSpawner : MonoBehaviour
             transform.position.z + Random.Range(-SpawnHeightVarience,SpawnHeightVarience)
         );
     }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(transform.position,new Vector3(0f,ZVarience*2f,SpawnHeightVarience*2f));
+    }
 }
